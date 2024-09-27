@@ -1,0 +1,22 @@
+const foodData = [
+  "Phở", "Bún bò Huế", "Bánh mì", "Gỏi cuốn", "Cơm tấm",
+  "Bánh xèo", "Chả cá Lã Vọng", "Nem rán", "Bánh cuốn", "Bún chả",
+  "Bún thịt nướng", "Hủ tiếu", "Cao lầu", "Bún riêu", "Mì Quảng",
+  "Bánh khọt", "Bánh bèo", "Bún mắm", "Gỏi ngó sen", "Xôi gà",
+  "Bò kho", "Lẩu mắm", "Cháo lòng", "Chè ba màu", "Bánh đúc",
+  "Cơm hến", "Bánh bột lọc", "Bánh tét", "Bún cá", "Bánh giò",
+  "Bánh canh cua", "Bánh tráng trộn", "Chả lụa", "Nem nướng", "Bánh ít",
+  "Cơm chiên dương châu", "Gà nướng", "Chè đậu đỏ", "Xôi xéo", "Lẩu Thái",
+  "Chè khúc bạch", "Bún măng vịt", "Cá kho tộ", "Canh chua cá lóc", "Sườn xào chua ngọt",
+  "Cơm rang", "Bún đậu mắm tôm", "Miến lươn", "Bánh khoai", "Gà xào sả ớt",
+  "Vịt quay", "Chè hạt sen", "Bánh rán", "Chả giò", "Xôi ngũ sắc",
+  "Cháo gà", "Mì gà tần", "Bún bò Nam Bộ", "Lẩu gà lá é", "Mực nướng sa tế",
+  "Cá lóc nướng", "Cua rang me", "Bánh tằm bì", "Ốc xào cay", "Cháo ếch",
+  "Gỏi bò khô", "Cơm gà Hội An", "Chè trôi nước", "Lẩu dê", "Súp cua",
+  "Cháo sườn", "Lẩu cá kèo", "Cơm lam", "Bánh chuối hấp", "Gà hấp muối",
+  "Bún dọc mùng", "Mít trộn", "Súp lươn", "Bánh đa cua", "Nước mía",
+  "Bún mọc", "Bánh phu thê", "Cà pháo mắm tôm", "Chè thưng", "Gỏi xoài",
+  "Nem chua", "Bún sứa", "Bún ốc", "Bánh cốm", "Chả cá thu",
+  "Bánh trung thu", "Sườn nướng", "Lẩu nấm", "Canh bầu nấu tôm", "Bánh đậu xanh",
+  "Canh bí đỏ nấu tôm", "Bánh tằm khoai mì", "Bún gạo xào", "Chè bánh lọt", "Cơm cháy kho quẹt"
+];
