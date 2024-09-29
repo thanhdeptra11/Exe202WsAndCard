@@ -7,7 +7,7 @@ function Header({ isScrolled }) {
 
   return (
     <>
-      <header className="flex overflow-hidden flex-col items-center pt-7 bg-white">
+      <header className="flex overflow-hidden flex-col items-center pt-5 bg-white">
         <div className="flex gap-5 justify-between items-center w-full max-w-[1560px] max-md:max-w-full">
           {/* Increase the width of the logo */}
           <img
@@ -20,7 +20,7 @@ function Header({ isScrolled }) {
               <div key={index}>
                 <a
                   href={`#${item.toLowerCase()}`}
-                  className="p-3 relative hover:text-orange-400 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-orange-400 after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
+                  className="p-3 relative hover:text-red-400 after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-full after:bg-red-400 after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100"
                 >
                   {item}
                 </a>

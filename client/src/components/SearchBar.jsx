@@ -18,7 +18,7 @@ function SearchBar() {
           size={18}
           stroke={1.8}
           className={`transition-colors duration-300 ${
-            isFocused ? "text-orange-400" : "text-gray-700"
+            isFocused ? "text-red-400" : "text-gray-700"
           }`}
         />
         <input
@@ -34,13 +34,13 @@ function SearchBar() {
         <div className="shrink-0 w-px h-6 bg-gray-300" />
         <button
           aria-label="User profile"
-          className="focus:outline-none hover:text-orange-400"
+          className="focus:outline-none hover:text-red-400"
         >
           <IconShoppingCart
             size={18}
             stroke={1.8}
             className={`transition-colors duration-300 ${
-              isFocused ? "text-orange-400" : "text-gray-700"
+              isFocused ? "text-red-400" : "text-gray-700"
             }`}
           />
         </button>

@@ -46,7 +46,7 @@ function App() {
     <>
       {/* Conditional rendering for Header and BottomBar */}
       {!isMobile ? (
-        <div className="px-10">
+        <div className="px-36">
           <Header isScrolled={isScrolled} />
         </div>
       ) : (
@@ -63,15 +63,13 @@ function App() {
         ) : (
           <>
             {/* Layout for web or larger screens */}
-            {/*<div className="flex justify-center">*/}
-            {/*  <p>Web Layout</p>*/}
-            {/*</div>*/}
-            <main className="px-10">
-              <Hero />
+            <main className="px-32">
+              <div className="flex justify-center">
+                <Hero />
+              </div>
               <InfoSection />
-              <PopularItems />
-              <Services />
               <HowItWorks />
+              <Services />
               <Testimonials />
               <Newsletter />
             </main>
