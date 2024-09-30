@@ -45,12 +45,18 @@ function App() {
 
   return (
     <>
+      {/* <div
+        style={{
+        bg-[#e5e7eb]
+          background: "linear-gradient(315deg, #e66465 0%, #9198e5 74%)",
+        }}
+      ></div> */}
       {/* Conditional rendering for Header and BottomBar */}
       {!isMobile ? <Header isScrolled={isScrolled} /> : <BottomBar />}
 
       {/* Main content section */}
 
-      <div className={`mt-5 mb-5 p-4 ${isMobile ? "mobile-layout" : "web-layout"}`}>
+      <div className={` mb-5 p-4 ${isMobile ? "mobile-layout" : "web-layout"}`}>
         {isMobile ? (
           <>
             {/* Layout for mobile devices */}
