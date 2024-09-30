@@ -15,6 +15,7 @@ import Favorites from "./pages/WebsiteVersion/Favorites.jsx";
 import Contact from "./pages/WebsiteVersion/Contact.jsx";
 import Login from "./pages/WebsiteVersion/Login.jsx";
 import Register from "./pages/WebsiteVersion/Register.jsx";
+import ProductDetail from "./pages/WebsiteVersion/ProductDetail.jsx";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -75,6 +76,7 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/menu" element={<Menu />} />
               <Route path="/favorites" element={<Favorites />} />
+              <Route path="/detail/:id" element={<ProductDetail />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
