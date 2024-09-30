@@ -2,7 +2,21 @@ import React, { useState } from "react";
 import address from "../database/address.js";
 import Advanced from "../examples/Advanced.jsx";
 
+const food = [
+  "Phở",
+  "Bánh mì",
+  "Bún chả",
+  "Gỏi cuốn",
+  "Bánh xèo",
+  "Cơm tấm",
+  "Chả giò",
+  "Bún bò Huế",
+  "Hủ tiếu",
+  "Cao lầu",
+];
+
 function InfoSection() {
+
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000000);
 
@@ -51,14 +65,6 @@ function InfoSection() {
   const handleMinPriceChange = (e) => setMinPrice(e.target.value);
   const handleMaxPriceChange = (e) => setMaxPrice(e.target.value);
 
-  // Handle form submission
-  const handleSubmitAndRole = () => {
-    // Concatenate the selected address parts (district, city, province)
-    const fullAddress = `${district} - ${city} - ${province}`;
-    console.log({ minPrice, maxPrice, fullAddress });
-
-    //role random food & its shop
-  };
 
   // Handle clearing all fields
   const handleClear = () => {
@@ -71,10 +77,25 @@ function InfoSection() {
     setDistricts([]);
   };
 
+  // Thêm useState để lưu tên món ăn ngẫu nhiên đã chọn
+  const [randomFood, setRandomFood] = useState("");
+
+  // Hàm chọn món ăn ngẫu nhiên
+  const handleSubmitAndRole = () => {
+    // Chọn món ăn ngẫu nhiên từ mảng food
+    const randomFoodIndex = Math.floor(Math.random() * food.length);
+    const selectedFood = food[randomFoodIndex];
+    setRandomFood(selectedFood);
+    // Tạo địa chỉ đầy đủ dựa trên các lựa chọn
+    const fullAddress = `${district} - ${city} - ${province}`;
+    console.log({ minPrice, maxPrice, fullAddress, selectedFood });
+  };
+
   return (
     <>
       <div className="flex flex-col">
-        <section className="flex flex-col justify-center items-center px-16 mt-10 max-w-full text-black bg-white  rounded-[15px] w-[1560px] max-md:px-5 max-md:mt-10">
+        <section
+          className="flex flex-col justify-center items-center px-16 mt-10 max-w-full text-black bg-white  rounded-[15px] w-[1560px] max-md:px-5 max-md:mt-10">
           <div className="flex flex-wrap gap-5 justify-between items-center max-w-full w-[1228px]">
             {/* Minimum and Maximum Price Inputs */}
             <div className="flex flex-col items-center gap-1">
@@ -114,7 +135,8 @@ function InfoSection() {
             <div className="flex flex-col items-center gap-1">
               <label className="text-lg font-semibold">Tỉnh/Thành phố</label>
               <div className="flex gap-3 items-center px-3 py-1.5 rounded border border-gray-200 bg-white shadow-sm">
-                <select value={province} onChange={handleProvinceChange} className="bg-transparent border-none focus:outline-none text-sm text-center w-full">
+                <select value={province} onChange={handleProvinceChange}
+                        className="bg-transparent border-none focus:outline-none text-sm text-center w-full">
                   <option value="">Chọn Tỉnh/Thành phố</option>
                   {address.map((prov) => (
                     <option key={prov.Name} value={prov.Name}>
@@ -129,7 +151,9 @@ function InfoSection() {
             <div className="flex flex-col items-center gap-1">
               <label className="text-lg font-semibold">Quận/Huyện/Thành phố</label>
               <div className="flex gap-3 items-center px-3 py-1.5 rounded border border-gray-200 bg-white shadow-sm">
-                <select value={city} onChange={handleCityChange} className="bg-transparent border-none focus:outline-none text-sm text-center w-full" disabled={!province}>
+                <select value={city} onChange={handleCityChange}
+                        className="bg-transparent border-none focus:outline-none text-sm text-center w-full"
+                        disabled={!province}>
                   <option value="">Chọn Quận/Huyện/Thành phố</option>
                   {cities.map((city) => (
                     <option key={city.Name} value={city.Name}>
@@ -144,7 +168,9 @@ function InfoSection() {
             <div className="flex flex-col items-center gap-1">
               <label className="text-lg font-semibold">Phường/Xã</label>
               <div className="flex gap-3 items-center px-3 py-1.5 rounded border border-gray-200 bg-white shadow-sm">
-                <select value={district} onChange={(e) => setDistrict(e.target.value)} className="bg-transparent border-none focus:outline-none text-sm text-center w-full" disabled={!city}>
+                <select value={district} onChange={(e) => setDistrict(e.target.value)}
+                        className="bg-transparent border-none focus:outline-none text-sm text-center w-full"
+                        disabled={!city}>
                   <option value="">Chọn Phường/Xã</option>
                   {districts.map((dist) => (
                     <option key={dist.Name} value={dist.Name}>
@@ -158,14 +184,21 @@ function InfoSection() {
 
           {/* Submit and Clear Buttons */}
           <div className="mt-8 flex gap-4">
-            <button className="px-6 py-2 text-white bg-red-400 rounded-lg hover:bg-red-600 transition-colors">Nhận Món Ăn</button>
-            <button onClick={handleClear} className="px-6 py-2 text-white bg-gray-400 rounded-lg hover:bg-gray-500 transition-colors">
-              Xóa tất cả
+            <button
+              onClick={handleSubmitAndRole}
+              className="px-6 py-2 text-white bg-red-400 rounded-lg hover:bg-red-600 transition-colors"
+            >
+              Nhận Món Ăn
+            </button>
+
+            <button onClick={handleClear}
+                    className="px-6 py-2 text-white bg-gray-400 rounded-lg hover:bg-gray-500 transition-colors">
+            Xóa tất cả
             </button>
           </div>
         </section>
         <div className="w-full h-full">
-          <Advanced />
+          <Advanced foodName={randomFood} />
         </div>
       </div>
     </>
