@@ -10,7 +10,6 @@ import Testimonials from "./components/Testimonials";
 import Newsletter from "./components/Newsletter";
 
 import Advanced from "./examples/Advanced.jsx";
-import Simple from "./examples/Simple.jsx";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -67,13 +66,17 @@ function App() {
               <div className="flex justify-center">
                 <Hero />
               </div>
-              <InfoSection />
-              <div>
-                <Advanced />
+              <div className="flex justify-center">
+                <InfoSection />
               </div>
+
+                <Advanced />
+
               <HowItWorks />
               <Services />
-              <Testimonials />
+              <div className="flex justify-center">
+                <Testimonials />
+              </div>
               <Newsletter />
             </main>
           </>

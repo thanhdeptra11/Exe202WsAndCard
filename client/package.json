@@ -16,6 +16,7 @@
     "react-dom": "^18.3.1",
     "react-ios-switch": "^0.1.19",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.30.2",
     "react-tinder-card": "^1.6.4",
     "web-vitals": "^2.1.4"
   },

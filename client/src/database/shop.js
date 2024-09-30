@@ -2,6 +2,8 @@ const shop = [
   {
     "name": "Bún bò Thái Anh",
     "image": "",
+    "email" : "",
+    "phone": "",
     "social": [
       {
         "name": "Facebook",
