@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar.jsx";
 import logo from "../assets/LOGOBIG.png";
-import { IconLogin } from '@tabler/icons-react';
 
 function Header({ isScrolled }) {
   const navItems = ["TRANG CHỦ", "ĂN GÌ", "YÊU THÍCH", "LIÊN HỆ", "BLOG"];

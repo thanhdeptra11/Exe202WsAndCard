@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import address from "../database/address.js";
-import Advanced from "../examples/Advanced.jsx";
+import Advanced from "../examples/Advanced";
 
 const food = [
   "Phở",

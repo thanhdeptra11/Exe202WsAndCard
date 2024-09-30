@@ -1,21 +1,21 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+import { Routes, Route, Navigate } from "react-router-dom";
+import  { Toaster } from 'react-hot-toast';
 
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
-import Footer from "./components/Footer.jsx";
+import Footer from "./components/Footer";
 // layout for mobile devices
-import HomeMobile from "./pages/MobileVersion/Home.jsx";
+import HomeMobile from "./pages/MobileVersion/Home";
 // layout for web or larger screens
-import HomeWeb from "./pages/WebsiteVersion/Home.jsx";
-import Blog from "./pages/WebsiteVersion/Blog.jsx";
-import Menu from "./pages/WebsiteVersion/Menu.jsx";
-import Favorites from "./pages/WebsiteVersion/Favorites.jsx";
-import Contact from "./pages/WebsiteVersion/Contact.jsx";
-import Login from "./pages/WebsiteVersion/Login.jsx";
-import Register from "./pages/WebsiteVersion/Register.jsx";
-import ProductDetail from "./pages/WebsiteVersion/ProductDetail.jsx";
+import HomeWeb from "./pages/WebsiteVersion/Home";
+import Blog from "./pages/WebsiteVersion/Blog";
+import Menu from "./pages/WebsiteVersion/Menu";
+import Favorites from "./pages/WebsiteVersion/Favorites";
+import Contact from "./pages/WebsiteVersion/Contact";
+import Login from "./pages/WebsiteVersion/Login";
+import Register from "./pages/WebsiteVersion/Register";
+import ProductDetail from "./pages/WebsiteVersion/ProductDetail";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
