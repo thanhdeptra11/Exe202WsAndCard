@@ -4,9 +4,14 @@ import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
 import Footer from "./components/Footer.jsx";
-
-import HomeWeb from "./pages/WebsiteVersion/Home.jsx";
+// layout for mobile devices
 import HomeMobile from "./pages/MobileVersion/Home.jsx";
+// layout for web or larger screens
+import HomeWeb from "./pages/WebsiteVersion/Home.jsx";
+import Blog from "./pages/WebsiteVersion/Blog.jsx";
+import Menu from "./pages/WebsiteVersion/Menu.jsx";
+import Favorites from "./pages/WebsiteVersion/Favorites.jsx";
+import Contact from "./pages/WebsiteVersion/Contact.jsx";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -41,14 +46,11 @@ function App() {
   return (
     <>
       {/* Conditional rendering for Header and BottomBar */}
-      {!isMobile ? (
-        <Header isScrolled={isScrolled} />
-      ) : (
-        <BottomBar />
-      )}
+      {!isMobile ? <Header isScrolled={isScrolled} /> : <BottomBar />}
 
       {/* Main content section */}
-      <div className={`mt-5 mb-5 p-4 ${isMobile ? 'mobile-layout' : 'web-layout'}`}>
+
+      <div className={`mt-5 mb-5 p-4 ${isMobile ? "mobile-layout" : "web-layout"}`}>
         {isMobile ? (
           <>
             {/* Layout for mobile devices */}
@@ -56,8 +58,15 @@ function App() {
           </>
         ) : (
           <>
-            {/* Layout for web or larger screens */}
-            <HomeWeb />
+            {/* Route Layout for web or larger screens */}
+            <Routes>
+              <Route path="/" element={<Navigate to="/home" />} />
+              <Route path="/home" element={<HomeWeb />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
           </>
         )}
       </div>
