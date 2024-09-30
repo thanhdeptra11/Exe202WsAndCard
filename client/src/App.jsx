@@ -12,6 +12,8 @@ import Blog from "./pages/WebsiteVersion/Blog.jsx";
 import Menu from "./pages/WebsiteVersion/Menu.jsx";
 import Favorites from "./pages/WebsiteVersion/Favorites.jsx";
 import Contact from "./pages/WebsiteVersion/Contact.jsx";
+import Login from "./pages/WebsiteVersion/Login.jsx";
+import Register from "./pages/WebsiteVersion/Register.jsx";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -66,6 +68,8 @@ function App() {
               <Route path="/menu" element={<Menu />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
             </Routes>
           </>
         )}
