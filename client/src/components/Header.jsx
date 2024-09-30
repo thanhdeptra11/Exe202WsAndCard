@@ -34,16 +34,36 @@ function Header({ isScrolled }) {
             </nav>
             {/*<SearchBar />*/}
             {/*login + signup*/}
+
+            {/*<div className="flex items-center gap-3 ml-4">*/}
+            {/*  <button*/}
+            {/*    className="flex items-center gap-3 px-4 py-1.5 border border-gray-200 bg-white shadow-sm text-sm font-semibold rounded hover:text-red-400 hover:border-red-400 transition-colors duration-300">*/}
+            {/*    Đăng nhập*/}
+            {/*  </button>*/}
+            {/*  <button className=" px-4 py-1.5 bg-red-500 text-white font-semibold rounded hover:bg-red-700 transition-colors duration-300">*/}
+            {/*    Đăng ký*/}
+            {/*    /!*<IconLogin stroke={2} />*!/*/}
+            {/*  </button>*/}
+            {/*</div>*/}
+
             <div className="flex items-center gap-3 ml-4">
-              <button
-                className="flex items-center gap-3 px-4 py-1.5 border border-gray-200 bg-white shadow-sm text-sm font-semibold rounded hover:text-red-400 hover:border-red-400 transition-colors duration-300">
-                Đăng nhập
-              </button>
-              <button className=" px-4 py-1.5 bg-red-500 text-white font-semibold rounded hover:bg-red-700 transition-colors duration-300">
-                Đăng ký
-                {/*<IconLogin stroke={2} />*/}
-              </button>
+              {/* Nút Đăng nhập */}
+              <Link to="/login">
+                <button
+                  className="flex items-center gap-3 px-4 py-1.5 border border-gray-200 bg-white shadow-sm text-sm font-semibold rounded hover:text-red-400 hover:border-red-400 transition-colors duration-300">
+                  Đăng nhập
+                </button>
+              </Link>
+
+              {/* Nút Đăng ký */}
+              <Link to="/register">
+                <button
+                  className="px-4 py-1.5 bg-red-500 text-white font-semibold rounded hover:bg-red-700 transition-colors duration-300">
+                  Đăng ký
+                </button>
+              </Link>
             </div>
+
           </div>
         </header>
       </div>
