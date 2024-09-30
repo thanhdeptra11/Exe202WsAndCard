@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
 import { IconStar, IconStarFilled, IconX, IconCheck } from "@tabler/icons-react";
-
+import toast from 'react-hot-toast';
 // Updated db with property information
 const db = [
   {
@@ -81,6 +81,18 @@ function Advanced() {
   const swipe = async (dir) => {
     if (canSwipe && currentIndex < db.length) {
       await childRefs[currentIndex].current.swipe(dir);
+      // swipe left => add to favorites
+      if (dir === "left") {
+        toast.success(`Đã thêm ${db[currentIndex].name} vào danh sách yêu thích!`,{
+          position: 'bottom-left',
+        });
+      }
+      //swipe right => skip this shop
+      if (dir === "right") {
+        toast.error(`Đã bỏ qua ${db[currentIndex].name}` , {
+          position: 'bottom-left',
+        });
+      }
     }
   };
 
@@ -89,10 +101,6 @@ function Advanced() {
     const newIndex = currentIndex + 1;
     updateCurrentIndex(newIndex);
     await childRefs[newIndex].current.restoreCard();
-  };
-
-  const addFoodToFavo = async () => {
-    alert("Add this food!");
   };
 
   return (

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
@@ -65,6 +66,7 @@ function App() {
         ) : (
           <>
             {/* Route Layout for web or larger screens */}
+            <Toaster />
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<HomeWeb />} />
