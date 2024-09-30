@@ -50,9 +50,25 @@ function InfoSection() {
   const handleMinPriceChange = (e) => setMinPrice(e.target.value);
   const handleMaxPriceChange = (e) => setMaxPrice(e.target.value);
 
+  // Handle form submission
   const handleSubmit = () => {
-    // Handle filter logic here
-    console.log({ minPrice, maxPrice, province, city, district });
+    // Concatenate the selected address parts (district, city, province)
+    const fullAddress = `${district} - ${city} - ${province}`;
+    console.log({ minPrice, maxPrice, fullAddress });
+
+    // You can now use the `fullAddress` for further logic (like sending it to the server)
+    alert(`Selected Address: ${fullAddress}`);
+  };
+
+  // Handle clearing all fields
+  const handleClear = () => {
+    setMinPrice(0);
+    setMaxPrice(1000000);
+    setProvince('');
+    setCity('');
+    setDistrict('');
+    setCities([]);
+    setDistricts([]);
   };
 
   return (
@@ -153,13 +169,19 @@ function InfoSection() {
         </div>
       </div>
 
-      {/* Submit Button */}
-      <div className="mt-8">
+      {/* Submit and Clear Buttons */}
+      <div className="mt-8 flex gap-4">
         <button
           onClick={handleSubmit}
           className="px-6 py-2 text-white bg-red-400 rounded-lg hover:bg-red-600 transition-colors"
         >
           Xác nhận
+        </button>
+        <button
+          onClick={handleClear}
+          className="px-6 py-2 text-white bg-gray-400 rounded-lg hover:bg-gray-500 transition-colors"
+        >
+          Xóa tất cả
         </button>
       </div>
     </section>

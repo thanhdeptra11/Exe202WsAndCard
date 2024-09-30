@@ -1,144 +1,58 @@
-// import React, { useState, useMemo, useRef } from "react";
-// import TinderCard from "react-tinder-card";
-// import "./Advanced.css";
-//
-// // Initial character data
-// const db = [
-//   { name: "Richard Hendricks", url: "./img/richard.jpg" },
-//   { name: "Erlich Bachman", url: "./img/erlich.jpg" },
-//   { name: "Monica Hall", url: "./img/monica.jpg" },
-//   { name: "Jared Dunn", url: "./img/jared.jpg" },
-//   { name: "Dinesh Chugtai", url: "./img/dinesh.jpg" },
-// ];
-//
-// function Advanced() {
-//   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
-//   const [lastDirection, setLastDirection] = useState();
-//
-//   // Reference to track the current index
-//   const currentIndexRef = useRef(currentIndex);
-//
-//   // Create references for all cards
-//   const childRefs = useMemo(
-//     () =>
-//       Array(db.length)
-//         .fill(0)
-//         .map(() => React.createRef()),
-//     []
-//   );
-//
-//   // Update the current index both in state and reference
-//   const updateCurrentIndex = (val) => {
-//     setCurrentIndex(val);
-//     currentIndexRef.current = val;
-//   };
-//
-//   const canGoBack = currentIndex < db.length - 1;
-//   const canSwipe = currentIndex >= 0;
-//
-//   // Handle swipe action
-//   const swiped = (direction, nameToDelete, index) => {
-//     setLastDirection(direction);
-//     updateCurrentIndex(index - 1);
-//   };
-//
-//   // Handle when card goes out of frame
-//   const outOfFrame = (name, idx) => {
-//     console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current);
-//
-//     // Restore card if needed
-//     if (currentIndexRef.current >= idx) {
-//       childRefs[idx].current.restoreCard();
-//     }
-//   };
-//
-//   // Programmatically trigger a swipe
-//   const swipe = async (dir) => {
-//     if (canSwipe && currentIndex < db.length) {
-//       await childRefs[currentIndex].current.swipe(dir);
-//     }
-//   };
-//
-//   // Undo the last swipe
-//   const goBack = async () => {
-//     if (!canGoBack) return;
-//     const newIndex = currentIndex + 1;
-//     updateCurrentIndex(newIndex);
-//     await childRefs[newIndex].current.restoreCard();
-//   };
-//
-//   return (
-//     <div>
-//       <h1>Bún trộn</h1>
-//       <div className="cardContainer">
-//         {db.map((character, index) => (
-//           <TinderCard
-//             ref={childRefs[index]}
-//             className="swipe"
-//             key={character.name}
-//             onSwipe={(dir) => swiped(dir, character.name, index)}
-//             onCardLeftScreen={() => outOfFrame(character.name, index)}
-//           >
-//             <div
-//               style={{ backgroundImage: "url(" + character.url + ")" }}
-//               className="card"
-//             >
-//               <h3>{character.name}</h3>
-//             </div>
-//           </TinderCard>
-//         ))}
-//       </div>
-//       <div className="buttons">
-//         <button
-//           style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
-//           onClick={() => swipe("left")}
-//         >
-//           Swipe left!
-//         </button>
-//         <button
-//           style={{ backgroundColor: !canGoBack && "#c3c4d3" }}
-//           onClick={() => goBack()}
-//         >
-//           Undo swipe!
-//         </button>
-//         <button
-//           style={{ backgroundColor: !canSwipe && "#c3c4d3" }}
-//           onClick={() => swipe("right")}
-//         >
-//           Swipe right!
-//         </button>
-//       </div>
-//       {lastDirection ? (
-//         <h2 key={lastDirection} className="infoText">
-//           You swiped {lastDirection}
-//         </h2>
-//       ) : (
-//         <h2 className="infoText">
-//           Swipe a card or press a button to get Restore Card button visible!
-//         </h2>
-//       )}
-//     </div>
-//   );
-// }
-//
-// export default Advanced;
 import React, { useState, useMemo, useRef } from "react";
 import TinderCard from "react-tinder-card";
+import { IconStar, IconStarFilled } from "@tabler/icons-react";
 
+// Updated db with property information
 const db = [
-  { name: "Richard Hendricks", url: "./img/richard.jpg" },
-  { name: "Erlich Bachman", url: "./img/erlich.jpg" },
-  { name: "Monica Hall", url: "./img/monica.jpg" },
-  { name: "Jared Dunn", url: "./img/jared.jpg" },
-  { name: "Dinesh Chugtai", url: "./img/dinesh.jpg" },
+  {
+    name: "Bánh Mỳ Tèo Em",
+    img: "https://images.unsplash.com/photo-1570797197190-8e003a00c846?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=968&q=80",
+    beds: 3,
+    baths: 2,
+    price: "10.000đ / suất",
+    reviews: 34,
+    rating: 4,
+  },
+  {
+    name: "Cozy Apartment in the City",
+    img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    beds: 2,
+    baths: 1,
+    price: "10.000đ / suất",
+    reviews: 50,
+    rating: 5,
+  },
+  {
+    name: "Cơm Mai Linh",
+    img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    beds: 1,
+    baths: 1,
+    price: "$10.000đ / suất",
+    reviews: 40,
+    rating: 4,
+  },
+  {
+    name: "Bún Chả Nhất",
+    img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+    beds: 5,
+    baths: 4,
+    price: "35.000đ / suất",
+    reviews: 20,
+    rating: 5,
+  },
 ];
 
 function Advanced() {
   const [currentIndex, setCurrentIndex] = useState(db.length - 1);
   const [lastDirection, setLastDirection] = useState();
-
   const currentIndexRef = useRef(currentIndex);
-  const childRefs = useMemo(() => Array(db.length).fill(0).map(() => React.createRef()), []);
+  const childRefs = useMemo(
+    () =>
+      Array(db.length)
+        .fill(0)
+        .map(() => React.createRef()),
+    []
+  );
 
   const updateCurrentIndex = (val) => {
     setCurrentIndex(val);
@@ -174,26 +88,64 @@ function Advanced() {
   };
 
   return (
-    <div style={{
-      minHeight: "100vh",
-      overflow: "hidden",
-    }}>
+    <div style={{ minHeight: "100vh", overflow: "hidden" }}>
       <div className="flex flex-col items-center justify-center h-screen from-pink-500 to-blue-500 text-center">
-        <h1 className="text-5xl font-bold text-white mb-8">Bún trộn</h1>
-        <div className="relative w-[90vw] max-w-xs h-[300px]">
-          {db.map((character, index) => (
+        <h1 className="text-5xl font-bold text-Black mb-8">Bún bò Huế</h1>
+        <div className="relative w-[90vw] max-w-xs h-[500px]">
+          {db.map((property, index) => (
             <TinderCard
               ref={childRefs[index]}
               className="absolute w-full h-full"
-              key={character.name}
-              onSwipe={(dir) => swiped(dir, character.name, index)}
-              onCardLeftScreen={() => outOfFrame(character.name, index)}
+              key={property.name}
+              onSwipe={(dir) => swiped(dir, property.name, index)}
+              onCardLeftScreen={() => outOfFrame(property.name, index)}
             >
-              <div
-                style={{ backgroundImage: `url(${character.url})` }}
-                className="bg-cover bg-center w-full h-full shadow-xl rounded-2xl"
-              >
-                <h3 className="absolute bottom-0 left-0 p-4 text-white font-bold text-xl">{character.name}</h3>
+              {/* Property Card */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-2xl h-auto">
+                <img
+                  className="h-48 w-full object-cover"
+                  src={property.img}
+                  alt={property.name}
+                />
+                <div className="p-6">
+                  <div className="flex items-baseline">
+                    <span
+                      className="inline-block bg-teal-200 text-teal-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
+                      Online
+                    </span>
+                    <div className="ml-2 mr-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">
+                      &bull;
+                    </div>
+                    <span
+                      className="inline-block bg-red-200 text-teal-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
+                      Offline
+                    </span>
+
+                  </div>
+                  {/*shop name*/}
+                  <h4 className=" flex mt-2 font-semibold text-lg leading-tight truncate">
+                    Quán {property.name}
+                  </h4>
+                  {/*price*/}
+                  <div className="mt-1 flex ">
+                    <span>{property.price}</span>
+                  </div>
+                  {/*rating and reviews*/}
+                  <div className="mt-2 flex items-center">
+                    {/* Star Rating using Tabler icons */}
+                    <span className="text-teal-600 font-semibold flex">
+                      {[...Array(property.rating)].map((_, i) => (
+                        <IconStarFilled key={i} size={20} />
+                      ))}
+                      {[...Array(5 - property.rating)].map((_, i) => (
+                        <IconStar key={i} size={20} />
+                      ))}
+                    </span>
+                    <span className="ml-2 text-gray-600 text-sm">
+                      {property.reviews} reviews
+                    </span>
+                  </div>
+                </div>
               </div>
             </TinderCard>
           ))}
@@ -225,9 +177,10 @@ function Advanced() {
             Swipe right!
           </button>
         </div>
-
         {lastDirection && (
-          <h2 className="mt-4 text-white font-semibold animate-pulse">You swiped {lastDirection}</h2>
+          <h2 className="mt-4 text-white font-semibold animate-pulse">
+            You swiped {lastDirection}
+          </h2>
         )}
       </div>
     </div>
