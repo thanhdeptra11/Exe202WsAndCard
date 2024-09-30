@@ -4,13 +4,13 @@ import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
 import Hero from "./components/Hero";
 import InfoSection from "./components/InfoSection";
-import PopularItems from "./components/PopularItems";
 import Services from "./components/Services";
 import HowItWorks from "./components/HowItWorks";
 import Testimonials from "./components/Testimonials";
 import Newsletter from "./components/Newsletter";
 
-
+import Advanced from "./examples/Advanced.jsx";
+import Simple from "./examples/Simple.jsx";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -63,11 +63,14 @@ function App() {
         ) : (
           <>
             {/* Layout for web or larger screens */}
-            <main className="px-32">
+            <main className="px-32 overflow-visible">
               <div className="flex justify-center">
                 <Hero />
               </div>
               <InfoSection />
+              <div>
+                <Advanced />
+              </div>
               <HowItWorks />
               <Services />
               <Testimonials />
