@@ -1,15 +1,10 @@
 import { useState, useEffect } from "react";
-
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
-import Hero from "./components/Hero";
-import InfoSection from "./components/InfoSection";
-import Services from "./components/Services";
-import HowItWorks from "./components/HowItWorks";
-import Testimonials from "./components/Testimonials";
-import Newsletter from "./components/Newsletter";
+import Footer from "./components/Footer.jsx";
 
-import Advanced from "./examples/Advanced.jsx";
+import HomeWeb from "./pages/WebsiteVersion/Home.jsx";
+import HomeMobile from "./pages/MobileVersion/Home.jsx";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -45,46 +40,28 @@ function App() {
     <>
       {/* Conditional rendering for Header and BottomBar */}
       {!isMobile ? (
-        <div className="px-36">
-          <Header isScrolled={isScrolled} />
-        </div>
+        <Header isScrolled={isScrolled} />
       ) : (
         <BottomBar />
       )}
 
       {/* Main content section */}
-      <div className={`mt-5 p-4 ${isMobile ? 'mobile-layout' : 'web-layout'}`}>
+      <div className={`mt-5 mb-5 p-4 ${isMobile ? 'mobile-layout' : 'web-layout'}`}>
         {isMobile ? (
           <>
             {/* Layout for mobile devices */}
-            <p>Mobile Layout</p>
+            <HomeMobile />
           </>
         ) : (
           <>
             {/* Layout for web or larger screens */}
-            <main className="px-32 overflow-visible">
-              <div className="flex justify-center">
-                <Hero />
-              </div>
-              <div className="flex justify-center">
-                <InfoSection />
-              </div>
-              <div className="flex justify-center">
-                <div>
-                  <HowItWorks />
-                </div>
-              </div>
-              <Services />
-              <div className="flex justify-center">
-                <Testimonials />
-              </div>
-              <Newsletter />
-            </main>
+            <HomeWeb />
           </>
         )}
-        {/* Common layout for both web and mobile */}
-        <p>Common Layout</p>
       </div>
+
+      {/* Footer should only be rendered if not on mobile */}
+      {!isMobile && <Footer />}
     </>
   );
 }
