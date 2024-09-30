@@ -27,7 +27,7 @@ const db = [
     img: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     beds: 1,
     baths: 1,
-    price: "$10.000đ / suất",
+    price: "10.000đ / suất",
     reviews: 40,
     rating: 4,
   },
@@ -90,8 +90,8 @@ function Advanced() {
   return (
     <div style={{ minHeight: "100vh", overflow: "hidden" }}>
       <div className="flex flex-col items-center justify-center h-screen from-pink-500 to-blue-500 text-center">
-        <h1 className="text-5xl font-bold text-Black mb-8">Bún bò Huế</h1>
-        <div className="relative w-[90vw] max-w-xs h-[500px]">
+        <h1 className="text-5xl font-bold text-black mb-8">Bún bò Huế</h1>
+        <div className="relative w-[95vw] max-w-lg h-[450px]">
           {db.map((property, index) => (
             <TinderCard
               ref={childRefs[index]}
@@ -101,36 +101,33 @@ function Advanced() {
               onCardLeftScreen={() => outOfFrame(property.name, index)}
             >
               {/* Property Card */}
-              <div className="bg-white rounded-lg overflow-hidden shadow-2xl h-auto">
+              <div className="bg-white rounded-lg overflow-hidden shadow-2xl h-full">
                 <img
-                  className="h-48 w-full object-cover"
+                  className="h-60 w-full object-cover"
                   src={property.img}
                   alt={property.name}
                 />
                 <div className="p-6">
                   <div className="flex items-baseline">
-                    <span
-                      className="inline-block bg-teal-200 text-teal-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
+                    <span className="inline-block bg-teal-200 text-teal-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
                       Online
                     </span>
                     <div className="ml-2 mr-2 text-gray-600 text-xs uppercase font-semibold tracking-wide">
                       &bull;
                     </div>
-                    <span
-                      className="inline-block bg-red-200 text-teal-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
+                    <span className="inline-block bg-red-200 text-teal-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">
                       Offline
                     </span>
-
                   </div>
-                  {/*shop name*/}
+                  {/* shop name */}
                   <h4 className=" flex mt-2 font-semibold text-lg leading-tight truncate">
                     Quán {property.name}
                   </h4>
-                  {/*price*/}
+                  {/* price */}
                   <div className="mt-1 flex ">
                     <span>{property.price}</span>
                   </div>
-                  {/*rating and reviews*/}
+                  {/* rating and reviews */}
                   <div className="mt-2 flex items-center">
                     {/* Star Rating using Tabler icons */}
                     <span className="text-teal-600 font-semibold flex">

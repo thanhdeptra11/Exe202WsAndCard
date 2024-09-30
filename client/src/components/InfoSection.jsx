@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import address from '../database/address.js';
+import Advanced  from "../examples/Advanced.jsx";
+import { IconStar, IconStarFilled } from "@tabler/icons-react";
 
 function InfoSection() {
   const [minPrice, setMinPrice] = useState(0);
@@ -175,7 +177,7 @@ function InfoSection() {
           onClick={handleSubmit}
           className="px-6 py-2 text-white bg-red-400 rounded-lg hover:bg-red-600 transition-colors"
         >
-          Xác nhận
+          Nhận Món Ăn
         </button>
         <button
           onClick={handleClear}
@@ -184,7 +186,11 @@ function InfoSection() {
           Xóa tất cả
         </button>
       </div>
+      <div className="w-full h-full">
+        <Advanced />
+      </div>
     </section>
+
   );
 }
 

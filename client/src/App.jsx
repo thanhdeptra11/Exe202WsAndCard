@@ -69,10 +69,11 @@ function App() {
               <div className="flex justify-center">
                 <InfoSection />
               </div>
-
-                <Advanced />
-
-              <HowItWorks />
+              <div className="flex justify-center">
+                <div>
+                  <HowItWorks />
+                </div>
+              </div>
               <Services />
               <div className="flex justify-center">
                 <Testimonials />
