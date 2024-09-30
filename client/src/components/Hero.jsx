@@ -1,4 +1,5 @@
 import React from "react";
+import SearchBar from "./SearchBar";
 import OrderButton from "./OrderButton";
 
 function Hero() {
@@ -9,7 +10,7 @@ function Hero() {
         <div className="flex flex-col w-[60%] max-md:w-full">
           <div className="flex z-10 flex-col items-start mt-6 w-full">
             {/* Bike Delivery Button */}
-            <div className="flex gap-4 justify-between py-1 pr-1 pl-5 max-w-full bg-red-200 rounded-[20px] w-[220px] max-md:pl-4 max-md:ml-2">
+            {/* <div className="flex gap-4 justify-between py-1 pr-1 pl-5 max-w-full bg-red-200 rounded-[20px] w-[220px] max-md:pl-4 max-md:ml-2">
               <div className="my-auto text-base font-semibold text-orange-400">EXE201</div>
               <div className="flex flex-col items-center rounded-full bg-neutral-100 h-[45px] w-[45px]">
                 <img
@@ -19,18 +20,20 @@ function Hero() {
                   className="object-contain aspect-square w-[45px]"
                 />
               </div>
-            </div>
-             {/*Title*/}
+            </div> */}
+            <SearchBar />
+            {/*Title*/}
 
             <h1 className="self-stretch mt-16 text-6xl font-bold max-md:text-3xl">
               <img
                 src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/People%20with%20activities/Man%20Facepalming%20Light%20Skin%20Tone.png"
-                alt="Man Facepalming Light Skin Tone" width="100" height="100"
-                className="inline-block align-middle mr-2 " />
-              <br/>
-              <span className="text-black">
-                Bạn
-              </span>
+                alt="Man Facepalming Light Skin Tone"
+                width="100"
+                height="100"
+                className="inline-block align-middle mr-2 "
+              />
+              <br />
+              <span className="text-black">Bạn</span>
               <br />
               <span className="text-black"> Không Biết </span>
               <br />
@@ -39,8 +42,7 @@ function Hero() {
 
             {/* Description */}
             <p className="flex flex-col mt-8 w-[500px] text-base font-medium text-black max-md:w-full">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo, sed proin amet a vestibulum enim
-              volutpat lacus. Volutpat arcu sit sed tortor etiam volutpat ipsum.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Commodo, sed proin amet a vestibulum enim volutpat lacus. Volutpat arcu sit sed tortor etiam volutpat ipsum.
             </p>
             {/* Order Button Section */}
             <div className="mt-16 w-full max-md:mt-8">

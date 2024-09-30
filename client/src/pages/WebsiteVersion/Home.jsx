@@ -9,13 +9,11 @@ function Home() {
   return (
     <>
       {/* Layout for web or larger screens */}
-      <main className="px-32 overflow-visible">
+      <main className="px-32 overflow-visible ">
         <div className="flex justify-center">
           <Hero />
         </div>
-        <div className="flex justify-center">
-          <InfoSection />
-        </div>
+        <div className="flex justify-center">{/* <InfoSection /> */}</div>
         <div className="flex justify-center">
           <div>
             <HowItWorks />
