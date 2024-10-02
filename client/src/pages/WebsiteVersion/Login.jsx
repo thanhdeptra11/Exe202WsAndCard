@@ -1,30 +1,76 @@
-import React from "react";
-import loginBanner from "../../assets/foodBanner.png";
+import React, { useState } from "react";
+import { IconEye, IconEyeOff } from '@tabler/icons-react'; // If you want to add password visibility like in the Register form
+import loginBanner from "../../assets/foodBanner.png"; // Ensure the image path is correct
+
 const Login = () => {
+  // State to toggle password visibility
+  const [showPassword, setShowPassword] = useState(false);
+
+  // Function to toggle password visibility
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <div className="flex bg-gradient-to-r from-red-400 via-orange-400 to-pink-500 items-center justify-center w-full py-2 px-5 sm:px-0">
-      <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-sm lg:max-w-md w-full justify-center">
-        <div className="w-full p-8">
-          <p className="text-xl text-gray-600 text-center">Welcome back!</p>
+    <div className="flex items-start justify-center w-full pt-10 px-5 sm:px-0 min-h-screen">
+      <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-5xl w-full">
+        {/* Left Section: Banner */}
+        <div className="hidden lg:block w-1/2">
+          <img src={loginBanner} alt="Login Banner" className="w-full h-full object-cover" />
+        </div>
+
+        {/* Right Section: Login Form */}
+        <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
+          <p className="text-xl text-gray-600 text-center">Chào mừng trở lại!</p>
+
+          {/* Email Field */}
           <div className="mt-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
-            <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700" type="email" required />
+            <label className="block text-gray-700 text-sm font-bold mb-2">Địa chỉ Email</label>
+            <input
+              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+              type="email"
+              required
+            />
           </div>
-          <div className="mt-4 flex flex-col justify-between">
+
+          {/* Password Field */}
+          <div className="mt-4">
             <div className="flex justify-between">
-              <label className="block text-gray-700 text-sm font-bold mb-2">Password</label>
+              <label className="block text-gray-700 text-sm font-bold mb-2">Mật khẩu</label>
             </div>
-            <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700" type="password" />
+            <div className="relative">
+              <input
+                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+                type={showPassword ? "text" : "password"}
+                required
+              />
+              <div
+                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <IconEye stroke={1} /> : <IconEyeOff stroke={1.5} />}
+              </div>
+            </div>
             <a href="#" className="text-xs text-gray-500 hover:text-gray-900 text-end w-full mt-2">
-              Forget Password?
+              Quên mật khẩu?
             </a>
           </div>
+
+          {/* Login Button */}
           <div className="mt-8">
-            <button className="bg-red-400 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-300">Login</button>
+            <button className="bg-red-400 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-300">
+              Đăng nhập
+            </button>
           </div>
-          <a href="#" className=" flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100">
+
+          {/* Google Sign-In Button */}
+          <a
+            href="#"
+            className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
+          >
             <div className="flex px-5 justify-center w-full py-3">
               <div className="min-w-[30px]">
+                {/* Google Icon */}
                 <svg className="h-6 w-6" viewBox="0 0 40 40">
                   <path
                     d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z"
@@ -45,14 +91,15 @@ const Login = () => {
                 </svg>
               </div>
               <div className="flex w-full justify-center">
-                <h1 className="whitespace-nowrap text-gray-600 font-bold">Sign in with Google</h1>
+                <h1 className="whitespace-nowrap text-gray-600 font-bold">Đăng nhập bằng Google</h1>
               </div>
             </div>
           </a>
+
+          {/* Register Link */}
           <div className="mt-4 flex items-center w-full text-center">
             <a href="/register" className="text-xs text-gray-500 capitalize text-center w-full">
-              Don&apos;t have any account yet?
-              <span className="text-blue-700"> Sign Up</span>
+              Chưa có tài khoản? <span className="text-blue-700">Đăng ký ngay</span>
             </a>
           </div>
         </div>
@@ -60,4 +107,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;

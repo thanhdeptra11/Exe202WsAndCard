@@ -59,7 +59,6 @@ function App() {
       {!isMobile ? <Header isScrolled={isScrolled} /> : <BottomBar />}
 
       {/* Main content section */}
-
       <div className={` mb-5 p-4 ${isMobile ? "mobile-layout" : "web-layout"}`}>
         {isMobile ? (
           <>
@@ -78,6 +77,7 @@ function App() {
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/detail/:id" element={<ProductDetail />} />
               <Route path="/contact" element={<Contact />} />
+              {/*auth*/}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Routes>
