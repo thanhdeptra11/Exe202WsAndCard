@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import  { Toaster } from 'react-hot-toast';
-
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { Toaster } from 'react-hot-toast';
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
 import Footer from "./components/Footer";
@@ -20,6 +19,9 @@ import ProductDetail from "./pages/WebsiteVersion/ProductDetail";
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // Get the current location to determine if we are on login or register pages
+  const location = useLocation();
 
   // Handle screen size change
   const handleResize = () => {
@@ -47,19 +49,17 @@ function App() {
     };
   }, []);
 
+  // Check if the current path is /login or /register
+  const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
+
   return (
     <>
-      {/* <div
-        style={{
-        bg-[#e5e7eb]
-          background: "linear-gradient(315deg, #e66465 0%, #9198e5 74%)",
-        }}
-      ></div> */}
       {/* Conditional rendering for Header and BottomBar */}
-      {!isMobile ? <Header isScrolled={isScrolled} /> : <BottomBar />}
+      {!isMobile && !isAuthPage && <Header isScrolled={isScrolled} />}
+      {!isAuthPage && isMobile && <BottomBar />}
 
       {/* Main content section */}
-      <div className={` mb-5 p-4 ${isMobile ? "mobile-layout" : "web-layout"}`}>
+      <div className={`mb-5 p-4 ${isMobile ? "mobile-layout" : "web-layout"}`}>
         {isMobile ? (
           <>
             {/* Layout for mobile devices */}
@@ -77,7 +77,7 @@ function App() {
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/detail/:id" element={<ProductDetail />} />
               <Route path="/contact" element={<Contact />} />
-              {/*auth*/}
+              {/* auth */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Routes>
@@ -85,8 +85,8 @@ function App() {
         )}
       </div>
 
-      {/* Footer should only be rendered if not on mobile */}
-      {!isMobile && <Footer />}
+      {/* Footer should only be rendered if not on mobile and not on login/register pages */}
+      {!isMobile && !isAuthPage && <Footer />}
     </>
   );
 }

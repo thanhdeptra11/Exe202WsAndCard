@@ -1,14 +1,22 @@
 import React, { useState } from "react";
-import { IconEye, IconEyeOff } from '@tabler/icons-react'; // If you want to add password visibility like in the Register form
-import loginBanner from "../../assets/foodBanner.png"; // Ensure the image path is correct
+import { IconEye, IconEyeOff } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+import loginBanner from "../../assets/foodBanner.png";
+import logo from "../../assets/LOGO (1).svg";
 
 const Login = () => {
   // State to toggle password visibility
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   // Function to toggle password visibility
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  // Function to navigate back to the home page
+  const handleBackToHome = () => {
+    navigate("/"); // Redirect to the home page
   };
 
   return (
@@ -18,10 +26,12 @@ const Login = () => {
         <div className="hidden lg:block w-1/2">
           <img src={loginBanner} alt="Login Banner" className="w-full h-full object-cover" />
         </div>
-
         {/* Right Section: Login Form */}
         <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
-          <p className="text-xl text-gray-600 text-center">Chào mừng trở lại!</p>
+          <div className="flex justify-center items-center">
+            <img src={logo} alt="Company logo" className="object-contain w-40" />
+          </div>
+          <p className="text-xl text-gray-600 text-center mt-10">Chào mừng trở lại!</p>
 
           {/* Email Field */}
           <div className="mt-4">
@@ -66,9 +76,9 @@ const Login = () => {
           {/* Google Sign-In Button */}
           <a
             href="#"
-            className="flex items-center justify-center mt-4 text-white rounded-lg shadow-md hover:bg-gray-100"
+            className="flex items-center border border-gray-200 bg-white shadow-sm text-sm font-semibold rounded hover:text-red-400 hover:border-red-400 transition-colors mt-4"
           >
-            <div className="flex px-5 justify-center w-full py-3">
+            <div className="flex px-5 justify-center w-full py-2">
               <div className="min-w-[30px]">
                 {/* Google Icon */}
                 <svg className="h-6 w-6" viewBox="0 0 40 40">
@@ -91,16 +101,29 @@ const Login = () => {
                 </svg>
               </div>
               <div className="flex w-full justify-center">
-                <h1 className="whitespace-nowrap text-gray-600 font-bold">Đăng nhập bằng Google</h1>
+                <h1 className="whitespace-nowrap text-gray-600 font-bold">
+                  Đăng nhập bằng Google
+                </h1>
               </div>
             </div>
           </a>
+
 
           {/* Register Link */}
           <div className="mt-4 flex items-center w-full text-center">
             <a href="/register" className="text-xs text-gray-500 capitalize text-center w-full">
               Chưa có tài khoản? <span className="text-blue-700">Đăng ký ngay</span>
             </a>
+          </div>
+
+          {/* Back to Home Button */}
+          <div className="mt-10 ">
+            <button
+              onClick={handleBackToHome}
+              className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400"
+            >
+              Trở về trang chủ
+            </button>
           </div>
         </div>
       </div>
