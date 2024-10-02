@@ -68,7 +68,7 @@ function Hero() {
         <div className="flex flex-col ml-4 w-[40%] max-md:w-full">
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/f464d2cd2c001eeed6c0800796a753b4740bd0aacdf22657b061d2d2163c2992?apiKey=ff22ebd9af3b40868bf46ef63076972a&"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/7bdb50436f1193c621fbb00622347ef5595d80161f37ed2e02f4d48da8d867ed?placeholderIfAbsent=true&apiKey=ff22ebd9af3b40868bf46ef63076972a"
             alt="Food delivery illustration"
             className="object-contain grow w-full rounded-none aspect-[0.8] max-md:w-full"
           />
