@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 import loginBanner from "../../assets/foodBanner.png";
+import loginBanner2 from "../../assets/auth3.png"
 import logo from "../../assets/LOGO (1).svg";
 
 const Login = () => {
@@ -24,7 +25,7 @@ const Login = () => {
       <div className="flex bg-white rounded-lg shadow-lg border overflow-hidden max-w-5xl w-full">
         {/* Left Section: Banner */}
         <div className="hidden lg:block w-1/2">
-          <img src={loginBanner} alt="Login Banner" className="w-full h-full object-cover" />
+          <img src={loginBanner2} alt="Login Banner" className="w-full h-full object-cover" />
         </div>
         {/* Right Section: Login Form */}
         <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
