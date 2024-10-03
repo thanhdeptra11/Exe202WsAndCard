@@ -28,9 +28,9 @@ const Login = () => {
         </div>
         {/* Right Section: Login Form */}
         <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
-          <div className="flex justify-center items-center">
-            <img src={logo} alt="Company logo" className="object-contain w-40" />
-          </div>
+          {/*<div className="flex justify-center items-center">*/}
+          {/*  <img src={logo} alt="Company logo" className="object-contain w-40" />*/}
+          {/*</div>*/}
           <p className="text-xl text-gray-600 text-center mt-10">Chào mừng trở lại!</p>
 
           {/* Email Field */}

@@ -28,7 +28,7 @@ const shop = [
     }],
     "menu": [
       {
-        "id": 0,
+        "id": 0, // menu id
         "name": "Bún bò Huế",
         "type": "bát",
         "price": "35000",
@@ -55,7 +55,7 @@ const shop = [
         "reviews": 10,
       },
     ],
-    "ratting" : 4.5,
+    "ratting": 4.5,
     "reviews": 1000,
 
   },
@@ -85,7 +85,7 @@ const plan = [
     "status": "active",
     "pricePerMonth": "12000",
     "total": "144000",
-  }
+  },
 ];
 
 const user = [
@@ -125,7 +125,7 @@ const user = [
           "type": "6 months",
           "pricePerMonth": "15000",
           "total": "90000",
-        } ,
+        },
         "account": "Van Minh Tuan",
         "title": "chuyen khoan nang cap acc",
         "total": "100000",
@@ -136,7 +136,7 @@ const user = [
         "id": 1,
         "billCode": "bill02",
         "bankName": "MBBank",
-        "plan" : {
+        "plan": {
           "planCode": "plan02",
           "type": "12 months",
           "pricePerMonth": "12000",
@@ -149,6 +149,35 @@ const user = [
         "status": "success",
       },
     ],
-  }
+  },
 ];
 
+const food = [
+  {
+    "id": 0,
+    "name": "Bún bò Huế",
+  },
+  {
+    "id": 1,
+    "name": "Bún bò Nam Giao",
+  },
+  {
+    "id": 2,
+    "name": "Quẩy",
+  },
+  {
+    "id": 3,
+    "name": "Cơm tấm sườn nướng",
+
+  }
+
+];
+
+
+
+
+
+/**
+ * - import thằng food vào shop
+ * - cần có function để check xem food đã có trong db chưa - function checkFoodExist
+ */

@@ -36,9 +36,9 @@ const Register = () => {
         {/* Right Section: Register Form */}
         <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
           {/* Logo Section */}
-          <div className="flex justify-center items-center">
-            <img src={logo} alt="Company logo" className="object-contain w-40" />
-          </div>
+          {/*<div className="flex justify-center items-center">*/}
+          {/*  <img src={logo} alt="Company logo" className="object-contain w-40" />*/}
+          {/*</div>*/}
 
           <p className="text-xl text-gray-600 text-center mt-10">Đăng ký</p>
 
