@@ -51,7 +51,7 @@ const Login = () => {
                 {showPassword ? <IconEye stroke={1} /> : <IconEyeOff stroke={1.5} />}
               </div>
             </div>
-            <a href="#" className="text-xs text-gray-500 hover:text-gray-900 text-end w-full mt-2">
+            <a href="/forgetpassword" className="text-xs text-gray-500 hover:text-gray-900 text-end w-full mt-2">
               Quên mật khẩu?
             </a>
           </div>

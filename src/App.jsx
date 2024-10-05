@@ -15,6 +15,7 @@ import Contact from "./pages/WebsiteVersion/Contact";
 import Login from "./pages/WebsiteVersion/Login";
 import Register from "./pages/WebsiteVersion/Register";
 import ProductDetail from "./pages/WebsiteVersion/ProductDetail";
+import ForgetPassword from "./pages/WebsiteVersion/ForgetPassword"
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -80,6 +81,7 @@ function App() {
               {/* auth */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/forgetpassword" element={<ForgetPassword />} />
             </Routes>
           </>
         )}
