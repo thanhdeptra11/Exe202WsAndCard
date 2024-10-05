@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
-import registerBanner2 from "../../assets/auth3.png"; // Đảm bảo đường dẫn hình ảnh đúng
+import registerBanner2 from "../../assets/auth4.png"; // Đảm bảo đường dẫn hình ảnh đúng
 
 const ForgetPassword = () => {
   const [step, setStep] = useState("email"); // Các bước: 'email', 'otp', 'resetPassword', 'success'
@@ -16,7 +16,7 @@ const ForgetPassword = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  
+
   const navigate = useNavigate(); // Hook để điều hướng
 
   // Hàm sinh OTP ngẫu nhiên
@@ -125,15 +125,11 @@ const ForgetPassword = () => {
                 </button>
               </div>
 
-              <div className="mt-2">
-                <button
-                  type="button"
-                  onClick={handleBackToHome}
-                  className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400"
-                >
+              {/* <div className="mt-2">
+                <button type="button" onClick={handleBackToHome} className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400">
                   Trở về trang chủ
                 </button>
-              </div>
+              </div> */}
 
               <div className="mt-4 flex items-center w-full text-center">
                 <a href="/login" className="text-xs text-gray-500 capitalize text-center w-full">
@@ -167,11 +163,7 @@ const ForgetPassword = () => {
               </div>
 
               <div className="mt-2">
-                <button
-                  type="button"
-                  onClick={() => setStep("email")}
-                  className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400"
-                >
+                <button type="button" onClick={() => setStep("email")} className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400">
                   Quay lại
                 </button>
               </div>
@@ -190,50 +182,42 @@ const ForgetPassword = () => {
               {/* Mật khẩu mới */}
               <div className="form-group relative">
                 <label className="block text-gray-700 text-sm font-bold mb-2">
-                    Mật Khẩu Mới <span className="text-red-500">*</span>
+                  Mật Khẩu Mới <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                    <input
+                  <input
                     className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400 pr-10"
                     type={showPassword ? "text" : "password"}
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Nhập mật khẩu mới"
-                    />
-                    <div
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                    onClick={() => setShowPassword(!showPassword)}
-                    >
+                  />
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? <IconEyeOff size={20} /> : <IconEye size={20} />}
-                    </div>
+                  </div>
                 </div>
-                </div>
-
+              </div>
 
               {/* Xác nhận mật khẩu */}
               <div className="form-group relative mt-4">
                 <label className="block text-gray-700 text-sm font-bold mb-2">
-                    Xác Nhận Mật Khẩu <span className="text-red-500">*</span>
+                  Xác Nhận Mật Khẩu <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
-                    <input
+                  <input
                     className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400 pr-10"
                     type={showConfirmPassword ? "text" : "password"}
                     required
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Xác nhận mật khẩu"
-                    />
-                    <div
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                    onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    >
+                  />
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={() => setShowConfirmPassword(!showConfirmPassword)}>
                     {showConfirmPassword ? <IconEyeOff size={20} /> : <IconEye size={20} />}
-                    </div>
+                  </div>
                 </div>
-                </div>
-
+              </div>
 
               <div className="mt-8">
                 <button type="submit" className="bg-red-400 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-300">
@@ -242,11 +226,7 @@ const ForgetPassword = () => {
               </div>
 
               <div className="mt-2">
-                <button
-                  type="button"
-                  onClick={() => setStep("otp")}
-                  className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400"
-                >
+                <button type="button" onClick={() => setStep("otp")} className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400">
                   Quay lại
                 </button>
               </div>
@@ -264,10 +244,7 @@ const ForgetPassword = () => {
             <div className="mt-4 text-center">
               <h2 className="text-2xl font-bold text-green-600">Thành Công</h2>
               <p className="mt-2 text-gray-600">{message}</p>
-              <button
-                onClick={handleGoToLogin}
-                className="mt-4 bg-blue-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-400"
-              >
+              <button onClick={handleGoToLogin} className="mt-4 bg-blue-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-blue-400">
                 Đăng Nhập
               </button>
             </div>

@@ -1,6 +1,7 @@
+// export default App;
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
 import Footer from "./components/Footer";
@@ -15,7 +16,10 @@ import Contact from "./pages/WebsiteVersion/Contact";
 import Login from "./pages/WebsiteVersion/Login";
 import Register from "./pages/WebsiteVersion/Register";
 import ProductDetail from "./pages/WebsiteVersion/ProductDetail";
-import ForgetPassword from "./pages/WebsiteVersion/ForgetPassword"
+import ForgetPassword from "./pages/WebsiteVersion/ForgetPassword";
+
+// Import the Sheet component
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -35,15 +39,11 @@ function App() {
   };
 
   useEffect(() => {
-    // Add resize and scroll event listeners
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
-
-    // Initial call to set states based on current conditions
     handleResize();
     handleScroll();
 
-    // Cleanup event listeners on unmount
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
@@ -89,6 +89,21 @@ function App() {
 
       {/* Footer should only be rendered if not on mobile and not on login/register pages */}
       {!isMobile && !isAuthPage && <Footer />}
+
+      {/* Floating Button to Open Sheet */}
+      <div className="fixed top-1/2 right-5 transform -translate-y-1/2">
+        <Sheet>
+          <SheetTrigger asChild>
+            <button className="px-6 py-2 text-white bg-red-400 rounded-lg hover:bg-red-600 transition-colors">Open</button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Are you absolutely sure?</SheetTitle>
+              <SheetDescription>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</SheetDescription>
+            </SheetHeader>
+          </SheetContent>
+        </Sheet>
+      </div>
     </>
   );
 }
