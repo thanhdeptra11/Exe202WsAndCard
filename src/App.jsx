@@ -18,6 +18,7 @@ import Register from "./pages/WebsiteVersion/Register";
 import ProductDetail from "./pages/WebsiteVersion/ProductDetail";
 import ForgetPassword from "./pages/WebsiteVersion/ForgetPassword";
 
+import SheetButton from "./components/sheetButton/sheetButton";
 // Import the Sheet component
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
@@ -91,10 +92,12 @@ function App() {
       {!isMobile && !isAuthPage && <Footer />}
 
       {/* Floating Button to Open Sheet */}
+      {/* <button className="px-6 py-2 text-white bg-red-400 rounded-lg hover:bg-red-600 transition-colors">Open</button> */}
+
       <div className="fixed top-1/2 right-5 transform -translate-y-1/2">
         <Sheet>
           <SheetTrigger asChild>
-            <button className="px-6 py-2 text-white bg-red-400 rounded-lg hover:bg-red-600 transition-colors">Open</button>
+            <SheetButton />
           </SheetTrigger>
           <SheetContent>
             <SheetHeader>

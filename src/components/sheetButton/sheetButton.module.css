@@ -48,7 +48,7 @@
 
 /* Hover effect on button width */
 .Btn:hover {
-  width: 125px;
+  width: 150px;
   border-radius: 40px;
   transition-duration: 0.3s;
 }
