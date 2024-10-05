@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 import loginBanner from "../../assets/foodBanner.png";
-import loginBanner2 from "../../assets/auth3.png"
+import loginBanner2 from "../../assets/auth4.png";
 import logo from "../../assets/LOGO (1).svg";
 
 const Login = () => {
@@ -37,11 +37,7 @@ const Login = () => {
           {/* Email Field */}
           <div className="mt-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Địa chỉ Email</label>
-            <input
-              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
-              type="email"
-              required
-            />
+            <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700" type="email" required />
           </div>
 
           {/* Password Field */}
@@ -50,15 +46,8 @@ const Login = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2">Mật khẩu</label>
             </div>
             <div className="relative">
-              <input
-                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
-                type={showPassword ? "text" : "password"}
-                required
-              />
-              <div
-                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                onClick={togglePasswordVisibility}
-              >
+              <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700" type={showPassword ? "text" : "password"} required />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={togglePasswordVisibility}>
                 {showPassword ? <IconEye stroke={1} /> : <IconEyeOff stroke={1.5} />}
               </div>
             </div>
@@ -69,16 +58,11 @@ const Login = () => {
 
           {/* Login Button */}
           <div className="mt-8">
-            <button className="bg-red-400 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-300">
-              Đăng nhập
-            </button>
+            <button className="bg-red-400 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-300">Đăng nhập</button>
           </div>
 
           {/* Google Sign-In Button */}
-          <a
-            href="#"
-            className="flex items-center border border-gray-200 bg-white shadow-sm text-sm font-semibold rounded hover:text-red-400 hover:border-red-400 transition-colors mt-4"
-          >
+          <a href="#" className="flex items-center border border-gray-200 bg-white shadow-sm text-sm font-semibold rounded hover:text-red-400 hover:border-red-400 transition-colors mt-4">
             <div className="flex px-5 justify-center w-full py-2">
               <div className="min-w-[30px]">
                 {/* Google Icon */}
@@ -102,13 +86,10 @@ const Login = () => {
                 </svg>
               </div>
               <div className="flex w-full justify-center">
-                <h1 className="whitespace-nowrap text-gray-600 font-bold">
-                  Đăng nhập bằng Google
-                </h1>
+                <h1 className="whitespace-nowrap text-gray-600 font-bold">Đăng nhập bằng Google</h1>
               </div>
             </div>
           </a>
-
 
           {/* Register Link */}
           <div className="mt-4 flex items-center w-full text-center">
@@ -119,10 +100,7 @@ const Login = () => {
 
           {/* Back to Home Button */}
           <div className="mt-10 ">
-            <button
-              onClick={handleBackToHome}
-              className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400"
-            >
+            <button onClick={handleBackToHome} className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400">
               Trở về trang chủ
             </button>
           </div>

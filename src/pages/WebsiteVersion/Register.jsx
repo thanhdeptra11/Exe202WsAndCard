@@ -3,7 +3,7 @@ import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook
 import registerBanner from "../../assets/foodBanner.png"; // Ensure the image path is correct
 import logo from "../../assets/LOGO (1).svg"; // Import the logo image
-import registerBanner2 from "../../assets/auth3.png"
+import registerBanner2 from "../../assets/auth4.png";
 
 const Register = () => {
   // State to toggle password visibility
@@ -48,11 +48,7 @@ const Register = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Địa chỉ Email <span className="text-red-500">*</span>
             </label>
-            <input
-              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400"
-              type="email"
-              required
-            />
+            <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400" type="email" required />
           </div>
 
           {/* Username Field */}
@@ -60,11 +56,7 @@ const Register = () => {
             <label className="block text-gray-700 text-sm font-bold mb-2">
               Tên người dùng <span className="text-red-500">*</span>
             </label>
-            <input
-              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400"
-              type="text"
-              required
-            />
+            <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400" type="text" required />
           </div>
 
           {/* Password Field */}
@@ -75,15 +67,8 @@ const Register = () => {
               </label>
             </div>
             <div className="relative">
-              <input
-                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400"
-                type={showPassword ? "text" : "password"}
-                required
-              />
-              <div
-                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                onClick={togglePasswordVisibility}
-              >
+              <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400" type={showPassword ? "text" : "password"} required />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={togglePasswordVisibility}>
                 {showPassword ? <IconEye stroke={1} /> : <IconEyeOff stroke={1.5} />}
               </div>
             </div>
@@ -97,15 +82,8 @@ const Register = () => {
               </label>
             </div>
             <div className="relative">
-              <input
-                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400"
-                type={showConfirmPassword ? "text" : "password"}
-                required
-              />
-              <div
-                className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
-                onClick={toggleConfirmPasswordVisibility}
-              >
+              <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-red-400" type={showConfirmPassword ? "text" : "password"} required />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={toggleConfirmPasswordVisibility}>
                 {showConfirmPassword ? <IconEye stroke={1} /> : <IconEyeOff stroke={1.5} />}
               </div>
             </div>
@@ -113,17 +91,12 @@ const Register = () => {
 
           {/* Register Button */}
           <div className="mt-8">
-            <button className="bg-red-400 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-300">
-              Tạo tài khoản
-            </button>
+            <button className="bg-red-400 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-300">Tạo tài khoản</button>
           </div>
 
           {/* Back to Home Button */}
           <div className="mt-2">
-            <button
-              onClick={handleBackToHome}
-              className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400"
-            >
+            <button onClick={handleBackToHome} className="bg-gray-500 text-white font-bold py-2 px-4 w-full rounded hover:bg-gray-400">
               Trở về trang chủ
             </button>
           </div>
@@ -134,8 +107,6 @@ const Register = () => {
               Đã có tài khoản? <span className="text-blue-700">Đăng nhập ngay</span>
             </a>
           </div>
-
-
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ const shop = [
   {
     id: 0,
     name: "Bún bò Thái Anh",
-    image: "",
+    imageUrl: [],
     email: "",
     phone: "",
     social: [
@@ -17,16 +17,16 @@ const shop = [
     ],
     address: [
       {
-        subName: "Cơ sở 1",
         district: "Quận 1",
         province: "Hồ Chí Minh",
         city: "Hồ Chí Minh",
+        specificAddress: "123 Nguyễn Du",
       },
       {
-        subName: "Cơ sở 2",
         district: "Quận 2",
         province: "Hồ Chí Minh",
         city: "Hồ Chí Minh",
+        specificAddress: "123 Nguyễn Du",
       },
     ],
     menu: [
@@ -37,7 +37,25 @@ const shop = [
         price: "35000",
         currency: "đ",
         rating: 3,
-        reviews: 127,
+        reviews: {
+          reviewCount: 100,
+          reviewDetail: [
+            {
+              id: 0,
+              name: "Nguyễn Phi Tuan Anh",
+              email: "hihi@gmail.com",
+              rating: 4,
+              comment: "ngon",
+            },
+            {
+              id: 1,
+              name: "Nguyễn Phi",
+              email: "hihi@gmail.com",
+              rating: 3,
+              comment: "bình thường",
+            },
+          ],
+        },
       },
       {
         id: 1,
@@ -133,7 +151,7 @@ const user = [
         },
         account: "Van Minh Tuan",
         title: "chuyen khoan nang cap acc",
-        total: "100000",
+        totalPrice: "100000",
         date: "2021-12-01 12:00:00",
         status: "success",
       },
@@ -149,7 +167,7 @@ const user = [
         },
         account: "Nguyen Phi Tuan Anh",
         title: "chuyen khoan nang cap acc",
-        total: "200000",
+        totalPrice: "200000",
         date: "2021-11-01 12:00:00",
         status: "success",
       },
