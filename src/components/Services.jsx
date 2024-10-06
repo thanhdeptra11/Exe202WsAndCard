@@ -1,28 +1,27 @@
-import React from 'react';
-import { IconEye } from '@tabler/icons-react';
+import React from "react";
+import { IconEye } from "@tabler/icons-react";
 
 function Services() {
   const plans = [
     {
-      title: 'Free Plan',
-      price: '0đ',
-      benefits: ['Access to basic features', 'Limited support', 'Limited storage'],
+      title: "Free Plan",
+      price: "0đ",
+      benefits: ["Access to basic features", "Limited support", "Limited storage"],
     },
     {
-      title: '1 Month Plan',
-      price: '20.000đ/tháng',
-      benefits: ['Access to all features', 'Priority support', '10GB storage'],
+      title: "1 Month Plan",
+      price: "20.000đ/tháng",
+      benefits: ["Access to all features", "Priority support", "10GB storage"],
     },
     {
-      title: '3 Month Plan',
-      price: '15.000đ/tháng',
-      benefits: ['Access to all features', 'Priority support', '30GB storage', 'Discounted price'],
+      title: "3 Month Plan",
+      price: "15.000đ/tháng",
+      benefits: ["Access to all features", "Priority support", "30GB storage", "Discounted price"],
     },
   ];
 
   const handleChoosePlan = (planTitle) => {
     alert(`You chose the ${planTitle}`);
-    // You can add logic here to handle plan selection (e.g., navigate to payment, update user plan, etc.)
   };
 
   return (
@@ -36,8 +35,8 @@ function Services() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className="border p-6 rounded-lg shadow-md max-md:mb-5 flex flex-col justify-between"
-              style={{ height: '400px' }} // Fixed height for all cards
+              className="animate-in zoom-in ring-1 rounded-lg flex flex-col justify-between space-y-2 p-6 break-inside-avoid mb-6 bg-white hover:ring-2 ring-gray-300 hover:ring-red-400 transform duration-200 hover:shadow-sky-200 hover:shadow-md z-0 "
+              style={{ height: "400px" }}
             >
               <div>
                 <h3 className="text-xl font-bold mb-3">{plan.title}</h3>
@@ -51,10 +50,7 @@ function Services() {
                 </ul>
               </div>
               <div className="mt-auto">
-                <button
-                  onClick={() => handleChoosePlan(plan.title)}
-                  className="bg-red-400 text-white py-2 px-4 rounded-lg hover:bg-red-500 transition-colors w-full"
-                >
+                <button onClick={() => handleChoosePlan(plan.title)} className="bg-red-400 text-white py-2 px-4 rounded-lg hover:bg-red-500 transition-colors w-full">
                   Đăng ký
                 </button>
               </div>
