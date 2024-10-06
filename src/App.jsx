@@ -21,6 +21,7 @@ import ForgetPassword from "./pages/WebsiteVersion/ForgetPassword";
 import SheetButton from "./components/sheetButton/sheetButton";
 // Import the Sheet component
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import QRPage from "./pages/WebsiteVersion/QRPage";
 import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
 
 function App() {
@@ -85,6 +86,10 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />
+              <Route path="/qr" element={<QRPage />} />
+
+              <Route path="/qr" element={<QRPage />} />
+
             </Routes>
           </>
         )}
