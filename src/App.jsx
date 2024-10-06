@@ -21,6 +21,7 @@ import ForgetPassword from "./pages/WebsiteVersion/ForgetPassword";
 import SheetButton from "./components/sheetButton/sheetButton";
 // Import the Sheet component
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -78,6 +79,7 @@ function App() {
               <Route path="/menu" element={<Menu />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/detail/:id" element={<ProductDetail />} />
+              <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/contact" element={<Contact />} />
               {/* auth */}
               <Route path="/login" element={<Login />} />
