@@ -62,7 +62,7 @@ function App() {
       {!isAuthPage && isMobile && <BottomBar />}
 
       {/* Main content section */}
-      <div className={`mb-5 p-4 ${isMobile ? "mobile-layout" : "web-layout"}`}>
+      <div className={`mb-5 p-4 bg-gray-50 ${isMobile ? "mobile-layout" : "web-layout"}`}>
         {isMobile ? (
           <>
             {/* Layout for mobile devices */}

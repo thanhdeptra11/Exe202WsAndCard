@@ -57,3 +57,127 @@ function Testimonials() {
 }
 
 export default Testimonials
+
+
+// import React from "react";
+//
+// const Blog = () => {
+//   const sampleData = [
+//     {
+//       id: 1,
+//       name: "Salvador Rose",
+//       avatarURL: "https://randomuser.me/api/portraits/men/51.jpg",
+//       username: "@Salvador",
+//       content:
+//           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+//       blogLink: "#",
+//     },
+//     {
+//       id: 2,
+//       name: "John Doe",
+//       avatarURL: "https://randomuser.me/api/portraits/men/34.jpg",
+//       username: "@John",
+//       content:
+//           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//       blogLink: "#",
+//     },
+//     {
+//       id: 3,
+//       name: "Mike Tyson",
+//       avatarURL: "https://randomuser.me/api/portraits/men/78.jpg",
+//       username: "@Mike",
+//       content:
+//           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//       blogLink: "#",
+//     },
+//     {
+//       id: 4,
+//       name: "Sia",
+//       avatarURL: "https://randomuser.me/api/portraits/women/51.jpg",
+//       username: "@Sia",
+//       content:
+//           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//       blogLink: "#",
+//     },
+//     {
+//       id: 5,
+//       name: "Cheung",
+//       avatarURL: "https://randomuser.me/api/portraits/men/34.jpg",
+//       username: "@Cheung",
+//       content:
+//           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//       blogLink: "#",
+//     },
+//     {
+//       id: 6,
+//       name: "Kendra",
+//       avatarURL: "https://randomuser.me/api/portraits/women/8.jpg",
+//       username: "@Kendra",
+//       content:
+//           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//       blogLink: "#",
+//     },
+//     {
+//       id: 7,
+//       name: "King",
+//       avatarURL: "https://randomuser.me/api/portraits/men/5.jpg",
+//       username: "@King",
+//       content:
+//           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//       blogLink: "#",
+//     },
+//     {
+//       id: 8,
+//       name: "Yoda",
+//       avatarURL: "https://randomuser.me/api/portraits/men/50.jpg",
+//       username: "@Yoda",
+//       content:
+//           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+//       blogLink: "#",
+//     },
+//   ];
+//
+//   return (
+//       <div className="container mx-auto max-w-6xl p-4">
+//         <h3 className="text-gray-800 py-6 text-3xl text-center font-bold">
+//           Popular Blogs
+//         </h3>
+//         <div className="md:columns-2 lg:columns-3 gap-6 p-4 sm:p-1 mt-2">
+//           {sampleData.map((blog) => (
+//               <div
+//                   key={blog.id}
+//                   className="animate-in zoom-in duration-200 ring-1 rounded-lg flex flex-col space-y-2 p-4 break-inside-avoid mb-6 bg-white hover:ring-2 ring-gray-300 hover:ring-red-400 transform duration-200 hover:shadow-sky-200 hover:shadow-md z-0 relative"
+//               >
+//                 <div className="flex flex-col break-inside-avoid-page z-0 relative">
+//                   <div className="flex justify-between">
+//                     <div className="flex space-x-6">
+//                       <div className="flex space-x-4 flex-shrink-0 w-52">
+//                         <img
+//                             src={blog.avatarURL}
+//                             className="w-10 h-10 rounded-full"
+//                             alt={`${blog.name}'s avatar`}
+//                         />
+//                         <div>
+//                           <div className="font-semibold">{blog.name}</div>
+//                           <div className="text-sm">{blog.username}</div>
+//                         </div>
+//                       </div>
+//                     </div>
+//                   </div>
+//                   <a
+//                       href={blog.blogLink}
+//                       target="_blank"
+//                       rel="noopener noreferrer"
+//                       className="whitespace-pre-line break-inside-avoid-page"
+//                   >
+//                     {blog.content}
+//                   </a>
+//                 </div>
+//               </div>
+//           ))}
+//         </div>
+//       </div>
+//   );
+// };
+//
+// export default Blog;
