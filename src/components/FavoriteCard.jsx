@@ -1,31 +1,73 @@
+// components/FavoriteCard.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 function FavoriteCard({ name, price, rating, image }) {
   const navigate = useNavigate();
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    // Xử lý thêm vào giỏ hàng ở đây
+    console.log(`Added ${name} to cart`);
+    // Bạn có thể gọi một hàm từ Context hoặc Redux để thêm sản phẩm vào giỏ hàng
+  };
+
   return (
-    <div className="flex flex-col max-md:w-full max-md:mt-10 cursor-pointer" onClick={() => navigate(`/detail/${name}`, { state: { name } })}>
-      <div className="flex flex-col pb-11 mx-auto w-full bg-white shadow-lg rounded-[35px] max-md:max-w-full flex-1 transition-transform transform hover:scale-105 hover:shadow-2xl">
-        <img loading="lazy" src={image} alt={name} className="object-contain w-full rounded-none aspect-[1.46] max-md:max-w-full" />
-        <div className="flex gap-5 justify-between mx-8 mt-4 max-md:mr-2.5 max-md:max-w-full">
-          <div className="flex flex-col">
-            <h4 className="text-2xl font-bold text-black">{name}</h4>
-            <button className="gap-2.5 self-start px-7 py-3.5 mt-4 text-sm text-white bg-orange-400 rounded-[35px] hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300 max-md:px-5">
-              Add To Cart
-            </button>
-          </div>
-          <div className="flex flex-col self-start mt-2.5 text-black whitespace-nowrap">
-            <div className="flex gap-2.5 self-start ml-3.5 text-sm max-md:ml-2.5">
-              <img
-                loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/102d9b5163202fc240acd485cbbcbac46e521a417d0be037dd990d546d7cec18?apiKey=ff22ebd9af3b40868bf46ef63076972a&"
-                alt=""
-                className="object-contain shrink-0 my-auto w-3.5 aspect-[1.08]"
+    <div
+      className="cursor-pointer transform transition-transform duration-300 hover:scale-105 flex flex-col"
+      onClick={() => navigate(`/detail/${name}`, { state: { name } })}
+    >
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-auto">
+        {/* Hình Ảnh Sản Phẩm */}
+        <div className="relative">
+          <img
+            loading="lazy"
+            src={image}
+            alt={name}
+            className="w-full h-48 object-cover"
+          />
+          {/* Biểu tượng Yêu Thích (Optional) */}
+          <button className="absolute top-2 right-2 bg-white bg-opacity-75 rounded-full p-2 hover:bg-opacity-100 transition">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 text-red-500"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                clipRule="evenodd"
               />
-              <div>{rating}</div>
+            </svg>
+          </button>
+        </div>
+
+        {/* Thông Tin Sản Phẩm */}
+        <div className="p-4 flex flex-col flex-1">
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">{name}</h3>
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-xl font-bold text-gray-900">{price}</span>
+            <div className="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-yellow-400 mr-1"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.963a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.376 2.455a1 1 0 00-.364 1.118l1.286 3.963c.3.921-.755 1.688-1.54 1.118l-3.376-2.455a1 1 0 00-1.176 0l-3.376 2.455c-.785.57-1.838-.197-1.54-1.118l1.286-3.963a1 1 0 00-.364-1.118L2.05 9.39c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.286-3.963z" />
+              </svg>
+              <span className="text-gray-700">{rating}</span>
             </div>
-            <div className="mt-6 text-lg font-medium">{price}</div>
           </div>
+
+          {/* Nút Thêm Vào Giỏ Hàng */}
+          <button
+            onClick={handleAddToCart}
+            className="mt-auto bg-orange-400 hover:bg-orange-500 text-white font-semibold py-2 px-4 rounded-lg transition-colors duration-300"
+          >
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>
