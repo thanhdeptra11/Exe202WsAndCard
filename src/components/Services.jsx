@@ -25,7 +25,7 @@ function Services() {
   };
 
   return (
-    <section className="mt-32 max-md:mt-10">
+    <section className="mt-28 max-md:mt-10">
       <div className="mt-16">
         <h2 className="flex justify-center text-lg font-medium text-red-400">Các gói nâng cấp.</h2>
         <h3 className="flex justify-center mt-4 ml-12 text-4xl font-bold text-black max-md:max-w-full">

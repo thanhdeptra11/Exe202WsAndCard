@@ -40,17 +40,17 @@ function Footer() {
                 foodtrip.exe201@gmail.com
               </a>
             </div>
-            <div className="flex">
-              <p className="mr-1 text-gray-800">Địa chỉ:</p>
+            <div className="flex justify-between">
+              <p className="mr-3 text-gray-800">Địa chỉ:</p>
               <a
                 href="https://www.google.com/maps"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="diaChi"
                 aria-label="Địa chỉ của chúng tôi"
                 title="Địa chỉ của chúng tôi"
                 className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
               >
-                312 Lovely Street, NY
+                Khu Công nghệ cao Hòa Lạc, Km29 Đại lộ Thăng Long, huyện Thạch Thất, Hà Nội.
               </a>
             </div>
           </div>

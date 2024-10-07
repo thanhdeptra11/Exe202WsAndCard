@@ -86,7 +86,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="container mx-auto max-w-6xl p-4 mt-10">
+    <div className="container mx-auto max-w-6xl p-4 mt-24">
       <h2 className="flex justify-center text-lg font-medium text-red-400">Testimonials</h2>
       <h3 className="flex justify-center text-4xl font-bold text-black my-4">Khách Hàng Nói Gì?</h3>
       <div className="md:columns-2 lg:columns-3 gap-6 p-4 sm:p-1 mt-2">
