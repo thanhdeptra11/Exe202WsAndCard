@@ -6,7 +6,7 @@ const Testimonials = () => {
     {
       id: 1,
       name: "Nguyễn Văn An",
-      avatarURL: "https://randomuser.me/api/portraits/men/51.jpg",
+      avatarURL: "https://avatar.iran.liara.run/public/18",
       username: "@NguyenAn",
       content: "Tôi rất ấn tượng với món phở ở nhà hàng này. Nước dùng đậm đà và hương vị thật khó quên. Đây chắc chắn sẽ là điểm đến yêu thích của tôi mỗi cuối tuần.",
       restaurant: "Nhà hàng Phở Việt",
@@ -16,7 +16,7 @@ const Testimonials = () => {
     {
       id: 2,
       name: "Trần Hữu Đạt",
-      avatarURL: "https://randomuser.me/api/portraits/men/34.jpg",
+      avatarURL: "https://avatar.iran.liara.run/public/12",
       username: "@TranDat",
       content: "Bún chả tại đây thực sự ngon, thịt nướng thơm phức, nước chấm đậm đà và vừa miệng. Tôi đã giới thiệu cho nhiều bạn bè và ai cũng thích.",
       restaurant: "Quán Bún Chả Hà Nội",
@@ -26,7 +26,7 @@ const Testimonials = () => {
     {
       id: 3,
       name: "Lê Minh Hải",
-      avatarURL: "https://randomuser.me/api/portraits/men/78.jpg",
+      avatarURL: "https://avatar.iran.liara.run/public/26",
       username: "@LeHai",
       content: "Nhà hàng phục vụ rất nhanh và chuyên nghiệp. Món bánh xèo của họ là món tôi yêu thích nhất, giòn rụm và đầy đặn. Rất đáng thử!",
       restaurant: "Nhà hàng Bánh Xèo Miền Tây",
@@ -36,7 +36,7 @@ const Testimonials = () => {
     {
       id: 4,
       name: "Phạm Thị Hoa",
-      avatarURL: "https://randomuser.me/api/portraits/women/51.jpg",
+      avatarURL: "https://avatar.iran.liara.run/public/42",
       username: "@PhamHoa",
       content: "Cơm tấm ở đây thật sự rất ngon, đặc biệt là sườn nướng mềm và thơm. Tôi đã có một bữa ăn tuyệt vời và sẽ quay lại nhiều lần nữa.",
       restaurant: "Quán Cơm Tấm Sài Gòn",
@@ -46,7 +46,7 @@ const Testimonials = () => {
     {
       id: 5,
       name: "Hoàng Văn Long",
-      avatarURL: "https://randomuser.me/api/portraits/men/34.jpg",
+      avatarURL: "https://avatar.iran.liara.run/public/37",
       username: "@HoangLong",
       content: "Món lẩu Thái cay cay chua chua thật hoàn hảo cho những buổi tối se lạnh. Đồ ăn kèm cũng rất phong phú và tươi ngon.",
       restaurant: "Nhà hàng Lẩu Thái Lan",
@@ -56,7 +56,7 @@ const Testimonials = () => {
     {
       id: 6,
       name: "Nguyễn Thị Mai",
-      avatarURL: "https://randomuser.me/api/portraits/women/8.jpg",
+      avatarURL: "https://avatar.iran.liara.run/public/51",
       username: "@NguyenMai",
       content: "Tôi rất thích bánh cuốn ở đây, bánh mỏng và nhân rất vừa miệng. Không gian nhà hàng cũng rất ấm cúng và phục vụ chu đáo.",
       restaurant: "Quán Bánh Cuốn Tây Hồ",
@@ -66,7 +66,7 @@ const Testimonials = () => {
     {
       id: 7,
       name: "Đặng Hoàng Nam",
-      avatarURL: "https://randomuser.me/api/portraits/men/5.jpg",
+      avatarURL: "https://avatar.iran.liara.run/public/86",
       username: "@DangNam",
       content: "Món bún bò Huế đúng chuẩn vị miền Trung. Nước lèo đậm đà và thịt bò rất mềm. Tôi sẽ ghé lại để thử thêm các món khác.",
       restaurant: "Quán Bún Bò Huế O Hoa",
@@ -76,7 +76,7 @@ const Testimonials = () => {
     {
       id: 8,
       name: "Trần Văn Dũng",
-      avatarURL: "https://randomuser.me/api/portraits/men/50.jpg",
+      avatarURL: "https://avatar.iran.liara.run/public/85",
       username: "@TranDung",
       content: "Không thể bỏ qua món chả giò tại nhà hàng này, giòn tan và hương vị thơm ngon. Món ăn vừa đẹp mắt vừa ngon miệng.",
       restaurant: "Nhà hàng Chả Giò Hà Nội",
