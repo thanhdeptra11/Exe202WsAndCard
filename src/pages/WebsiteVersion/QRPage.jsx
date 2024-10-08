@@ -1,17 +1,22 @@
 import React from 'react';
 import QRComponent from '../../components/QRComponent'; // Đảm bảo đường dẫn đúng với vị trí của file Qr.js
+import { v4 as uuidv4 } from 'uuid';
 
 const QRPage = () => {
     const total = 1000000; // Tổng tiền cần thanh toán, có thể thay đổi theo yêu cầu của bạn
-    const uuid = 'your-uuid-value'; // UUID của giao dịch
+    const uuid = uuidv4(); // UUID của giao dịch
+    const name = "Preminum2";
+    const time = 12;
+    const origin = 10000000;
+    const discount = 9000000;
+    const percentDiscount = "90%";
     const postData = {
         // Thêm dữ liệu bạn cần gửi trong postData
     };
 
     return (
         <div>
-            <h1>QR Payment</h1>
-            <QRComponent total={total} uuid={uuid} postData={postData} />
+            <QRComponent total={total} uuid={uuid} name={name} time={time} origin={origin} discount={discount} percentDiscount={percentDiscount} postData={postData} />
         </div>
     );
 };
