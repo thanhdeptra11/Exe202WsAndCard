@@ -121,20 +121,7 @@ const QRComponent = (props) => {
             font-weight: bold;
             color: #EF4444;
           }
-          button {
-            background-color: #f48258;
-            color: white;
-            font-weight: bold;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-          }
-          button:hover {
-            background-color: #f48258;
-            transition: background-color 0.3s ease;
-          }
+          
           .alert-message {
             color: red;
             font-weight: bold;
