@@ -33,7 +33,7 @@ function HowItWorks() {
           >
             <div className="p-6 flex flex-col flex-grow">
               {/* Step number */}
-              <div className="block w-10 h-10 mx-auto -mt-12 rounded-full ring-8 ring-transparent">
+              <div className="block w-10 h-10 mx-auto -mt-12 rounded-full ring-8 ring-gray-50">
                 <div className="flex items-center justify-center w-10 h-10 text-lg font-bold bg-white rounded-full shadow-lg text-primary-600 tabular-nums">{index + 1}</div>
               </div>
 
