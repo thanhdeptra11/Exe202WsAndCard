@@ -1,13 +1,12 @@
-// export default App;
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
 import Footer from "./components/Footer";
-// layout for mobile devices
+// Layout for mobile devices
 import HomeMobile from "./pages/MobileVersion/Home";
-// layout for web or larger screens
+// Layout for web or larger screens
 import HomeWeb from "./pages/WebsiteVersion/Home";
 import Blog from "./pages/WebsiteVersion/Blog";
 import Menu from "./pages/WebsiteVersion/Menu";
@@ -17,18 +16,20 @@ import Login from "./pages/WebsiteVersion/Login";
 import Register from "./pages/WebsiteVersion/Register";
 import ProductDetail from "./pages/WebsiteVersion/ProductDetail";
 import ForgetPassword from "./pages/WebsiteVersion/ForgetPassword";
-
 import SheetButton from "./components/sheetButton/sheetButton";
 // Import the Sheet component
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import QRPage from "./pages/WebsiteVersion/QRPage";
 import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
+// Import the background image from the assets folder
+import backgroundImage from "./assets/beams.jpg";
+
+import backToTopSVG from "./assets/arrow-up-svgrepo-com.svg";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
-  // Get the current location to determine if we are on login or register pages
+  const [showScrollButton, setShowScrollButton] = useState(false);
   const location = useLocation();
 
   // Handle screen size change
@@ -36,9 +37,14 @@ function App() {
     setIsMobile(window.innerWidth <= 640);
   };
 
-  // Handle scroll event to add shadow on scroll
+  // Handle scroll event to add shadow on scroll and show scroll button
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 0);
+    setShowScrollButton(window.scrollY > 300); // Show the button when scrolled down 300px
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -46,7 +52,6 @@ function App() {
     window.addEventListener("scroll", handleScroll);
     handleResize();
     handleScroll();
-
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
@@ -62,8 +67,16 @@ function App() {
       {!isMobile && !isAuthPage && <Header isScrolled={isScrolled} />}
       {!isAuthPage && isMobile && <BottomBar />}
 
-      {/* Main content section */}
-      <div className={`mb-5 p-4 bg-gray-50 ${isMobile ? "mobile-layout" : "web-layout"}`}>
+      {/* Main content section with background image */}
+      <div
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh", // Ensures the background covers the full height of the viewport
+        }}
+        className={`mb-5 p-4 bg-gray-50 ${isMobile ? "mobile-layout" : "web-layout"}`}
+      >
         {isMobile ? (
           <>
             {/* Layout for mobile devices */}
@@ -82,14 +95,11 @@ function App() {
               <Route path="/detail/:id" element={<ProductDetail />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/contact" element={<Contact />} />
-              {/* auth */}
+              {/* Authentication routes */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />
               <Route path="/qr" element={<QRPage />} />
-
-              <Route path="/qr" element={<QRPage />} />
-
             </Routes>
           </>
         )}
@@ -99,8 +109,6 @@ function App() {
       {!isMobile && !isAuthPage && <Footer />}
 
       {/* Floating Button to Open Sheet */}
-      {/* <button className="px-6 py-2 text-white bg-red-400 rounded-lg hover:bg-red-600 transition-colors">Open</button> */}
-
       <div className="fixed top-1/2 right-5 transform -translate-y-1/2">
         <Sheet>
           <SheetTrigger asChild>
@@ -114,6 +122,13 @@ function App() {
           </SheetContent>
         </Sheet>
       </div>
+
+      {/* Scroll to Top Button */}
+      {showScrollButton && (
+        <button onClick={scrollToTop} className="fixed bottom-5 right-5 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">
+          <img src={backToTopSVG} alt="tinder" style={{ width: "1.5rem", height: "1.5rem" }} />
+        </button>
+      )}
     </>
   );
 }

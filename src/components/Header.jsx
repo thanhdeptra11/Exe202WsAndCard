@@ -11,7 +11,11 @@ function Header({ isScrolled }) {
       <div className="px-36">
         <header className="fixed top-0 left-0 right-0 z-50 flex overflow-hidden flex-col items-center pt-5 bg-white shadow-md">
           <div className="flex gap-5 justify-between items-center w-full max-w-[1560px] max-md:max-w-full px-5">
-            <img src={logo} alt="Company logo" className="object-contain shrink-0 self-stretch my-auto aspect-[1.68] w-[150px]" />
+            {/* Logo wrapped with Link component */}
+            <Link to="/">
+              <img src={logo} alt="Company logo" className="object-contain shrink-0 self-stretch my-auto aspect-[1.68] w-[150px]" />
+            </Link>
+
             <nav className="flex gap-10 self-stretch my-auto text-lg font-semibold text-black whitespace-nowrap max-md:max-w-full">
               {navItems.map((item, index) => (
                 <div key={index}>
@@ -24,17 +28,16 @@ function Header({ isScrolled }) {
                 </div>
               ))}
             </nav>
-            {/*<SearchBar />*/}
-            {/*login + signup*/}
+
+            {/* Login and Signup buttons */}
             <div className="flex items-center gap-3 ml-4">
-              {/* Nút Đăng nhập */}
+              {/* Login Button */}
               <Link to="/login">
                 <button className="flex items-center gap-3 px-4 py-1.5 border border-gray-200 bg-white shadow-sm text-sm font-semibold rounded hover:text-red-400 hover:border-red-400 transition-colors duration-300">
                   Đăng nhập
                 </button>
               </Link>
-
-              {/* Nút Đăng ký */}
+              {/* Signup Button */}
               <Link to="/register">
                 <button className="px-4 py-1.5 bg-red-500 text-white font-semibold rounded hover:bg-red-700 transition-colors duration-300">Đăng ký</button>
               </Link>

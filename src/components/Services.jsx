@@ -101,7 +101,7 @@ function Services() {
                 </div>
                 <div className="mt-auto">
                   {plan.duration === 0 ? (
-                    <div className="flex items-center gap-3 px-4 py-2 border border-gray-200 bg-white shadow-sm text-lg font-semibold rounded hover:text-red-400 hover:border-red-400 transition-colors duration-300">
+                    <div className="flex items-center gap-3 px-4 py-2 border border-gray-200 bg-white shadow-sm text-base font-semibold rounded hover:text-red-400 hover:border-red-400 transition-colors duration-300">
                       Gói hiện tại của bạn
                     </div>
                   ) : (
