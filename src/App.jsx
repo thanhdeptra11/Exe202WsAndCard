@@ -40,7 +40,7 @@ function App() {
   // Handle scroll event to add shadow on scroll and show scroll button
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 0);
-    setShowScrollButton(window.scrollY > 300); // Show the button when scrolled down 300px
+    setShowScrollButton(window.scrollY > 300);
   };
 
   const scrollToTop = () => {
@@ -75,7 +75,7 @@ function App() {
           backgroundPosition: "center",
           minHeight: "100vh", // Ensures the background covers the full height of the viewport
         }}
-        className={`mb-5 p-4 bg-gray-50 ${isMobile ? "mobile-layout" : "web-layout"}`}
+        className={`mb-5  bg-gray-50 ${isMobile ? "mobile-layout" : "web-layout"}`}
       >
         {isMobile ? (
           <>

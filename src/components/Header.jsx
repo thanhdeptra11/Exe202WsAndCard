@@ -9,7 +9,7 @@ function Header({ isScrolled }) {
   return (
     <>
       <div className="px-36">
-        <header className="fixed top-0 left-0 right-0 z-50 flex overflow-hidden flex-col items-center pt-5 bg-white shadow-md">
+        <header className="fixed top-0 left-0 right-0 z-50 flex overflow-hidden flex-col items-center pt-3 bg-white shadow-md">
           <div className="flex gap-5 justify-between items-center w-full max-w-[1560px] max-md:max-w-full px-5">
             {/* Logo wrapped with Link component */}
             <Link to="/">
