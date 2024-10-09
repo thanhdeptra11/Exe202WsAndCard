@@ -29,23 +29,27 @@ function HowItWorks() {
         {steps.map((step, index) => (
           <li
             key={index}
-            className="relative rounded-xl animate-in zoom-in ring-1  break-inside-avoid bg-white hover:ring-2 ring-gray-300 hover:ring-red-400 transform duration-200 hover:shadow-sky-200 hover:shadow-md z-0"
+            className="relative rounded-xl animate-in zoom-in ring-1 break-inside-avoid bg-white hover:ring-2 ring-gray-300 hover:ring-red-400 transform duration-200 hover:shadow-sky-200 hover:shadow-md z-0 flex flex-col"
           >
-            {/* // flex flex-col justify-between  */}
-            <div className="p-6 space-y-4 ">
-              {/* step number */}
-              <div className="block w-10 h-10 mx-auto -mt-12 rounded-full ring-8 ring-gray-50">
+            <div className="p-6 flex flex-col flex-grow">
+              {/* Step number */}
+              <div className="block w-10 h-10 mx-auto -mt-12 rounded-full ring-8 ring-transparent">
                 <div className="flex items-center justify-center w-10 h-10 text-lg font-bold bg-white rounded-full shadow-lg text-primary-600 tabular-nums">{index + 1}</div>
               </div>
-              {/* step content */}
-              <div className="space-y-1">
+
+              {/* Step content */}
+              <div className="space-y-1 flex-grow">
                 <div className="flex justify-center my-5">
                   <h3 className="text-xl text-red-400 font-bold tracking-tight md:text-2xl">{step.title}</h3>
                 </div>
                 <p className="text-gray-600">{step.description}</p>
               </div>
-              <hr className="border-gray-200 border-dashed" />
-              <img src={step.image} alt={step.title} className="w-full h-52 object-cover rounded-lg shadow-sm" />
+
+              {/* Bottom content */}
+              <div className="mt-5">
+                <hr className="border-gray-200 border-dashed mb-5" />
+                <img src={step.image} alt={step.title} className="w-full h-52 object-cover rounded-lg shadow-sm" />
+              </div>
             </div>
           </li>
         ))}

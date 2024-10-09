@@ -24,7 +24,7 @@ import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
 // Import the background image from the assets folder
 import backgroundImage from "./assets/beams.jpg";
 
-import backToTopSVG from "./assets/arrow-up-svgrepo-com.svg";
+import backToTopSVG from "./assets/arrow-up-svgrepo-com-hihi.svg";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -125,8 +125,17 @@ function App() {
 
       {/* Scroll to Top Button */}
       {showScrollButton && (
-        <button onClick={scrollToTop} className="fixed bottom-5 right-5 bg-blue-500 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition duration-300">
-          <img src={backToTopSVG} alt="tinder" style={{ width: "1.5rem", height: "1.5rem" }} />
+        <button onClick={scrollToTop} className="fixed bottom-5 right-5 bg-blue-500 text-white px-4 py-4 rounded-full shadow-2xl hover:bg-blue-700 transition duration-300">
+          <img
+            src={backToTopSVG}
+            alt="tinder"
+            style={{
+              width: "1.5rem",
+              height: "1.5rem",
+              //ICON COLOR :
+              textColor: "#ffffff",
+            }}
+          />
         </button>
       )}
     </>
