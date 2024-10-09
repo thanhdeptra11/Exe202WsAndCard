@@ -11,7 +11,7 @@ const Testimonials = () => {
       content: "Tôi rất ấn tượng với món phở ở nhà hàng này. Nước dùng đậm đà và hương vị thật khó quên. Đây chắc chắn sẽ là điểm đến yêu thích của tôi mỗi cuối tuần.",
       restaurant: "Nhà hàng Phở Việt",
       dish: "Phở bò",
-      blogLink: "#",
+      blogLink: "",
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ const Testimonials = () => {
       content: "Bún chả tại đây thực sự ngon, thịt nướng thơm phức, nước chấm đậm đà và vừa miệng. Tôi đã giới thiệu cho nhiều bạn bè và ai cũng thích.",
       restaurant: "Quán Bún Chả Hà Nội",
       dish: "Bún chả",
-      blogLink: "#",
+      blogLink: "",
     },
     {
       id: 3,
@@ -31,7 +31,7 @@ const Testimonials = () => {
       content: "Nhà hàng phục vụ rất nhanh và chuyên nghiệp. Món bánh xèo của họ là món tôi yêu thích nhất, giòn rụm và đầy đặn. Rất đáng thử!",
       restaurant: "Nhà hàng Bánh Xèo Miền Tây",
       dish: "Bánh xèo",
-      blogLink: "#",
+      blogLink: "",
     },
     {
       id: 4,
@@ -41,7 +41,7 @@ const Testimonials = () => {
       content: "Cơm tấm ở đây thật sự rất ngon, đặc biệt là sườn nướng mềm và thơm. Tôi đã có một bữa ăn tuyệt vời và sẽ quay lại nhiều lần nữa.",
       restaurant: "Quán Cơm Tấm Sài Gòn",
       dish: "Cơm tấm sườn nướng",
-      blogLink: "#",
+      blogLink: "",
     },
     {
       id: 5,
@@ -51,7 +51,7 @@ const Testimonials = () => {
       content: "Món lẩu Thái cay cay chua chua thật hoàn hảo cho những buổi tối se lạnh. Đồ ăn kèm cũng rất phong phú và tươi ngon.",
       restaurant: "Nhà hàng Lẩu Thái Lan",
       dish: "Lẩu Thái",
-      blogLink: "#",
+      blogLink: "",
     },
     {
       id: 6,
@@ -61,7 +61,7 @@ const Testimonials = () => {
       content: "Tôi rất thích bánh cuốn ở đây, bánh mỏng và nhân rất vừa miệng. Không gian nhà hàng cũng rất ấm cúng và phục vụ chu đáo.",
       restaurant: "Quán Bánh Cuốn Tây Hồ",
       dish: "Bánh cuốn",
-      blogLink: "#",
+      blogLink: "",
     },
     {
       id: 7,
@@ -71,7 +71,7 @@ const Testimonials = () => {
       content: "Món bún bò Huế đúng chuẩn vị miền Trung. Nước lèo đậm đà và thịt bò rất mềm. Tôi sẽ ghé lại để thử thêm các món khác.",
       restaurant: "Quán Bún Bò Huế O Hoa",
       dish: "Bún bò Huế",
-      blogLink: "#",
+      blogLink: "",
     },
     {
       id: 8,
@@ -81,7 +81,7 @@ const Testimonials = () => {
       content: "Không thể bỏ qua món chả giò tại nhà hàng này, giòn tan và hương vị thơm ngon. Món ăn vừa đẹp mắt vừa ngon miệng.",
       restaurant: "Nhà hàng Chả Giò Hà Nội",
       dish: "Chả giò",
-      blogLink: "#",
+      blogLink: "",
     },
   ];
 
