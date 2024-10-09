@@ -197,4 +197,6 @@ const food = [
 /**
  * - import thằng food vào shop
  * - cần có function để check xem food đã có trong db chưa - function checkFoodExist
+ * - favorite shop sẽ là danh sách các shop, xong cho filter = tên món ăn thì ra các shop có món đó
+ * - trang favorite thì sẽ có cái filter search = chọn tên món / tên quán  + filter khoảng giá tiền + đã ăn gần đây + khu vực/ vị trí (gọi api hết)
  */
