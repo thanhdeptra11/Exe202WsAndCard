@@ -48,6 +48,7 @@ const QRComponent = (props) => {
 
   useEffect(() => {
     fetchData();
+    window.scrollTo(0, 0); // Cuộn trang lên đầu khi trang được tải
 
     const intervalId = setInterval(() => {
       fetchData();
