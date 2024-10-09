@@ -1,8 +1,10 @@
 import React from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { useNavigate } from "react-router-dom";
 
 function Services() {
   const oneMonthPrice = 29000; // Giá gói 1 tháng
+  const navigate = useNavigate();
   const plans = [
     {
       title: "Gói cơ bản",
@@ -43,7 +45,7 @@ function Services() {
   };
 
   const handleConfirmPlan = () => {
-    alert(`Bạn đã chọn ${selectedPlan.title}`);
+    navigate("/qr", { state: { selectedPlan } });
     // Thực hiện logic đăng ký gói ở đây
     setIsDialogOpen(false);
   };
