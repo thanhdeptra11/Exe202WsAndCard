@@ -84,46 +84,45 @@ const Favorites = () => {
       </header>
 
       {/* Main Content */}
-<div className="flex flex-1">
-  {/* Sidebar */}
-  <aside className="w-64 bg-red-500 text-white hidden md:block shadow-lg">
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-6">Menu</h2>
-      <ul className="space-y-4">
-        <li>
-          <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
-            <span className="material-icons mr-3">dashboard</span>
-            Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
-            <span className="material-icons mr-3">shopping_cart</span>
-            Orders
-          </a>
-        </li>
-        <li>
-          <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
-            <span className="material-icons mr-3">store</span>
-            Products
-          </a>
-        </li>
-        <li>
-          <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
-            <span className="material-icons mr-3">people</span>
-            Customers
-          </a>
-        </li>
-        <li>
-          <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
-            <span className="material-icons mr-3">bar_chart</span>
-            Reports
-          </a>
-        </li>
-      </ul>
-    </div>
-  </aside>
-
+      <div className="flex flex-1">
+        {/* Sidebar */}
+        <aside className="w-64 bg-red-500 text-white hidden md:block shadow-lg">
+          <div className="p-4">
+            <h2 className="text-xl font-semibold mb-6">Menu</h2>
+            <ul className="space-y-4">
+              <li>
+                <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
+                  <span className="material-icons mr-3">dashboard</span>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
+                  <span className="material-icons mr-3">shopping_cart</span>
+                  Orders
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
+                  <span className="material-icons mr-3">store</span>
+                  Products
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
+                  <span className="material-icons mr-3">people</span>
+                  Customers
+                </a>
+              </li>
+              <li>
+                <a href="#" className="flex items-center hover:text-gray-300 transition duration-300">
+                  <span className="material-icons mr-3">bar_chart</span>
+                  Reports
+                </a>
+              </li>
+            </ul>
+          </div>
+        </aside>
 
         {/* Favorite Products */}
         <main className="flex-1 bg-gray-200 p-6 flex flex-col">
@@ -150,9 +149,7 @@ const Favorites = () => {
                   key={index}
                   onClick={() => paginate(index + 1)}
                   className={`px-3 py-2 leading-tight border border-gray-300 ${
-                    currentPage === index + 1
-                      ? "text-blue-600 bg-blue-50"
-                      : "text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700"
+                    currentPage === index + 1 ? "text-blue-600 bg-blue-50" : "text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700"
                   }`}
                 >
                   {index + 1}
@@ -174,12 +171,9 @@ const Favorites = () => {
 
       {/* Footer */}
       <footer className="bg-white shadow mt-6">
-        <div className="max-w-7xl mx-auto px-4 py-4 text-center text-gray-600">
-          &copy; {new Date().getFullYear()} Your Company. All rights reserved.
-        </div>
+        <div className="max-w-7xl mx-auto px-4 py-4 text-center text-gray-600">&copy; {new Date().getFullYear()} Your Company. All rights reserved.</div>
       </footer>
     </div>
-    
   );
 };
 

@@ -25,6 +25,8 @@ import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
 import backgroundImage from "./assets/beams.jpg";
 
 import backToTopSVG from "./assets/arrow-up-svgrepo-com-hihi.svg";
+import FavoriteSideBar from "./pages/WebsiteVersion/FavoriteSideBar";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -115,10 +117,11 @@ function App() {
             <SheetButton />
           </SheetTrigger>
           <SheetContent>
-            <SheetHeader>
-              <SheetTitle>Are you absolutely sure?</SheetTitle>
-              <SheetDescription>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</SheetDescription>
-            </SheetHeader>
+            <div className=" ">
+              <DialogTitle >Yêu Thích</DialogTitle>
+              <SheetDescription>Danh sách các món ăn mà bạn đã thêm vào mục yêu thích.</SheetDescription>
+            </div>
+            <FavoriteSideBar />
           </SheetContent>
         </Sheet>
       </div>
