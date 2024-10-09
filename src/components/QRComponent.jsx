@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const QRComponent = (props) => {
-  const { total, uuid, name, time, origin, discount, percentDiscount, postData } = props;
+  const { total, uuid, name, time, origin, discount, percentDiscount, benefits } = props;
   const bank = {
     BANK_ID: "VietinBank",
     ACCOUNT_NO: "108874842372",
@@ -57,12 +57,11 @@ const QRComponent = (props) => {
   }, []);
 
   const saveOrder = async () => {
-    const orderData = { ...postData, userInfo };
+    const orderData = { userInfo };
     axios
       .post("http://localhost:5173/order", orderData)
       .then((res) => {
         setTimeout(() => {
-          toast.success("Yêu cầu hỗ trợ đã được gửi thành công!");
           navigate("/");
         }, 2000);
       })
@@ -89,16 +88,25 @@ const QRComponent = (props) => {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           }
           .user-form {
-            flex: 1;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: row; /* Set to row to display content side by side */
+            justify-content: space-between;
+            gap: 20px;
             padding: 20px;
             background-color: #ffffff;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           }
-          .user-form h2 {
+          .order-summary,
+          .benefits-section {
+            flex: 1;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          }
+          .order-summary h2,
+          .benefits-section h2 {
             font-size: 24px;
             color: #EF4444;
             margin-bottom: 20px;
@@ -121,12 +129,20 @@ const QRComponent = (props) => {
             font-weight: bold;
             color: #EF4444;
           }
-          
           .alert-message {
             color: red;
             font-weight: bold;
             text-align: center;
             margin-bottom: 20px;
+          }
+          .benefits-section ul {
+            list-style-type: none;
+            padding: 0;
+          }
+          .benefits-section ul li {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: center;
           }
         `}
       </style>
@@ -139,20 +155,35 @@ const QRComponent = (props) => {
         />
       </div>
       <div className="user-form">
-        <h2>Tóm tắt đơn hàng</h2>
-        <div className="payment-details">
-          <p>Tên gói: {name}</p>
-          <p>Gói: {time} tháng</p>
-          <p>Giá gốc: {formatAmount(origin)}VND</p>
+        
+        <div className="benefits-section">
+          <h2>Bạn sẽ nhận được gì khi mua gói thành viên?</h2>
+          <ul>
+            {benefits.map((benefit, index) => (
+              <li key={index}>{benefit}</li>
+            ))}
+          </ul>
         </div>
-        <div className="payment-details">
-          <p>Tổng phụ</p>
-          <p>Gói Giảm giá -{percentDiscount}</p>
-          <p>-{formatAmount(discount)}VND</p>
-        </div>
-        <div className="payment-details">
-          <p>Ước tính tổng</p>
-          <p>{formatAmount(bank.AMOUNT)}VND</p>
+        <div className="order-summary">
+          <h2>Tóm tắt đơn hàng</h2>
+          <div className="payment-details">
+            <p>Tên gói: {name}</p>
+            <p>Gói: {time} tháng</p>
+            <p>Giá gốc: {formatAmount(origin)}VND</p>
+          </div>
+          <div className="payment-details">
+            <p>Tổng phụ</p>
+            <p>Gói Giảm giá -{percentDiscount}</p>
+            <p>-{formatAmount(discount)}VND</p>
+          </div>
+          <div className="payment-details">
+            <p>Ước tính tổng</p>
+            <p>{formatAmount(bank.AMOUNT)}VND</p>
+          </div>
+          <div className="payment-details">
+            <p>Thời gian hiệu lực</p>
+            <p>{calculateExpiryDate(time)}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -169,6 +200,13 @@ const styles = {
   },
 };
 const formatAmount = (amount) => {
-    return new Intl.NumberFormat('de-DE').format(amount);
-  };
+  return new Intl.NumberFormat("de-DE").format(amount);
+};
+const calculateExpiryDate = (months) => {
+  const currentDate = new Date();
+  const startDate = currentDate.toLocaleDateString('vi-VN');
+  currentDate.setMonth(currentDate.getMonth() + months);
+  const endDate = currentDate.toLocaleDateString('vi-VN');
+  return `${startDate} - ${endDate}`;
+};
 export default QRComponent;
