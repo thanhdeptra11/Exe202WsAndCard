@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function FavoriteCard({ name, price, rating, image }) {
+function FavoriteCard({ name, rating, imageUrl,address,priceRange}) {
   const navigate = useNavigate();
 
   const handleAddToCart = (e) => {
@@ -17,12 +17,12 @@ function FavoriteCard({ name, price, rating, image }) {
       className="cursor-pointer transform transition-transform duration-300 hover:scale-105 flex flex-col"
       onClick={() => navigate(`/detail/${name}`, { state: { name } })}
     >
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-auto">
+      <div className="bg-white shadow-lg rounded-lg overflow-hidden flex flex-col h-full">
         {/* Hình Ảnh Sản Phẩm */}
         <div className="relative">
           <img
             loading="lazy"
-            src={image}
+            src={imageUrl}
             alt={name}
             className="w-full h-48 object-cover"
           />
@@ -47,7 +47,12 @@ function FavoriteCard({ name, price, rating, image }) {
         <div className="p-4 flex flex-col flex-1">
           <h3 className="text-lg font-semibold text-gray-800 mb-2">{name}</h3>
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xl font-bold text-gray-900">{price}</span>
+          <span className="text-m text-red-500 ">
+          <span className="text-sm text-red-500 mr-1">₫</span>
+            {priceRange}
+          </span>
+
+              
             <div className="flex items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +65,22 @@ function FavoriteCard({ name, price, rating, image }) {
               <span className="text-gray-700">{rating}</span>
             </div>
           </div>
-
+          {/* Hiển thị Địa Chỉ với Biểu Tượng */}
+          {address.map((addr, index) => (
+            <div key={index} className="flex text-gray-600 text-sm mb-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 "  
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M10 2a6 6 0 00-6 6c0 2.5 3 6 6 10 3-4 6-7.5 6-10a6 6 0 00-6-6zm0 2a4 4 0 100 8 4 4 0 000-8z" />
+              </svg>
+              <span className="flex-1">
+                {addr.specificAddress}, {addr.district}, {addr.city}
+              </span>
+            </div>
+          ))}
           {/* Nút Thêm Vào Giỏ Hàng */}
           <button
             onClick={handleAddToCart}
