@@ -85,9 +85,10 @@ const shops = [
   {
     id: 0,
     name: "Bún bò Thái Anh",
-    imageUrl: ["https://example.com/image1.jpg"],
+    imageUrl: ["https://static.vinwonders.com/production/bun-bo-hue-cau-giay-1.jpg"],
     email: "contact@bunbothaianh.com",
     phone: "0909-123-456",
+    priceRange: "35000 - 40000" ,
     social: [
       {
         name: "Facebook",
@@ -102,15 +103,9 @@ const shops = [
       {
         district: "Quận 1",
         province: "Hồ Chí Minh",
-        city: "Hồ Chí Minh",
+        city: "TP Hồ Chí Minh",
         specificAddress: "123 Nguyễn Du",
-      },
-      {
-        district: "Quận 2",
-        province: "Hồ Chí Minh",
-        city: "Hồ Chí Minh",
-        specificAddress: "456 Lê Lợi",
-      },
+      }
     ],
     menu: [
       {
@@ -165,9 +160,10 @@ const shops = [
   {
     id: 1,
     name: "Phở Gia Truyền Bát Đàn",
-    imageUrl: ["https://example.com/image2.jpg"],
+    imageUrl: ["https://sakos.vn/wp-content/uploads/2024/07/1658123252-cover_pho-1.jpg"],
     email: "contact@phogiabatdan.com",
     phone: "0912-654-789",
+    priceRange: "45000",
     social: [
       {
         name: "Facebook",
@@ -219,9 +215,10 @@ const shops = [
   {
     id: 2,
     name: "Cơm Tấm Cali",
-    imageUrl: ["https://example.com/image3.jpg"],
+    imageUrl: ["https://www.comtamcali.com/images/slider1.jpg"],
     email: "contact@comtamcali.com",
     phone: "0987-123-456",
+    priceRange: "55000 - 60000" ,
     social: [
       {
         name: "Facebook",
@@ -232,7 +229,7 @@ const shops = [
       {
         district: "Quận 3",
         province: "Hồ Chí Minh",
-        city: "Hồ Chí Minh",
+        city: "TP Hồ Chí Minh",
         specificAddress: "236 Pasteur",
       },
     ],
@@ -262,9 +259,10 @@ const shops = [
   {
     id: 3,
     name: "Bánh Mì Huỳnh Hoa",
-    imageUrl: ["https://example.com/image4.jpg"],
+    imageUrl: ["https://kenh14cdn.com/203336854389633024/2024/4/3/photo-3-1712150817655382515566.png"],
     email: "contact@banhmihuynhhoa.com",
     phone: "0923-456-789",
+    priceRange: "55000",
     social: [
       {
         name: "Facebook",
@@ -275,7 +273,7 @@ const shops = [
       {
         district: "Quận 1",
         province: "Hồ Chí Minh",
-        city: "Hồ Chí Minh",
+        city: "TP Hồ Chí Minh",
         specificAddress: "26 Lê Thị Riêng",
       },
     ],
@@ -296,9 +294,10 @@ const shops = [
   {
     id: 4,
     name: "Bún Chả Hàng Mành",
-    imageUrl: ["https://example.com/image5.jpg"],
+    imageUrl: ["https://mms.img.susercontent.com/vn-11134513-7r98o-lsv85ff04i4k1a@resize_ss1242x600!@crop_w1242_h600_cT"],
     email: "contact@bunchahangmanh.com",
     phone: "0908-765-432",
+    priceRange: "40000",
     social: [
       {
         name: "Instagram",
@@ -341,9 +340,10 @@ const shops = [
   {
     id: 5,
     name: "Nem Nướng Nha Trang",
-    imageUrl: ["https://example.com/image6.jpg"],
+    imageUrl: ["https://mia.vn/media/uploads/blog-du-lich/diem_ten_10_quan_nem_nuong_nha_trang_ngon_quen_loi_ve_1-1623088085.jpg"],
     email: "contact@nemnuongnhatrang.com",
     phone: "0934-567-890",
+    priceRange: "50000",
     social: [
       {
         name: "Facebook",
@@ -354,7 +354,7 @@ const shops = [
       {
         district: "Quận Phú Nhuận",
         province: "Hồ Chí Minh",
-        city: "Hồ Chí Minh",
+        city: "TP Hồ Chí Minh",
         specificAddress: "123 Phan Xích Long",
       },
     ],
@@ -493,3 +493,5 @@ const food = [
  * - favorite shop sẽ là danh sách các shop, xong cho filter = tên món ăn thì ra các shop có món đó
  * - trang favorite thì sẽ có cái filter search = chọn tên món / tên quán  + filter khoảng giá tiền + đã ăn gần đây + khu vực/ vị trí (gọi api hết)
  */
+
+export default {shop,shops,plan,user,food};
