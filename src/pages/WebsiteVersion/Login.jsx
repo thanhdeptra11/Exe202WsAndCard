@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+import axios from "axios";
+import api from "../../api";
 import loginBanner from "../../assets/foodBanner.png";
 import loginBanner2 from "../../assets/auth4.png";
 import logo from "../../assets/LOGO (1).svg";
+import toast from "react-hot-toast";
+//import redux hook - dispatch to send action - useSelector to get state
+import { useDispatch } from "react-redux";
+//import action
+import { loginSuccess } from "../../stores/userSlice";
 
 const Login = () => {
-  // State to toggle password visibility
+  // State list
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigate = useNavigate(); // Initialize useNavigate
+  const dispatch = useDispatch(); // Initialize useDispatch
 
   // Function to toggle password visibility
   const togglePasswordVisibility = () => {
@@ -18,6 +29,24 @@ const Login = () => {
   // Function to navigate back to the home page
   const handleBackToHome = () => {
     navigate("/"); // Redirect to the home page
+  };
+
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post(`${api.AUTH_LOGIN}`, { email, password });
+
+      if (response.status === 200) {
+        const userData = response.data; // Extract the user data from the response
+        dispatch(loginSuccess(userData)); // Dispatch the user data to the Redux store
+        localStorage.setItem("user", JSON.stringify(userData));
+        navigate("/");
+        toast.success("Đăng nhập thành công");
+      }
+    } catch (error) {
+      if (error.response.status === 400) {
+        toast.error(error.response.data.message);
+      }
+    }
   };
 
   return (
@@ -34,7 +63,13 @@ const Login = () => {
           {/* Email Field */}
           <div className="mt-4">
             <label className="block text-gray-700 text-sm font-bold mb-2">Địa chỉ Email</label>
-            <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700" type="email" required />
+            <input
+              className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
 
           {/* Password Field */}
@@ -43,7 +78,13 @@ const Login = () => {
               <label className="block text-gray-700 text-sm font-bold mb-2">Mật khẩu</label>
             </div>
             <div className="relative">
-              <input className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700" type={showPassword ? "text" : "password"} required />
+              <input
+                className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
               <div className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer" onClick={togglePasswordVisibility}>
                 {showPassword ? <IconEye stroke={1} /> : <IconEyeOff stroke={1.5} />}
               </div>
@@ -55,7 +96,9 @@ const Login = () => {
 
           {/* Login Button */}
           <div className="mt-8">
-            <button className="bg-red-400 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-300">Đăng nhập</button>
+            <button className="bg-red-400 text-white font-bold py-2 px-4 w-full rounded hover:bg-red-300" onClick={handleLogin}>
+              Đăng nhập
+            </button>
           </div>
 
           {/* Google Sign-In Button */}
