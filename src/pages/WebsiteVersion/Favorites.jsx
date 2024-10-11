@@ -3,7 +3,7 @@ import FavoriteCard from "../../components/FavoriteCard";
 import SearchBar from "@/components/SearchBar";
 import data from "../../database/dbExampleHere";
 const Favorites = () => {
-  const shops = data.shops
+  const shops = data.shops;
   return (
     <div className="min-h-screen flex flex-col items-center justify-center from-pink-500 to-blue-500 text-center">
       <div className="flex flex-col w-full max-w-screen-xl mx-auto p-4">
@@ -36,7 +36,7 @@ const Favorites = () => {
         </div>
 
         {/* Favorite Products */}
-        <main className="flex-1 bg-white p-6 flex flex-col items-center">
+        <main className="flex-1 p-6 flex flex-col items-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
             {shops.map((product, index) => (
               <FavoriteCard key={index} {...product} className="flex-grow max-w-xs" />

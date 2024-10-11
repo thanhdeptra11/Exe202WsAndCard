@@ -71,7 +71,7 @@ function InfoSection() {
             <DialogTrigger asChild>
               <Button variant="outline">Tùy chỉnh</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[600px]">
+            <DialogContent className="sm:max-w-[700px] sm:h-[400px]">
               <DialogHeader>
                 <DialogTitle>Tùy chỉnh Bộ lọc</DialogTitle>
                 <DialogDescription>Điều chỉnh các bộ lọc theo ý muốn. Nhấn lưu để áp dụng các thay đổi.</DialogDescription>
@@ -111,8 +111,12 @@ function InfoSection() {
 
                 <div className="flex gap-6 items-center">
                   <div className="flex flex-col items-center gap-1 w-full">
-                    <label className="text-lg font-semibold">Tỉnh / Thành phố</label>
-                    <select value={province} onChange={handleProvinceChange} className="bg-transparent border-none focus:outline-none text-sm text-center w-full">
+                    <label className="text-lg font-semibold ">Tỉnh / Thành phố</label>
+                    <select
+                      value={province}
+                      onChange={handleProvinceChange}
+                      className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center w-full"
+                    >
                       <option value="">Chọn Tỉnh/Thành phố</option>
                       {address.map((prov) => (
                         <option key={prov.Name} value={prov.Name}>
@@ -123,7 +127,12 @@ function InfoSection() {
                   </div>
                   <div className="flex flex-col items-center gap-1 w-full">
                     <label className="text-lg font-semibold">Quận / Huyện</label>
-                    <select value={city} onChange={handleCityChange} className="bg-transparent border-none focus:outline-none text-sm text-center w-full" disabled={!province}>
+                    <select
+                      value={city}
+                      onChange={handleCityChange}
+                      className=" px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center w-full"
+                      disabled={!province}
+                    >
                       <option value="">Chọn Quận/Huyện</option>
                       {cities.map((city) => (
                         <option key={city.Name} value={city.Name}>
@@ -134,7 +143,12 @@ function InfoSection() {
                   </div>
                   <div className="flex flex-col items-center gap-1 w-full">
                     <label className="text-lg font-semibold">Phường / Xã</label>
-                    <select value={district} onChange={(e) => setDistrict(e.target.value)} className="bg-transparent border-none focus:outline-none text-sm text-center w-full" disabled={!city}>
+                    <select
+                      value={district}
+                      onChange={(e) => setDistrict(e.target.value)}
+                      className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center w-full"
+                      disabled={!city}
+                    >
                       <option value="">Chọn Phường/Xã</option>
                       {districts.map((dist) => (
                         <option key={dist.Name} value={dist.Name}>
@@ -145,11 +159,13 @@ function InfoSection() {
                   </div>
                 </div>
 
-                <DialogFooter>
-                  <Button variant="secondary" onClick={handleClear}>
+                <DialogFooter className="">
+                  <Button variant="outline" onClick={handleClear}>
                     Xóa tất cả
                   </Button>
-                  <Button onClick={handleSubmitAndRole}>Lưu thay đổi</Button>
+                  <Button className=" bg-red-500 hover:bg-red-600 text-white" onClick={handleSubmitAndRole}>
+                    Lưu thay đổi
+                  </Button>
                 </DialogFooter>
               </div>
             </DialogContent>
