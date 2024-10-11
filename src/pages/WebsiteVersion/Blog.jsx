@@ -62,9 +62,9 @@ const Blog = () => {
     setSelectedCategory(cate);
   };
   const activeClass = "bg-red-400 border-dark text-white";
-  const inactiveClass = "bg-gray border-gray-3 text-dark";
+  const inactiveClass = "bg-white border-gray-3 text-dark ring-1 ring-gray-300";
   return (
-    <>
+    <div className="py-10 mb-5">
       <section id="home" className="rounded-b-[50px] relative overflow-hidden z-2 pb-15 pt-34">
         <div>
           <div className="absolute bottom-0 left-0 rounded-b-[50px] w-full h-full bg-gray"></div>
@@ -72,8 +72,8 @@ const Blog = () => {
         </div>
 
         <div className="mx-auto max-w-[1170px] px-4 sm:px-8 xl:px-0 relative z-1">
-          <div className="flex flex-wrap gap-x-7.5 gap-y-9">
-            <div className="max-w-[1170px] w-full flex flex-col lg:flex-row lg:items-center gap-7.5 lg:gap-11 bg-white shadow-1 rounded-xl p-4 lg:p-2.5">
+          <div className="flex flex-wrap gap-x-7 gap-y-9">
+            <div className="max-w-[1170px] my-1 w-full flex flex-col lg:flex-row lg:items-center gap-7.5 lg:gap-11 bg-white shadow-1 rounded-xl p-4 lg:p-2.5 ring-1 ring-gray-300">
               <div className="lg:max-w-[536px] w-full">
                 <Link to={`/blog/1`}>
                   <img className="w-full rounded-xl" src="https://static.vinwonders.com/production/com-tam-sai-gon-thumb.jpg" alt="hero" />
@@ -100,7 +100,7 @@ const Blog = () => {
               </div>
             </div>
 
-            <div className="lg:max-w-[570px] w-full flex flex-col sm:flex-row sm:items-center gap-6 bg-white shadow-1 rounded-xl p-2.5">
+            <div className="lg:max-w-[570px] my-1 w-full flex flex-col sm:flex-row sm:items-center gap-6 bg-white shadow-1 rounded-xl p-2.5 ring-1 ring-gray-300">
               <div className="lg:max-w-[238px] lg:h-[150px] w-full">
                 <Link to={`/blog/2`}>
                   <img className="w-full h-full rounded-xl " src="https://danviet.mediacdn.vn/296231569849192448/2022/2/6/am-thuc-sai-gon-164415516861455273850.jpg" alt="hero" />
@@ -121,7 +121,7 @@ const Blog = () => {
               </div>
             </div>
 
-            <div className="lg:max-w-[570px] w-full flex flex-col sm:flex-row sm:items-center gap-6 bg-white shadow-1 rounded-xl p-2.5">
+            <div className="lg:max-w-[570px] my-1 w-full flex flex-col sm:flex-row sm:items-center gap-6 bg-white shadow-1 rounded-xl p-2.5 ring-1 ring-gray-300">
               <div className="lg:max-w-[238px] lg:h-[150px] w-full">
                 <Link to={`/blog/3`}>
                   <img className="w-full h-full rounded-xl " src="https://cdn.tgdd.vn/2021/05/CookRecipe/Avatar/banh-mi-thit-bo-nuong-thumbnail-1.jpg" alt="hero" />
@@ -154,7 +154,7 @@ const Blog = () => {
             <div className="flex flex-wrap justify-center gap-4 items-center mb-[3.75rem]">
               <button
                 onClick={() => handleFilter("All")}
-                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:border-dark hover:text-white ease-in duration-200 ${
+                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:ring-0 hover:border-dark hover:text-white ease-in duration-200 ${
                   selectedCategory === "All" ? activeClass : inactiveClass
                 } `}
               >
@@ -162,7 +162,7 @@ const Blog = () => {
               </button>
               <button
                 onClick={() => handleFilter("Explore")}
-                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:border-dark hover:text-white ease-in duration-200 ${
+                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:ring-0 hover:border-dark hover:text-white ease-in duration-200 ${
                   selectedCategory === "Explore" ? activeClass : inactiveClass
                 } `}
               >
@@ -170,7 +170,7 @@ const Blog = () => {
               </button>
               <button
                 onClick={() => handleFilter("SaiGon")}
-                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:border-dark hover:text-white ease-in duration-200 ${
+                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:ring-0 hover:border-dark hover:text-white ease-in duration-200 ${
                   selectedCategory === "SaiGon" ? activeClass : inactiveClass
                 } `}
               >
@@ -178,7 +178,7 @@ const Blog = () => {
               </button>
               <button
                 onClick={() => handleFilter("HaNoi")}
-                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:border-dark hover:text-white ease-in duration-200 ${
+                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:ring-0 hover:border-dark hover:text-white ease-in duration-200 ${
                   selectedCategory === "HaNoi" ? activeClass : inactiveClass
                 } `}
               >
@@ -228,7 +228,7 @@ const Blog = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
