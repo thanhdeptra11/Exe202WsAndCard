@@ -20,6 +20,7 @@ import SheetButton from "./components/sheetButton/sheetButton";
 // Import the Sheet component
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import QRPage from "./pages/WebsiteVersion/QRPage";
+import SuccessPayment from "./components/SuccessPayment";
 import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
 // Import the background image from the assets folder
 import backgroundImage from "./assets/beams.jpg";
@@ -102,6 +103,8 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />
               <Route path="/qr" element={<QRPage />} />
+              <Route path="/success-payment" element={<SuccessPayment />} />
+
             </Routes>
           </>
         )}
