@@ -1,5 +1,7 @@
 // const domain = "http://localhost:9999/api";
-const domain = "https://foodtrip-server.onrender.com/api";
+// const domain = "https://foodtrip-server.onrender.com/api";
+
+import domain from "./domain";
 
 // Authentication API calls
 
