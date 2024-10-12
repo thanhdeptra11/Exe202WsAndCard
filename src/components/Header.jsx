@@ -5,6 +5,20 @@ import logo from "../assets/LOGOBIG.png";
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { logout } from "../stores/userSlice"; // Import the logout action from your Redux slice
 import toast from "react-hot-toast";
+import removeAccents from "remove-accents";
+
+function generateUsername(fullName) {
+  // Split the full name into an array of words
+  const words = fullName.trim().split(" ");
+
+  // Get the last two words
+  const lastTwoWords = words.slice(-2).join(" ");
+
+  // Remove accents/diacritics and convert to lowercase
+  const username = removeAccents(lastTwoWords).replace(/\s+/g, "").toLowerCase();
+
+  return username;
+}
 
 function Header({ isScrolled }) {
   const navItems = ["TRANG CHỦ", "ĂN GÌ", "YÊU THÍCH", "BLOG"];
@@ -73,16 +87,16 @@ function Header({ isScrolled }) {
                     </div>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent className="w-48">
-                    <DropdownMenuLabel>Account</DropdownMenuLabel>
+                    <DropdownMenuLabel>{`@${generateUsername(user.data.fullName)}`}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
                       <Link to="/profile">Profile</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
-                      <Link to="/settings">Settings</Link>
+                      <Link to="/settings">Cài đặt</Link>
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+                    <DropdownMenuItem onClick={handleLogout}>Đăng xuất</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (

@@ -66,6 +66,7 @@ const Login = () => {
             <input
               className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
               type="email"
+              label="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -82,6 +83,7 @@ const Login = () => {
                 className="text-gray-700 border border-gray-300 rounded py-2 px-4 block w-full focus:outline-2 focus:outline-blue-700"
                 type={showPassword ? "text" : "password"}
                 value={password}
+                label="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
