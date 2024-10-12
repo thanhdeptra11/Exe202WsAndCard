@@ -4,8 +4,8 @@ import { Toaster } from "react-hot-toast";
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
 import Footer from "./components/Footer";
-import HomeMobile from "./pages/MobileVersion/Home"; // Mobile Layout
-import HomeWeb from "./pages/WebsiteVersion/Home"; // Web Layout
+import HomeMobile from "./pages/MobileVersion/Home";
+import HomeWeb from "./pages/WebsiteVersion/Home";
 import Blog from "./pages/WebsiteVersion/Blog";
 import Menu from "./pages/WebsiteVersion/Menu";
 import Favorites from "./pages/WebsiteVersion/Favorites";
@@ -15,25 +15,34 @@ import Register from "./pages/WebsiteVersion/Register";
 import ProductDetail from "./pages/WebsiteVersion/ProductDetail";
 import ForgetPassword from "./pages/WebsiteVersion/ForgetPassword";
 import SheetButton from "./components/sheetButton/sheetButton";
-import NotFoundPage from "./pages/WebsiteVersion/NotFoundPage"; // 404 Page Component
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import NotFoundPage from "./pages/WebsiteVersion/NotFoundPage";
+import { Sheet, SheetContent, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
 import QRPage from "./pages/WebsiteVersion/QRPage";
 import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
 import backgroundImage from "./assets/beams.jpg";
 import backToTopSVG from "./assets/arrow-up-svgrepo-com-hihi.svg";
 import FavoriteSideBar from "./pages/WebsiteVersion/FavoriteSideBar";
 import { DialogTitle } from "@radix-ui/react-dialog";
+import AdminDashboard from "./pages/WebsiteVersion/AdminDashboard";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
+  const [userRole, setUserRole] = useState(null);
   const location = useLocation();
 
+  // Fetch user role from localStorage on mount
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      setUserRole(user.data.role);
+    }
+  }, []);
+
   // Handle screen size change
-  const handleResize = () => {
-    setIsMobile(window.innerWidth <= 640);
-  };
+  const handleResize = () => setIsMobile(window.innerWidth <= 640);
 
   // Handle scroll event to add shadow on scroll and show scroll button
   const handleScroll = () => {
@@ -41,9 +50,7 @@ function App() {
     setShowScrollButton(window.scrollY > 300);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -58,6 +65,12 @@ function App() {
 
   // Check if the current path is /login or /register
   const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
+  const isAdminPage = location.pathname.startsWith("/admin");
+
+  // Render only AdminDashboard for admin pages
+  if (isAdminPage && userRole === "admin") {
+    return <AdminDashboard />;
+  }
 
   return (
     <>
@@ -96,6 +109,9 @@ function App() {
               <Route path="/forgetpassword" element={<ForgetPassword />} />
               <Route path="/qr" element={<QRPage />} />
 
+              {/* Admin route */}
+              <Route path="/admin" element={<AdminDashboard />} />
+
               {/* Catch-all route to render the 404 NotFoundPage */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
@@ -125,7 +141,7 @@ function App() {
       {/* Scroll to Top Button */}
       {showScrollButton && (
         <button onClick={scrollToTop} className="fixed bottom-5 right-5 bg-blue-500 text-white px-4 py-4 rounded-full shadow-2xl hover:bg-blue-700 transition duration-300">
-          <img src={backToTopSVG} alt="tinder" style={{ width: "1.5rem", height: "1.5rem" }} />
+          <img src={backToTopSVG} alt="Back to Top" style={{ width: "1.5rem", height: "1.5rem" }} />
         </button>
       )}
     </>
