@@ -4,10 +4,8 @@ import { Toaster } from "react-hot-toast";
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
 import Footer from "./components/Footer";
-// Layout for mobile devices
-import HomeMobile from "./pages/MobileVersion/Home";
-// Layout for web or larger screens
-import HomeWeb from "./pages/WebsiteVersion/Home";
+import HomeMobile from "./pages/MobileVersion/Home"; // Mobile Layout
+import HomeWeb from "./pages/WebsiteVersion/Home"; // Web Layout
 import Blog from "./pages/WebsiteVersion/Blog";
 import Menu from "./pages/WebsiteVersion/Menu";
 import Favorites from "./pages/WebsiteVersion/Favorites";
@@ -17,13 +15,11 @@ import Register from "./pages/WebsiteVersion/Register";
 import ProductDetail from "./pages/WebsiteVersion/ProductDetail";
 import ForgetPassword from "./pages/WebsiteVersion/ForgetPassword";
 import SheetButton from "./components/sheetButton/sheetButton";
-// Import the Sheet component
+import NotFoundPage from "./pages/WebsiteVersion/NotFoundPage"; // 404 Page Component
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import QRPage from "./pages/WebsiteVersion/QRPage";
 import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
-// Import the background image from the assets folder
 import backgroundImage from "./assets/beams.jpg";
-
 import backToTopSVG from "./assets/arrow-up-svgrepo-com-hihi.svg";
 import FavoriteSideBar from "./pages/WebsiteVersion/FavoriteSideBar";
 import { DialogTitle } from "@radix-ui/react-dialog";
@@ -75,18 +71,14 @@ function App() {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          minHeight: "100vh", // Ensures the background covers the full height of the viewport
+          minHeight: "100vh",
         }}
-        className={`mb-5  bg-gray-50 ${isMobile ? "mobile-layout" : "web-layout"}`}
+        className={`mb-5 bg-gray-50 ${isMobile ? "mobile-layout" : "web-layout"}`}
       >
         {isMobile ? (
-          <>
-            {/* Layout for mobile devices */}
-            <HomeMobile />
-          </>
+          <HomeMobile />
         ) : (
           <>
-            {/* Route Layout for web or larger screens */}
             <Toaster />
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
@@ -97,11 +89,15 @@ function App() {
               <Route path="/detail/:id" element={<ProductDetail />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/contact" element={<Contact />} />
+
               {/* Authentication routes */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />
               <Route path="/qr" element={<QRPage />} />
+
+              {/* Catch-all route to render the 404 NotFoundPage */}
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </>
         )}
@@ -117,8 +113,8 @@ function App() {
             <SheetButton />
           </SheetTrigger>
           <SheetContent>
-            <div className=" ">
-              <DialogTitle >Yêu Thích</DialogTitle>
+            <div className="">
+              <DialogTitle>Yêu Thích</DialogTitle>
               <SheetDescription>Danh sách các món ăn mà bạn đã thêm vào mục yêu thích.</SheetDescription>
             </div>
             <FavoriteSideBar />
@@ -129,16 +125,7 @@ function App() {
       {/* Scroll to Top Button */}
       {showScrollButton && (
         <button onClick={scrollToTop} className="fixed bottom-5 right-5 bg-blue-500 text-white px-4 py-4 rounded-full shadow-2xl hover:bg-blue-700 transition duration-300">
-          <img
-            src={backToTopSVG}
-            alt="tinder"
-            style={{
-              width: "1.5rem",
-              height: "1.5rem",
-              //ICON COLOR :
-              textColor: "#ffffff",
-            }}
-          />
+          <img src={backToTopSVG} alt="tinder" style={{ width: "1.5rem", height: "1.5rem" }} />
         </button>
       )}
     </>
