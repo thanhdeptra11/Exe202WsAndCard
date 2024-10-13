@@ -18,6 +18,7 @@ import SheetButton from "./components/sheetButton/sheetButton";
 import NotFoundPage from "./pages/WebsiteVersion/NotFoundPage";
 import { Sheet, SheetContent, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
 import QRPage from "./pages/WebsiteVersion/QRPage";
+import SuccessPayment from "./components/SuccessPayment";
 import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
 import backgroundImage from "./assets/beams.jpg";
 import backToTopSVG from "./assets/arrow-up-svgrepo-com-hihi.svg";
@@ -102,16 +103,15 @@ function App() {
               <Route path="/detail/:id" element={<ProductDetail />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/contact" element={<Contact />} />
-
+              <Route path="/qr" element={<QRPage />} />
+              <Route path="/success-payment" element={<SuccessPayment />} />
               {/* Authentication routes */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />
-              <Route path="/qr" element={<QRPage />} />
-
+              
               {/* Admin route */}
               <Route path="/admin" element={<AdminDashboard />} />
-
               {/* Catch-all route to render the 404 NotFoundPage */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

@@ -17,7 +17,7 @@ const QRPage = () => {
   const benefits = selectedPlan ? selectedPlan.benefits : [];
   return (
     <div>
-      <QRComponent total={total} uuid={uuid} name={name} time={time} origin={origin} discount={discount} percentDiscount={percentDiscount} benefits={benefits} />
+      <QRComponent total={total} initialUuid={uuid} name={name} time={time} origin={origin} discount={discount} percentDiscount={percentDiscount} benefits={benefits} />
     </div>
   );
 };
