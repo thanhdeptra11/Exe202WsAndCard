@@ -69,3 +69,11 @@
     transition: background-color 0.3s, color 0.3s;
   }
 }
+
+.description-truncate {
+  display: -webkit-box; /* Enables WebKit-based multi-line ellipsis */
+  -webkit-line-clamp: 2; /* Limits text to 2 lines */
+  -webkit-box-orient: vertical; /* Sets the box orientation to vertical */
+  overflow: hidden; /* Hides overflow */
+  text-overflow: ellipsis; /* Adds "..." at the end of the second line */
+}

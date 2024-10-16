@@ -24,8 +24,15 @@ import backgroundImage from "./assets/beams.jpg";
 import backToTopSVG from "./assets/arrow-up-svgrepo-com-hihi.svg";
 import FavoriteSideBar from "./pages/WebsiteVersion/FavoriteSideBar";
 import { DialogTitle } from "@radix-ui/react-dialog";
-import AdminDashboard from "./pages/WebsiteVersion/AdminDashboard";
 
+//import admin pages
+import AdminDashboard from "./pages/WebsiteVersion/admin/AdminDashboard";
+import AdminShop from "./pages/WebsiteVersion/admin/AdminShop";
+import AdminUser from "./pages/WebsiteVersion/admin/AdminUser";
+import AdminLayout from "./pages/WebsiteVersion/admin/AdminLayout";
+
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -70,7 +77,7 @@ function App() {
 
   // Render only AdminDashboard for admin pages
   if (isAdminPage && userRole === "admin") {
-    return <AdminDashboard />;
+    return <AdminLayout />;
   }
 
   return (
@@ -109,9 +116,13 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />
-              
+
               {/* Admin route */}
-              <Route path="/admin" element={<AdminDashboard />} />
+              <Route element={<AdminLayout />}>
+                <Route path="/admin/shop" element={<AdminShop />} />
+                <Route path="/admin/users" element={<AdminUser />} />
+              </Route>
+
               {/* Catch-all route to render the 404 NotFoundPage */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>

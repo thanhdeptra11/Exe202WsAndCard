@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import { IconHome, IconUsers, IconChartBar, IconSettings } from "@tabler/icons-react";
 
 const sidebarItems = [
-  { name: "Home", icon: IconHome, link: "/" },
-  { name: "Users", icon: IconUsers, link: "/admin/users" },
+  // { name: "Home", icon: IconHome, link: "/" },
+  { name: "Users", icon: IconUsers, link: "/admin/user" },
   { name: "Shop", icon: IconSettings, link: "/admin/shop" },
-  { name: "Analytics", icon: IconChartBar, link: "/admin/analytics" },
 ];
 
 function AdminSidebar({ isOpen }) {
