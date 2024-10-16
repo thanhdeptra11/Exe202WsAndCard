@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
       {/* Layout for web or larger screens */}
-      <main className="px-32 overflow-visible ">
+      <main className="px-32 overflow-visible pb-32 ">
         <div className="flex justify-center">
           <Hero />
         </div>

@@ -104,7 +104,7 @@ const BlogSlider = () => {
     <div className="p-20">
       <h2 className="flex justify-center text-lg font-medium text-red-400">CÁC BÀI VIẾT NỔI BẬT</h2>
       <h3 className="flex justify-center text-4xl mt-4 font-bold text-black max-md:max-w-full">Hãy để chúng tôi giúp bạn chọn món.</h3>
-      <div className="w-[1500px]">
+      <div className="w-[1400px]">
         <div className="p-5">
           <Slider {...settings}>
             {posts2.map((post) => (

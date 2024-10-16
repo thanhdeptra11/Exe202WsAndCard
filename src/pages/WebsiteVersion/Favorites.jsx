@@ -7,12 +7,9 @@ const Favorites = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center from-pink-500 to-blue-500 text-center">
       <div className="flex flex-col w-full max-w-screen-xl mx-auto p-4">
-        {/* Search Bar */}
-        <div className="w-full flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
-          <SearchBar></SearchBar>
-          {/* Sort by price */}
-          {/* Sort by price */}
-          <select className="w-full sm:w-1/3 p-2 border rounded-lg">
+        <div className="w-full flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0 sm:space-x-4 mb-6 p-6">
+          <SearchBar />
+          <select className="w-full sm:w-1/5 p-2 border rounded-lg">
             <option value="" hidden>
               Sắp xếp theo giá
             </option>
@@ -22,7 +19,7 @@ const Favorites = () => {
           </select>
 
           {/* Sort by name */}
-          <select className="w-full sm:w-1/3 p-2 border rounded-lg">
+          <select className="w-full sm:w-1/5 p-2 border rounded-lg">
             <option value="" hidden>
               Món ăn
             </option>
