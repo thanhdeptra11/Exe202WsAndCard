@@ -71,100 +71,103 @@ function InfoSection() {
             <DialogTrigger asChild>
               <Button variant="outline">Tùy chỉnh</Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[700px] sm:h-[400px]">
+            <DialogContent className="sm:max-w-[700px] sm:h-[500px]">
               <DialogHeader>
                 <DialogTitle>Tùy chỉnh Bộ lọc</DialogTitle>
                 <DialogDescription>Điều chỉnh các bộ lọc theo ý muốn. Nhấn lưu để áp dụng các thay đổi.</DialogDescription>
               </DialogHeader>
 
-              <div className="flex flex-col items-center gap-6 p-6">
-                <div className="flex gap-6 items-center">
-                  <div className="flex flex-col items-center gap-1">
-                    <label className="text-lg font-semibold">Giá tối thiểu (VND)</label>
-                    <div className="flex gap-3 items-center px-3 py-1.5 rounded border border-gray-200 bg-white shadow-sm">
-                      <input
-                        type="number"
-                        value={minPrice}
-                        onChange={handleMinPriceChange}
-                        min="0"
-                        max="1000000"
-                        className="bg-transparent border-none focus:outline-none text-sm text-center"
-                        placeholder="0đ"
-                      />
-                    </div>
+              <div className="flex flex-col gap-6 p-6">
+                {/* Row for "Khoảng giá" and "Vị trí" */}
+                <div className="flex gap-10">
+                  {/* Left Column (Labels) */}
+                  <div className="flex flex-col gap-6 items-start w-1/4">
+                    <label className="text-lg font-semibold">Khoảng giá</label>
+                    <label className="text-lg font-semibold">Vị trí</label>
                   </div>
-                  <div className="flex flex-col items-center gap-1">
-                    <label className="text-lg font-semibold">Giá tối đa (VND)</label>
-                    <div className="flex gap-3 items-center px-3 py-1.5 rounded border border-gray-200 bg-white shadow-sm">
-                      <input
-                        type="number"
-                        value={maxPrice}
-                        onChange={handleMaxPriceChange}
-                        min="0"
-                        max="1000000"
-                        className="bg-transparent border-none focus:outline-none text-sm text-center"
-                        placeholder="1.000.000đ"
-                      />
+
+                  {/* Right Column (Inputs) */}
+                  <div className="flex flex-col gap-6 w-3/4">
+                    {/* Input fields for Khoảng giá */}
+                    <div className="flex gap-6">
+                      <div className="flex items-center px-3 py-1.5 rounded border border-gray-200 bg-white shadow-sm">
+                        <input
+                          type="number"
+                          value={minPrice}
+                          onChange={handleMinPriceChange}
+                          min="0"
+                          max="1000000"
+                          className="bg-transparent border-none focus:outline-none text-sm text-center"
+                          placeholder="0đ"
+                        />
+                      </div>
+                      <div className="flex items-center px-3 py-1.5 rounded border border-gray-200 bg-white shadow-sm">
+                        <input
+                          type="number"
+                          value={maxPrice}
+                          onChange={handleMaxPriceChange}
+                          min="0"
+                          max="1000000"
+                          className="bg-transparent border-none focus:outline-none text-sm text-center"
+                          placeholder="1.000.000đ"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Input fields for Vị trí (Stacked in a vertical column) */}
+                    <div className="flex flex-col gap-4">
+                      <select
+                        value={province}
+                        onChange={handleProvinceChange}
+                        className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center"
+                      >
+                        <option value="">Chọn Tỉnh/Thành phố</option>
+                        {address.map((prov) => (
+                          <option key={prov.Name} value={prov.Name}>
+                            {prov.Name}
+                          </option>
+                        ))}
+                      </select>
+
+                      <select
+                        value={city}
+                        onChange={handleCityChange}
+                        className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center"
+                        disabled={!province}
+                      >
+                        <option value="">Chọn Quận/Huyện</option>
+                        {cities.map((city) => (
+                          <option key={city.Name} value={city.Name}>
+                            {city.Name}
+                          </option>
+                        ))}
+                      </select>
+
+                      <select
+                        value={district}
+                        onChange={(e) => setDistrict(e.target.value)}
+                        className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center"
+                        disabled={!city}
+                      >
+                        <option value="">Chọn Phường/Xã</option>
+                        {districts.map((dist) => (
+                          <option key={dist.Name} value={dist.Name}>
+                            {dist.Name}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex gap-6 items-center">
-                  <div className="flex flex-col items-center gap-1 w-full">
-                    <label className="text-lg font-semibold ">Tỉnh / Thành phố</label>
-                    <select
-                      value={province}
-                      onChange={handleProvinceChange}
-                      className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center w-full"
-                    >
-                      <option value="">Chọn Tỉnh/Thành phố</option>
-                      {address.map((prov) => (
-                        <option key={prov.Name} value={prov.Name}>
-                          {prov.Name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex flex-col items-center gap-1 w-full">
-                    <label className="text-lg font-semibold">Quận / Huyện</label>
-                    <select
-                      value={city}
-                      onChange={handleCityChange}
-                      className=" px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center w-full"
-                      disabled={!province}
-                    >
-                      <option value="">Chọn Quận/Huyện</option>
-                      {cities.map((city) => (
-                        <option key={city.Name} value={city.Name}>
-                          {city.Name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="flex flex-col items-center gap-1 w-full">
-                    <label className="text-lg font-semibold">Phường / Xã</label>
-                    <select
-                      value={district}
-                      onChange={(e) => setDistrict(e.target.value)}
-                      className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center w-full"
-                      disabled={!city}
-                    >
-                      <option value="">Chọn Phường/Xã</option>
-                      {districts.map((dist) => (
-                        <option key={dist.Name} value={dist.Name}>
-                          {dist.Name}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
+                <hr className="my-10" />
 
-                <DialogFooter className="">
+                <DialogFooter>
                   <Button variant="outline" onClick={handleClear}>
                     Xóa tất cả
                   </Button>
-                  <Button className=" bg-red-500 hover:bg-red-600 text-white" onClick={handleSubmitAndRole}>
-                    Lưu thay đổi
+                  <Button className="bg-red-500 hover:bg-red-600 text-white" onClick={handleSubmitAndRole}>
+                    Lưu lựa chọn
                   </Button>
                 </DialogFooter>
               </div>
@@ -174,7 +177,7 @@ function InfoSection() {
 
         {/* Button to get random food */}
         <div>
-          <Button onClick={handleSubmitAndRole} className=" bg-red-500 hover:bg-red-600 text-white">
+          <Button onClick={handleSubmitAndRole} className="bg-red-500 hover:bg-red-600 text-white">
             Nhận Món Ăn
           </Button>
         </div>
