@@ -1,10 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios"; // Import Axios
 import address from "../database/address.js";
 import Advanced from "../examples/Advanced";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import api from "../api"; // api.SHOP_GETALL is the endpoint to get all shops
 
-const food = ["Phở", "Bánh mì", "Bún chả", "Gỏi cuốn", "Bánh xèo", "Cơm tấm", "Chả giò", "Bún bò Huế", "Hủ tiếu", "Cao lầu"];
+const food = [
+  "Bún bò",
+  "Cơm gà",
+  "Phở",
+  "Bún",
+  "Cơm",
+  "Bánh gà",
+  "Bánh xèo",
+  "Nem lụi",
+  "Mì gà",
+  "Bánh tráng cuốn thịt heo",
+  "Bún mắm nêm",
+  "Bánh bột lọc",
+  "Bánh mì",
+  "Xôi",
+  "Kem",
+  "Chè",
+  "Bún riêu",
+  "Bún sườn",
+  "Phở cuốn",
+  "Gỏi cuốn",
+  "Ốc",
+  "Sò huyết",
+];
 
 function InfoSection() {
   const [minPrice, setMinPrice] = useState(0);
@@ -13,6 +38,26 @@ function InfoSection() {
   const [district, setDistrict] = useState("");
   const [districts, setDistricts] = useState([]);
   const [randomFood, setRandomFood] = useState("");
+  const [shops, setShops] = useState([]); // State for shop data
+  const [loading, setLoading] = useState(false); // Loading state
+
+  // Fetch all shops using Axios
+  const fetchShops = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(api.SHOP_GETALL);
+      setShops(response.data);
+      console.log("Shops fetched:", response.data);
+    } catch (error) {
+      console.error("Error fetching shops:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchShops();
+  }, []);
 
   const handleProvinceChange = (e) => {
     const selectedProvince = e.target.value;
@@ -41,14 +86,7 @@ function InfoSection() {
     const randomFoodIndex = Math.floor(Math.random() * food.length);
     const selectedFood = food[randomFoodIndex];
     setRandomFood(selectedFood);
-
-    console.log({
-      minPrice,
-      maxPrice,
-      province,
-      district,
-      selectedFood,
-    });
+    console.log({ minPrice, maxPrice, province, district, selectedFood });
   };
 
   return (
@@ -65,7 +103,6 @@ function InfoSection() {
                 <DialogTitle>Tùy chỉnh Bộ lọc</DialogTitle>
                 <DialogDescription>Điều chỉnh các bộ lọc theo ý muốn. Nhấn lưu để áp dụng các thay đổi.</DialogDescription>
               </DialogHeader>
-
               <div className="flex flex-col gap-6 p-6">
                 {/* Row for "Khoảng giá" and "Vị trí" */}
                 <div className="flex gap-10">
@@ -101,7 +138,6 @@ function InfoSection() {
                         />
                       </div>
                     </div>
-
                     {/* Input fields for Vị trí */}
                     <div className="flex flex-col gap-4">
                       <select
@@ -116,7 +152,6 @@ function InfoSection() {
                           </option>
                         ))}
                       </select>
-
                       <select
                         value={district}
                         onChange={(e) => setDistrict(e.target.value)}
@@ -133,9 +168,7 @@ function InfoSection() {
                     </div>
                   </div>
                 </div>
-
                 <hr className="my-10" />
-
                 <DialogFooter>
                   <Button variant="outline" onClick={handleClear}>
                     Xóa tất cả
@@ -148,7 +181,6 @@ function InfoSection() {
             </DialogContent>
           </Dialog>
         </div>
-
         {/* Button to get random food */}
         <div>
           <Button onClick={handleSubmitAndRole} className="bg-red-500 hover:bg-red-600 text-white">
@@ -156,11 +188,8 @@ function InfoSection() {
           </Button>
         </div>
       </div>
-
       {/* Card list */}
-      <div className="w-full h-full mt-6">
-        <Advanced foodName={randomFood} />
-      </div>
+      <div className="w-full h-full mt-6">{loading ? <p>Loading shops...</p> : <Advanced foodName={randomFood} shops={shops} />}</div>
     </div>
   );
 }
