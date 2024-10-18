@@ -4,7 +4,6 @@ import address from "../database/address.js";
 import AdvancedShopCard from "../examples/Advanced";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { toast, Toaster } from "react-hot-toast"; // Import toast
 import api from "../api";
 
 const foodOptions = [
@@ -41,8 +40,8 @@ function InfoSection() {
   const [districts, setDistricts] = useState([]);
   const [randomFood, setRandomFood] = useState("");
   const [loading, setLoading] = useState(false);
-  const [isDialogOpen, setIsDialogOpen] = useState(false); // Dialog state
 
+  // Fetch all shops from the API
   const fetchShops = useCallback(async () => {
     setLoading(true);
     try {
@@ -55,6 +54,7 @@ function InfoSection() {
     }
   }, []);
 
+  // Generate a random food and filter shops by it
   const handleRandomFood = () => {
     const selectedFood = foodOptions[Math.floor(Math.random() * foodOptions.length)];
     localStorage.setItem("FOOD_RANDOM", selectedFood);
@@ -62,6 +62,7 @@ function InfoSection() {
     applyFilters(selectedFood, minPrice, maxPrice, province, district);
   };
 
+  // Apply filters to shops
   const applyFilters = (foodName, minP, maxP, prov, dist) => {
     const filtered = shops.filter(
       (shop) =>
@@ -74,8 +75,14 @@ function InfoSection() {
     setFilteredShops(filtered);
   };
 
+  // Save filter settings and apply them
   const handleFilterSubmit = () => {
-    const filter = { minPrice, maxPrice, province, district };
+    const filter = {
+      minPrice,
+      maxPrice,
+      province,
+      district,
+    };
     localStorage.setItem("SHOP_FILTER", JSON.stringify(filter));
     const savedFood = localStorage.getItem("FOOD_RANDOM");
     if (savedFood) {
@@ -83,10 +90,9 @@ function InfoSection() {
     } else {
       handleRandomFood();
     }
-    toast.success("Lưu thành công!"); // Show toast
-    setIsDialogOpen(false); // Close dialog
   };
 
+  // Handle province change and load districts
   const handleProvinceChange = (e) => {
     const selectedProvince = e.target.value;
     setProvince(selectedProvince);
@@ -95,6 +101,7 @@ function InfoSection() {
     setDistricts(provinceData ? provinceData.Districts : []);
   };
 
+  // Clear filters and reset state
   const handleClear = () => {
     setMinPrice(0);
     setMaxPrice(1000000);
@@ -108,10 +115,31 @@ function InfoSection() {
     fetchShops();
   };
 
+  // Function to reset the component state
+  const handleReset = () => {
+    // Clear localStorage items
+    localStorage.removeItem("FOOD_RANDOM");
+    localStorage.removeItem("SHOP_FILTER");
+
+    // Reset state variables
+    setMinPrice(0);
+    setMaxPrice(1000000);
+    setProvince("");
+    setDistrict("");
+    setDistricts([]);
+    setFilteredShops([]);
+    setRandomFood("");
+
+    // Re-fetch shops
+    fetchShops();
+  };
+
+  // Load saved data from localStorage on mount
   useEffect(() => {
     fetchShops();
   }, [fetchShops]);
 
+  // Apply filters when shops data changes
   useEffect(() => {
     const savedFood = localStorage.getItem("FOOD_RANDOM");
     const savedFilter = JSON.parse(localStorage.getItem("SHOP_FILTER"));
@@ -120,9 +148,9 @@ function InfoSection() {
       if (savedFilter) {
         setMinPrice(savedFilter.minPrice);
         setMaxPrice(savedFilter.maxPrice);
-        setProvince(savedFilter.province);
-        setDistrict(savedFilter.district);
-        applyFilters(savedFood, savedFilter.minPrice, savedFilter.maxPrice, savedFilter.province, savedFilter.district);
+        setProvince(savedFilter.province || "");
+        setDistrict(savedFilter.district || "");
+        applyFilters(savedFood, savedFilter.minPrice, savedFilter.maxPrice, savedFilter.province || "", savedFilter.district || "");
       } else {
         applyFilters(savedFood, minPrice, maxPrice, province, district);
       }
@@ -131,9 +159,8 @@ function InfoSection() {
 
   return (
     <div className="flex flex-col max-w-full w-[1560px] items-center">
-      <Toaster position="top-center" reverseOrder={false} /> {/* Toast component */}
       <div className="w-full flex justify-center items-center mt-12 gap-10">
-        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <Dialog>
           <DialogTrigger asChild>
             <Button variant="outline">Tùy chỉnh</Button>
           </DialogTrigger>
@@ -150,10 +177,31 @@ function InfoSection() {
                 </div>
                 <div className="flex flex-col gap-6 w-3/4">
                   <div className="flex gap-6">
-                    <input type="number" value={minPrice} onChange={(e) => setMinPrice(parseInt(e.target.value) || 0)} className="border px-3 py-1.5" />
-                    <input type="number" value={maxPrice} onChange={(e) => setMaxPrice(parseInt(e.target.value) || 1000000)} className="border px-3 py-1.5" />
+                    <div className="flex items-center px-3 py-1.5 rounded border border-gray-200 bg-white shadow-sm">
+                      <input
+                        type="number"
+                        value={minPrice}
+                        onChange={(e) => setMinPrice(parseInt(e.target.value) || 0)}
+                        min="0"
+                        max="1000000"
+                        className="bg-transparent border-none focus:outline-none text-sm text-center"
+                      />
+                    </div>
+                    <div className="flex items-center px-3 py-1.5 rounded border border-gray-200 bg-white shadow-sm">
+                      <input
+                        type="number"
+                        value={maxPrice}
+                        onChange={(e) => setMaxPrice(parseInt(e.target.value) || 1000000)}
+                        max="1000000"
+                        className="bg-transparent border-none focus:outline-none text-sm text-center"
+                      />
+                    </div>
                   </div>
-                  <select value={province} onChange={handleProvinceChange} className="border px-3 py-1.5">
+                  <select
+                    value={province}
+                    onChange={handleProvinceChange}
+                    className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center"
+                  >
                     <option value="">Chọn Tỉnh/Thành phố</option>
                     {address.map((prov) => (
                       <option key={prov.Name} value={prov.Name}>
@@ -161,7 +209,12 @@ function InfoSection() {
                       </option>
                     ))}
                   </select>
-                  <select value={district} onChange={(e) => setDistrict(e.target.value)} className="border px-3 py-1.5" disabled={!province}>
+                  <select
+                    value={district}
+                    onChange={(e) => setDistrict(e.target.value)}
+                    className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center"
+                    disabled={!province}
+                  >
                     <option value="">Chọn Quận/Huyện</option>
                     {districts.map((dist) => (
                       <option key={dist.Name} value={dist.Name}>
@@ -187,7 +240,13 @@ function InfoSection() {
         </Button>
       </div>
       <div className="w-full h-full mt-6">
-        {loading ? <p>Loading shops...</p> : randomFood && filteredShops.length > 0 ? <AdvancedShopCard foodName={randomFood} shops={filteredShops} /> : <p>Không có cửa hàng nào phù hợp.</p>}
+        {loading ? (
+          <p>Loading shops...</p>
+        ) : randomFood && filteredShops.length > 0 ? (
+          <AdvancedShopCard foodName={randomFood} shops={filteredShops} onReset={handleReset} />
+        ) : (
+          <p>Không có cửa hàng nào phù hợp.</p>
+        )}
       </div>
     </div>
   );
