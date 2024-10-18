@@ -31,3 +31,4 @@ dist-ssr
 *.sw?
 
 src/api/domain.js
+src/api/domain.js
