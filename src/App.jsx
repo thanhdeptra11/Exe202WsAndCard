@@ -33,6 +33,7 @@ import AdminLayout from "./pages/WebsiteVersion/admin/AdminLayout";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useSelector } from "react-redux";
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -80,6 +81,9 @@ function App() {
     return <AdminLayout />;
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn); // Lấy trạng thái đăng nhập từ Redux
+
   return (
     <>
       {/* Conditional rendering for Header and BottomBar */}
@@ -105,8 +109,10 @@ function App() {
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<HomeWeb />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/menu" element={<Menu />} />
-              <Route path="/favorites" element={<Favorites />} />
+              {/* Protected Route */}
+              <Route path="/menu" element={isLoggedIn ? <Menu /> : <Navigate to="/login" />} />
+              <Route path="/favorites" element={isLoggedIn ? <Favorites /> : <Navigate to="/login" />} />
+
               <Route path="/detail/:id" element={<ProductDetail />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/contact" element={<Contact />} />
@@ -116,13 +122,11 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />
-
               {/* Admin route */}
               <Route element={<AdminLayout />}>
                 <Route path="/admin/shop" element={<AdminShop />} />
                 <Route path="/admin/users" element={<AdminUser />} />
               </Route>
-
               {/* Catch-all route to render the 404 NotFoundPage */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
