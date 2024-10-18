@@ -10,33 +10,17 @@ function InfoSection() {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000000);
   const [province, setProvince] = useState("");
-  const [city, setCity] = useState("");
   const [district, setDistrict] = useState("");
-  const [cities, setCities] = useState([]);
   const [districts, setDistricts] = useState([]);
   const [randomFood, setRandomFood] = useState("");
 
   const handleProvinceChange = (e) => {
     const selectedProvince = e.target.value;
     setProvince(selectedProvince);
-    setCity("");
     setDistrict("");
     const provinceData = address.find((prov) => prov.Name === selectedProvince);
     if (provinceData) {
-      setCities(provinceData.Districts);
-    } else {
-      setCities([]);
-    }
-    setDistricts([]);
-  };
-
-  const handleCityChange = (e) => {
-    const selectedCity = e.target.value;
-    setCity(selectedCity);
-    setDistrict("");
-    const cityData = cities.find((dist) => dist.Name === selectedCity);
-    if (cityData) {
-      setDistricts(cityData.Wards);
+      setDistricts(provinceData.Districts);
     } else {
       setDistricts([]);
     }
@@ -44,13 +28,12 @@ function InfoSection() {
 
   const handleMinPriceChange = (e) => setMinPrice(e.target.value);
   const handleMaxPriceChange = (e) => setMaxPrice(e.target.value);
+
   const handleClear = () => {
     setMinPrice(0);
     setMaxPrice(1000000);
     setProvince("");
-    setCity("");
     setDistrict("");
-    setCities([]);
     setDistricts([]);
   };
 
@@ -58,8 +41,14 @@ function InfoSection() {
     const randomFoodIndex = Math.floor(Math.random() * food.length);
     const selectedFood = food[randomFoodIndex];
     setRandomFood(selectedFood);
-    const fullAddress = `${district} - ${city} - ${province}`;
-    console.log({ minPrice, maxPrice, fullAddress, selectedFood });
+
+    console.log({
+      minPrice,
+      maxPrice,
+      province,
+      district,
+      selectedFood,
+    });
   };
 
   return (
@@ -114,7 +103,7 @@ function InfoSection() {
                       </div>
                     </div>
 
-                    {/* Input fields for Vị trí (Stacked in a vertical column) */}
+                    {/* Input fields for Vị trí */}
                     <div className="flex flex-col gap-4">
                       <select
                         value={province}
@@ -130,26 +119,12 @@ function InfoSection() {
                       </select>
 
                       <select
-                        value={city}
-                        onChange={handleCityChange}
+                        value={district}
+                        onChange={(e) => setDistrict(e.target.value)}
                         className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center"
                         disabled={!province}
                       >
                         <option value="">Chọn Quận/Huyện</option>
-                        {cities.map((city) => (
-                          <option key={city.Name} value={city.Name}>
-                            {city.Name}
-                          </option>
-                        ))}
-                      </select>
-
-                      <select
-                        value={district}
-                        onChange={(e) => setDistrict(e.target.value)}
-                        className="px-3 py-1.5 bg-transparent rounded border border-gray-200 bg-white shadow-sm focus:outline-none text-sm text-center"
-                        disabled={!city}
-                      >
-                        <option value="">Chọn Phường/Xã</option>
                         {districts.map((dist) => (
                           <option key={dist.Name} value={dist.Name}>
                             {dist.Name}

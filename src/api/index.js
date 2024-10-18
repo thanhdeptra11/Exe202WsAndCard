@@ -4,7 +4,6 @@
 import domain from "./domain";
 
 // Authentication API calls
-
 const AUTH_LOGIN = `${domain}/auth/login`;
 const AUTH_REGISTER = `${domain}/auth/register`;
 const AUTH_LOGOUT = `${domain}/auth/logout`;
