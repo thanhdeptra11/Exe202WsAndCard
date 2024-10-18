@@ -74,7 +74,6 @@ function InfoSection() {
                     <label className="text-lg font-semibold">Khoảng giá</label>
                     <label className="text-lg font-semibold">Vị trí</label>
                   </div>
-
                   {/* Right Column (Inputs) */}
                   <div className="flex flex-col gap-6 w-3/4">
                     {/* Input fields for Khoảng giá */}
