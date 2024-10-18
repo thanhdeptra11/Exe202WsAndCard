@@ -110,8 +110,10 @@ function App() {
               <Route path="/home" element={<HomeWeb />} />
               <Route path="/blog" element={<Blog />} />
               {/* Protected Route */}
-              <Route path="/menu" element={isLoggedIn ? <Menu /> : <Navigate to="/login" />} />
-              <Route path="/favorites" element={isLoggedIn ? <Favorites /> : <Navigate to="/login" />} />
+              {/* <Route path="/menu" element={isLoggedIn ? <Menu /> : <Navigate to="/login" />} />
+              <Route path="/favorites" element={isLoggedIn ? <Favorites /> : <Navigate to="/login" />} /> */}
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/favorites" element={<Favorites />} />
 
               <Route path="/detail/:id" element={<ProductDetail />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
