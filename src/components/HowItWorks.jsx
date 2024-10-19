@@ -1,22 +1,24 @@
 import React from "react";
 import WorkStep from "./WorkStep";
-
+import step1Image from "../assets/1.png";
+import step2Image from "../assets/2.png";
+import step3Image from "../assets/3.png";
 function HowItWorks() {
   const steps = [
     {
       title: "GỢI Ý",
       description: "Không biết nên ăn gì cho bữa sáng, trưa, chiều hay tối? Chọn giá và khoảng cách, hệ thống sẽ gợi ý món ngon. Không thích? Quẹt tiếp để tìm món khác!",
-      image: "https://cdn.builder.io/api/v1/image/assets/TEMP/6a50edfc17016d553a9a6cf1e2e1bd993c2c81b5f3b4288586f160ef41433b45?apiKey=ff22ebd9af3b40868bf46ef63076972a&",
+      image: step1Image, // Local image for step 1
     },
     {
       title: "LỰA CHỌN CỬA HÀNG",
       description: "Tìm được món ăn yêu thích? Nhập tên món, chọn cửa hàng gần nhất và đến ngay để thưởng thức!",
-      image: "https://cdn.builder.io/api/v1/image/assets/TEMP/eb8d3d6511fa4c2f5c660e5845e90bca04b659900c951c95b218afe869fcf96c?apiKey=ff22ebd9af3b40868bf46ef63076972a&",
+      image: step2Image, // Local image for step 2
     },
     {
       title: "ĐÁNH GIÁ NHÀ HÀNG",
       description: "Sau khi trải nghiệm xong, hãy để lại đánh giá cho cửa hàng để giúp những người khác dễ dàng tìm được món ngon & cửa hàng tốt như bạn!",
-      image: "https://cdn.builder.io/api/v1/image/assets/TEMP/77ed77b45c2f532e305af3564780ba0f56ecd07a40587924d0aa2a68723a3e29?apiKey=ff22ebd9af3b40868bf46ef63076972a&",
+      image: step3Image, // Local image for step 3
     },
   ];
 
