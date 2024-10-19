@@ -5,15 +5,18 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const QRComponent = (props) => {
-  const { total, uuid, name, time, origin, discount, percentDiscount, benefits } = props;
+  const { total, initialUuid, name, time, origin, discount, percentDiscount, benefits } = props;
+  const [uuid, setUuid] = useState(initialUuid); // Dùng state để lưu uuid cố định
+
   const bank = {
     BANK_ID: "VietinBank",
     ACCOUNT_NO: "108874842372",
     TEMPLATE: "compact2",
     AMOUNT: total,
-    DESCRIPTION: "Foodtripvn " + uuid,
+    DESCRIPTION: uuid,
     ACCOUNT_NAME: "FOODTRIPVNS",
   };
+  console.log("uuid: " + bank.DESCRIPTION);
   const api_get = "https://oauth.casso.vn/v2/transactions?sort=DESC";
   const CASSO_API_KEY = "AK_CS.d5c89350837c11ef92ba87773ecade6b.HflxXnpeVAQ6VtEve6U9549eI0r7AMYZ9YyABLBXrfi3KIcCmJmRxrFfiz5AeiQjpfwyeHSO";
 
@@ -33,11 +36,12 @@ const QRComponent = (props) => {
       });
       const jsonData = await res.json();
       setData(jsonData);
-
       jsonData.data.records.forEach((trans) => {
         if (Math.floor(trans.amount) >= Math.floor(total) && trans.description.includes(uuid.replace(/-/g, ""))) {
           setIsPaid(true);
-          saveOrder();
+          console.log("thanh toan xong");
+          navigate("/success-payment");
+        //   saveOrder();
           return;
         }
       });

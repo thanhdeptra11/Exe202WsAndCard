@@ -21,7 +21,7 @@ function HowItWorks() {
   ];
 
   return (
-    <div className="mt-28">
+    <div className="mt-10">
       <h2 className="flex justify-center text-lg font-medium text-red-400">HƯỚNG DẪN THAO TÁC</h2>
       <h3 className="flex justify-center text-4xl mt-4 font-bold text-black max-md:max-w-full">Hãy để chúng tôi giúp bạn chọn món.</h3>
 

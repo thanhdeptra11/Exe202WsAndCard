@@ -30,3 +30,6 @@ dist-ssr
 *.sln
 *.sw?
 
+src/api/domain.js
+src/api/domain.js
+domain.js
