@@ -94,3 +94,13 @@ Dưới đây là các mã trạng thái HTTP thông dụng được sử dụng
 6. **Liên hệ**: Giúp đảm bảo rằng người dùng biết cách nhận hỗ trợ nếu gặp vấn đề.
 
 Nếu bạn cần thêm bất kỳ chỉnh sửa hoặc bổ sung nào, hãy cho mình biết!
+
+---
+
+### Todo
+
+- navigate user qua login nếu họ chưa login, chặn không cho vào ăn gì, yêu thích - check local storage xem có thong tin user dưới đó không ấy.
+- thêm chức năng swipe cứ 10 card shop thì cho hiển thị 1 thẻ card hiển thị là quảng cáo
+- thêm pop up khi vào home sẽ hiện 1 quảng cáo
+- tạo 1 biến RANDOM_COUNT để mỗi lần người dùng chọn "nhận món ăn" => save / tăng RANDOM_COUNT thêm 1 vào localStorage => nếu count là 5,10,15,20,25,... lần thì show 1 pop up quảng cáo
+- lôi các shop yêu thích từ biến "FAVORITE_SHOPS" trong localStorage lên side yêu thích + tab yêu thích
