@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+import { Routes, Route, Navigate, useLocation, Outlet } from "react-router-dom";
+import { Toaster, toast } from "react-hot-toast"; // Import toast
 import Header from "./components/Header";
 import BottomBar from "./components/BottomBar";
 import Footer from "./components/Footer";
@@ -24,24 +24,22 @@ import backgroundImage from "./assets/beams.jpg";
 import backToTopSVG from "./assets/arrow-up-svgrepo-com-hihi.svg";
 import FavoriteSideBar from "./pages/WebsiteVersion/FavoriteSideBar";
 import { DialogTitle } from "@radix-ui/react-dialog";
-
-//import admin pages
+// Import các trang quản trị
 import AdminDashboard from "./pages/WebsiteVersion/admin/AdminDashboard";
 import AdminShop from "./pages/WebsiteVersion/admin/AdminShop";
 import AdminUser from "./pages/WebsiteVersion/admin/AdminUser";
 import AdminLayout from "./pages/WebsiteVersion/admin/AdminLayout";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useSelector } from "react-redux";
+
 function App() {
   const [isMobile, setIsMobile] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [userRole, setUserRole] = useState(null);
-  const location = useLocation();
+  // const location = useLocation();
 
-  // Fetch user role from localStorage on mount
+  // Lấy thông tin vai trò người dùng từ localStorage khi component mount
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
@@ -50,16 +48,20 @@ function App() {
     }
   }, []);
 
-  // Handle screen size change
+  // Xử lý thay đổi kích thước màn hình
   const handleResize = () => setIsMobile(window.innerWidth <= 640);
 
-  // Handle scroll event to add shadow on scroll and show scroll button
+  // Xử lý sự kiện cuộn trang để thêm hiệu ứng và hiển thị nút cuộn lên
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 0);
     setShowScrollButton(window.scrollY > 300);
   };
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () =>
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -72,25 +74,34 @@ function App() {
     };
   }, []);
 
-  // Check if the current path is /login or /register
+  // Kiểm tra xem đường dẫn hiện tại có phải là /login hoặc /register không
   const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
   const isAdminPage = location.pathname.startsWith("/admin");
 
-  // Render only AdminDashboard for admin pages
+  // Nếu là trang quản trị và người dùng là admin, render AdminLayout
   if (isAdminPage && userRole === "admin") {
     return <AdminLayout />;
   }
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn); // Lấy trạng thái đăng nhập từ Redux
+  // Component PrivateRoute để bảo vệ các route cần đăng nhập
+  const PrivateRoute = ({ element: Component }) => {
+    const storedUser = localStorage.getItem("user");
+
+    if (storedUser) {
+      return <Component />;
+    } else {
+      // Hiển thị thông báo toast
+      toast.error("Bạn cần đăng nhập");
+      return <Navigate to="/login" />;
+    }
+  };
 
   return (
     <>
-      {/* Conditional rendering for Header and BottomBar */}
+      {/* Hiển thị Header và BottomBar theo điều kiện */}
       {!isMobile && !isAuthPage && <Header isScrolled={isScrolled} />}
       {!isAuthPage && isMobile && <BottomBar />}
-
-      {/* Main content section with background image */}
+      {/* Phần nội dung chính với hình nền */}
       <div
         style={{
           backgroundImage: `url(${backgroundImage})`,
@@ -104,42 +115,37 @@ function App() {
           <HomeMobile />
         ) : (
           <>
-            <Toaster />
+            <Toaster /> {/* Đảm bảo Toaster được render */}
             <Routes>
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={<HomeWeb />} />
               <Route path="/blog" element={<Blog />} />
-              {/* Protected Route */}
-              {/* <Route path="/menu" element={isLoggedIn ? <Menu /> : <Navigate to="/login" />} />
-              <Route path="/favorites" element={isLoggedIn ? <Favorites /> : <Navigate to="/login" />} /> */}
-              <Route path="/menu" element={<Menu />} />
-              <Route path="/favorites" element={<Favorites />} />
-
+              <Route path="/contact" element={<Contact />} />
               <Route path="/detail/:id" element={<ProductDetail />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
-              <Route path="/contact" element={<Contact />} />
               <Route path="/qr" element={<QRPage />} />
               <Route path="/success-payment" element={<SuccessPayment />} />
-              {/* Authentication routes */}
+              {/* Các route yêu cầu đăng nhập */}
+              <Route path="/menu" element={<PrivateRoute element={Menu} />} />
+              <Route path="/favorites" element={<PrivateRoute element={Favorites} />} />
+              {/* Các route xác thực */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />
-              {/* Admin route */}
+              {/* Route quản trị */}
               <Route element={<AdminLayout />}>
                 <Route path="/admin/shop" element={<AdminShop />} />
                 <Route path="/admin/users" element={<AdminUser />} />
               </Route>
-              {/* Catch-all route to render the 404 NotFoundPage */}
+              {/* Route bắt tất cả để hiển thị trang 404 */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </>
         )}
       </div>
-
-      {/* Footer should only be rendered if not on mobile and not on login/register pages */}
+      {/* Footer chỉ hiển thị khi không phải trên mobile và không ở trang login/register */}
       {!isMobile && !isAuthPage && <Footer />}
-
-      {/* Floating Button to Open Sheet */}
+      {/* Nút nổi để mở Sheet */}
       <div className="fixed top-1/2 right-5 transform -translate-y-1/2">
         <Sheet>
           <SheetTrigger asChild>
@@ -154,8 +160,7 @@ function App() {
           </SheetContent>
         </Sheet>
       </div>
-
-      {/* Scroll to Top Button */}
+      {/* Nút cuộn lên đầu trang */}
       {showScrollButton && (
         <button onClick={scrollToTop} className="fixed bottom-5 right-5 bg-blue-500 text-white px-4 py-4 rounded-full shadow-2xl hover:bg-blue-700 transition duration-300">
           <img src={backToTopSVG} alt="Back to Top" style={{ width: "1.5rem", height: "1.5rem" }} />
