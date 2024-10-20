@@ -19,6 +19,7 @@ import NotFoundPage from "./pages/WebsiteVersion/NotFoundPage";
 import { Sheet, SheetContent, SheetDescription, SheetTrigger } from "@/components/ui/sheet";
 import QRPage from "./pages/WebsiteVersion/QRPage";
 import SuccessPayment from "./components/SuccessPayment";
+import FailurePayment from "./components/FailurePayment";
 import BlogDetail from "./pages/WebsiteVersion/BlogDetail";
 import backgroundImage from "./assets/beams.jpg";
 import backToTopSVG from "./assets/arrow-up-svgrepo-com-hihi.svg";
@@ -129,6 +130,11 @@ function App() {
               <Route path="/menu" element={<PrivateRoute element={Menu} />} />
               <Route path="/favorites" element={<PrivateRoute element={Favorites} />} />
               {/* Các route xác thực */}
+
+              <Route path="/fail-payment" element={<FailurePayment />} />
+
+              {/* Authentication routes */}
+
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/forgetpassword" element={<ForgetPassword />} />

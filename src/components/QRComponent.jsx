@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const QRComponent = (props) => {
   const { total, initialUuid, name, time, origin, discount, percentDiscount, benefits } = props;
-  const [uuid, setUuid] = useState(initialUuid); // Dùng state để lưu uuid cố định
+  const [uuid, setUuid] = useState(initialUuid);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
+  // Đường dẫn API
+  // let domain = "http://localhost:9999/api";
+  let domain = "https://foodtrip-server.onrender.com/api";
+
+  const api_get = "https://oauth.casso.vn/v2/transactions?sort=DESC";
+  const CASSO_API_KEY = "AK_CS.d5c89350837c11ef92ba87773ecade6b.HflxXnpeVAQ6VtEve6U9549eI0r7AMYZ9YyABLBXrfi3KIcCmJmRxrFfiz5AeiQjpfwyeHSO";
+
+  // Thông tin ngân hàng
   const bank = {
     BANK_ID: "VietinBank",
     ACCOUNT_NO: "108874842372",
@@ -16,15 +24,25 @@ const QRComponent = (props) => {
     DESCRIPTION: uuid,
     ACCOUNT_NAME: "FOODTRIPVNS",
   };
-  console.log("uuid: " + bank.DESCRIPTION);
-  const api_get = "https://oauth.casso.vn/v2/transactions?sort=DESC";
-  const CASSO_API_KEY = "AK_CS.d5c89350837c11ef92ba87773ecade6b.HflxXnpeVAQ6VtEve6U9549eI0r7AMYZ9YyABLBXrfi3KIcCmJmRxrFfiz5AeiQjpfwyeHSO";
 
-  const navigate = useNavigate();
-
+  // Các state
   const [data, setData] = useState({});
   const [isPaid, setIsPaid] = useState(false);
   const [userInfo, setUserInfo] = useState({ email: "", supportContent: "" });
+
+  // Lấy dữ liệu người dùng từ local storage
+  useEffect(() => {
+    const storedUserData = localStorage.getItem('user');
+    if (storedUserData) {
+      try {
+        const parsedUser = JSON.parse(storedUserData);
+        setUser(parsedUser);
+      } catch (error) {
+        console.error("Error parsing user data:", error);
+      }
+    }
+  }, []);
+  
 
   const fetchData = async () => {
     try {
@@ -36,12 +54,13 @@ const QRComponent = (props) => {
       });
       const jsonData = await res.json();
       setData(jsonData);
+
+      // Kiểm tra các giao dịch
       jsonData.data.records.forEach((trans) => {
         if (Math.floor(trans.amount) >= Math.floor(total) && trans.description.includes(uuid.replace(/-/g, ""))) {
           setIsPaid(true);
-          console.log("thanh toan xong");
-          navigate("/success-payment");
-        //   saveOrder();
+          console.log(user)
+          saveOrder();
           return;
         }
       });
@@ -51,28 +70,55 @@ const QRComponent = (props) => {
   };
 
   useEffect(() => {
-    fetchData();
     window.scrollTo(0, 0); // Cuộn trang lên đầu khi trang được tải
 
+    const fetchDataIfUserExists = async () => {
+      if (user) {
+        await fetchData();
+      }
+    };
+  
+    fetchDataIfUserExists();
     const intervalId = setInterval(() => {
-      fetchData();
+      if (user) {
+        fetchData();
+      }
     }, 3000);
-
+  
     return () => clearInterval(intervalId);
-  }, []);
+  }, [user]);
+  
 
   const saveOrder = async () => {
-    const orderData = { userInfo };
+    if (!user) {
+      console.error("User is not available. Cannot create order.");
+      return; // Dừng hàm nếu không có user data
+    }
+    if (!user.data) {
+      console.error("User data is not available. Cannot create order.");
+      return; // Dừng hàm nếu không có user data
+    }
+
+    const orderData = {
+      userId: user.data._id, // Sử dụng _id từ user
+      total: total,
+      time: time,
+      transactionNo: uuid,
+    };
+    console.log(orderData);
+
     axios
-      .post("http://localhost:5173/order", orderData)
+      .post(`${domain}/bill/save-order`, orderData)
       .then((res) => {
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+        if (res.status === 200) {
+          setTimeout(() => {
+            navigate("/success-payment");
+          }, 2000);
+        }
       })
       .catch((error) => {
         console.log("saveOrder error:", error);
-        toast.error("Có lỗi gì đó đã xảy ra!😭\nVui lòng liên hệ admin qua facebook/zalo/sdt");
+        navigate("/fail-payment");
       });
   };
 
@@ -86,15 +132,15 @@ const QRComponent = (props) => {
         {`
           .qr-code {
             flex: 1;
-            max-width: 50%; /* Adjust the width */
-            padding: 10px; /* Adjust the padding */
+            max-width: 50%;
+            padding: 10px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
           }
           .user-form {
             display: flex;
-            flex-direction: row; /* Set to row to display content side by side */
+            flex-direction: row;
             justify-content: space-between;
             gap: 20px;
             padding: 20px;
@@ -160,7 +206,6 @@ const QRComponent = (props) => {
         />
       </div>
       <div className="user-form">
-        
         <div className="benefits-section">
           <h2>Bạn sẽ nhận được gì khi mua gói thành viên?</h2>
           <ul>
@@ -174,16 +219,16 @@ const QRComponent = (props) => {
           <div className="payment-details">
             <p>Tên gói: {name}</p>
             <p>Gói: {time} tháng</p>
-            <p>Giá gốc: {formatAmount(origin)}VND</p>
+            <p>Giá gốc: {formatAmount(origin)} VND</p>
           </div>
           <div className="payment-details">
             <p>Tổng phụ</p>
             <p>Gói Giảm giá -{percentDiscount}</p>
-            <p>-{formatAmount(discount)}VND</p>
+            <p>-{formatAmount(discount)} VND</p>
           </div>
           <div className="payment-details">
             <p>Ước tính tổng</p>
-            <p>{formatAmount(bank.AMOUNT)}VND</p>
+            <p>{formatAmount(bank.AMOUNT)} VND</p>
           </div>
           <div className="payment-details">
             <p>Thời gian hiệu lực</p>
@@ -204,9 +249,11 @@ const styles = {
     borderRadius: "10px",
   },
 };
+
 const formatAmount = (amount) => {
   return new Intl.NumberFormat("de-DE").format(amount);
 };
+
 const calculateExpiryDate = (months) => {
   const currentDate = new Date();
   const startDate = currentDate.toLocaleDateString('vi-VN');
@@ -214,4 +261,5 @@ const calculateExpiryDate = (months) => {
   const endDate = currentDate.toLocaleDateString('vi-VN');
   return `${startDate} - ${endDate}`;
 };
+
 export default QRComponent;
