@@ -66,9 +66,13 @@ function Header({ isScrolled }) {
     localStorage.removeItem("IS_PREMIUM_USER");
     localStorage.removeItem("PREMIUM_PACK");
     localStorage.removeItem("NGAY_DANG_KY");
+    localStorage.removeItem("FAVORITE_SHOPS");
+
     dispatch(logout());
     setUser(null);
     toast.success("Đăng xuất thành công");
+    //chuyeern huowngs ve hoem
+    window.location.href = "/";
   };
 
   return (
