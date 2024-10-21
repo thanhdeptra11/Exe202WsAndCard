@@ -1,7 +1,15 @@
 import React, { useEffect } from "react";
-import beamsImage from '/src/assets/beams.jpg'; // Nhập ảnh
+
+import beamsImage from "/src/assets/beams.jpg"; // Nhập ảnh
 
 const SuccessPayment = () => {
+  useEffect(() => {
+    const time = setTimeout(() => {
+      window.location.href = "/"; // Redirect về trang chủ sau 2s
+    }, 4000);
+    return () => clearTimeout(time);
+  });
+
   return (
     <div style={styles.container}>
       <div style={styles.circle}>
@@ -53,7 +61,7 @@ const styles = {
     stroke: "#EF4444", // Màu dấu checkmark (trắng)
     strokeWidth: "5",
     strokeDasharray: "100", // Tăng độ dài để cho phép mượt mà hơn
-    strokeDashoffset: "100", 
+    strokeDashoffset: "100",
     strokeLinecap: "round", // Đầu nét tròn để mượt hơn
     animation: "drawCheckmark 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards",
     animationDelay: "0.9s", // Đồng bộ với hình tròn
