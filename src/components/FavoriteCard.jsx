@@ -64,7 +64,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function FavoriteCard({ name, rating, imageUrl, address, minPrice, maxPrice }) {
+function FavoriteCard({ name, rating, imageUrl, address, minPrice, maxPrice, email, phone, social, menu, reviews }) {
   const navigate = useNavigate();
 
   const handleAddToCart = (e) => {
@@ -76,9 +76,12 @@ function FavoriteCard({ name, rating, imageUrl, address, minPrice, maxPrice }) {
 
   // Tính toán khoảng giá
   const priceRange = `${minPrice.toLocaleString()} - ${maxPrice.toLocaleString()} đ`;
+  const handleCardClick = () => {
+    navigate(`/detail/${name}`, { state: { name, rating, imageUrl, address, minPrice, maxPrice, email, phone, social, menu, reviews } });
+  };
 
   return (
-    <div className="cursor-pointer transform transition-transform duration-300 hover:scale-105 flex flex-col" onClick={() => navigate(`/detail/${name}`, { state: { name } })}>
+    <div className="cursor-pointer transform transition-transform duration-300 hover:scale-105 flex flex-col" onClick={handleCardClick}>
       <div className="bg-white rounded-lg overflow-hidden flex flex-col h-full ring-1 ring-gray-300 hover:ring-2 hover:ring-red-400 transform duration-200 hover:shadow-sky-200 hover:shadow-md">
         {/* Hình Ảnh Sản Phẩm */}
         <div className="relative">
