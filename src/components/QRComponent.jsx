@@ -32,7 +32,7 @@ const QRComponent = (props) => {
 
   // Lấy dữ liệu người dùng từ local storage
   useEffect(() => {
-    const storedUserData = localStorage.getItem('user');
+    const storedUserData = localStorage.getItem("user");
     if (storedUserData) {
       try {
         const parsedUser = JSON.parse(storedUserData);
@@ -42,7 +42,6 @@ const QRComponent = (props) => {
       }
     }
   }, []);
-  
 
   const fetchData = async () => {
     try {
@@ -59,7 +58,7 @@ const QRComponent = (props) => {
       jsonData.data.records.forEach((trans) => {
         if (Math.floor(trans.amount) >= Math.floor(total) && trans.description.includes(uuid.replace(/-/g, ""))) {
           setIsPaid(true);
-          console.log(user)
+          // console.log(user);
           saveOrder();
           return;
         }
@@ -77,17 +76,16 @@ const QRComponent = (props) => {
         await fetchData();
       }
     };
-  
+
     fetchDataIfUserExists();
     const intervalId = setInterval(() => {
       if (user) {
         fetchData();
       }
     }, 3000);
-  
+
     return () => clearInterval(intervalId);
   }, [user]);
-  
 
   const saveOrder = async () => {
     if (!user) {
@@ -105,12 +103,16 @@ const QRComponent = (props) => {
       time: time,
       transactionNo: uuid,
     };
-    console.log(orderData);
+    // console.log(orderData);
 
     axios
       .post(`${domain}/bill/save-order`, orderData)
       .then((res) => {
         if (res.status === 200) {
+          // Lưu thông tin đăng ký vào localStorage sau khi thanh toán thành công
+          localStorage.setItem("IS_PREMIUM_USER", JSON.stringify(true));
+          localStorage.setItem("PREMIUM_PACK", JSON.stringify(time)); // Lưu số tháng
+
           setTimeout(() => {
             navigate("/success-payment");
           }, 2000);
@@ -256,9 +258,9 @@ const formatAmount = (amount) => {
 
 const calculateExpiryDate = (months) => {
   const currentDate = new Date();
-  const startDate = currentDate.toLocaleDateString('vi-VN');
+  const startDate = currentDate.toLocaleDateString("vi-VN");
   currentDate.setMonth(currentDate.getMonth() + months);
-  const endDate = currentDate.toLocaleDateString('vi-VN');
+  const endDate = currentDate.toLocaleDateString("vi-VN");
   return `${startDate} - ${endDate}`;
 };
 
