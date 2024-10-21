@@ -33,6 +33,7 @@ const QRComponent = (props) => {
   // Lấy dữ liệu người dùng từ local storage
   useEffect(() => {
     const storedUserData = localStorage.getItem("user");
+    console.log(storedUserData);
     if (storedUserData) {
       try {
         const parsedUser = JSON.parse(storedUserData);
@@ -113,9 +114,9 @@ const QRComponent = (props) => {
           localStorage.setItem("IS_PREMIUM_USER", JSON.stringify(true));
           localStorage.setItem("PREMIUM_PACK", JSON.stringify(time)); // Lưu số tháng
 
-          setTimeout(() => {
-            navigate("/success-payment");
-          }, 2000);
+          navigate("/success-payment");
+          // setTimeout(() => {
+          // }, 2000);
         }
       })
       .catch((error) => {
