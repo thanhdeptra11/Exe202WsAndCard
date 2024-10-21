@@ -2,6 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Link } from "react-router-dom";
 
 const colorClasses = [
   "bg-gray-50 text-gray-600 ring-gray-500/10",
@@ -109,7 +110,8 @@ const BlogSlider = () => {
           <Slider {...settings}>
             {posts2.map((post) => (
               <div key={post.id} className="p-3 w-[500px]">
-                <div
+                <Link
+                  to={`/blog/${post.id}`}
                   className="group animate-in zoom-in ring-1 rounded flex flex-col justify-between p-6 bg-white hover:ring-2 ring-gray-300 hover:ring-red-400 transition duration-200 hover:shadow-md"
                   style={{ minHeight: "450px", height: "450px", cursor: "pointer" }}
                 >
@@ -140,7 +142,7 @@ const BlogSlider = () => {
                       {post.tags.length > 3 && <span className="inline-flex items-center rounded-md px-2 py-1 text-xs font-medium text-gray-500">...</span>}
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </Slider>
