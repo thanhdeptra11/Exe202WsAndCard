@@ -122,7 +122,7 @@ function App() {
               <Route path="/home" element={<HomeWeb />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/detail/:id" element={<ProductDetail />} />
+              <Route path="/detail/:name" element={<ProductDetail />} />
               <Route path="/blog/:id" element={<BlogDetail />} />
               <Route path="/qr" element={<QRPage />} />
               <Route path="/success-payment" element={<SuccessPayment />} />
