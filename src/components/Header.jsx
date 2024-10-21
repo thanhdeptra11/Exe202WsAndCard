@@ -71,7 +71,7 @@ function Header({ isScrolled }) {
     dispatch(logout());
     setUser(null);
     toast.success("Đăng xuất thành công");
-    //chuyeern huowngs ve hoem
+
     window.location.href = "/";
   };
 
