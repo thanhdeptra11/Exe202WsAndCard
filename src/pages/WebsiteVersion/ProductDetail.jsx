@@ -1,12 +1,21 @@
-import React from "react";
+import RatingForm from "@/components/RatingForm";
+import React, { useEffect, useState } from "react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { SiShopee, SiGrab } from "react-icons/si";
 import { useLocation } from "react-router-dom";
 
 function ProductDetail() {
   const location = useLocation();
-  const { name, rating, imageUrl, address, minPrice, maxPrice, email, phone, social, menu, reviews } = location.state || {};
-
+  const { _id, name, rating, imageUrl, address, minPrice, maxPrice, email, phone, social, menu, reviews } = location.state || {};
+  const [reviewList, setReviewList] = useState(reviews.reviewDetail);
+  const [hasReviewed, setHasReviewed] = useState(false);
+  const addReview = (newReview) => {
+    setReviewList((prevReviewList) => [...prevReviewList, newReview]);
+    const reviewedShops = JSON.parse(localStorage.getItem("SHOP_REVIEWED_KEY")) || [];
+    reviewedShops.push(_id);
+    localStorage.setItem("SHOP_REVIEWED_KEY", JSON.stringify(reviewedShops));
+    setHasReviewed(true); // Hide comment section after adding a review
+  };
   if (!name) {
     return <div>Không có thông tin chi tiết</div>;
   }
@@ -19,6 +28,19 @@ function ProductDetail() {
     const query = `${location.specificAddress}, ${location.district}, ${location.province}`;
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
   };
+  useEffect(() => {
+    const favorites = JSON.parse(localStorage.getItem("FAVORITE_SHOPS"));
+    favorites.map((s) => {
+      if (s._id == _id) {
+        setReviewList(s.reviews.reviewDetail);
+      }
+    });
+    const reviewedShops = JSON.parse(localStorage.getItem("SHOP_REVIEWED_KEY")) || [];
+    if (reviewedShops.includes(_id)) {
+      setHasReviewed(true);
+    }
+  }, []);
+
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-wrap -mx-4 mt-4">
@@ -95,12 +117,18 @@ function ProductDetail() {
               </svg>
             ))}
             <span className="ml-2 text-gray-600">
-              {rating} ({reviews.reviewDetail.length} đánh giá)
+              {rating} ({reviewList.length} đánh giá)
             </span>
           </div>
         </div>
       </div>
-
+      {/* Rating Form */}
+      {!hasReviewed && (
+        <div>
+          <h3 className="flex text-4xl font-bold text-black my-4">Đánh giá quán ăn</h3>
+          <RatingForm shopId={_id} addReview={addReview} />
+        </div>
+      )}
       {/* Flexbox cho Menu và Đánh giá */}
       <div className="flex space-x-6">
         {/* Phần Menu (Trái) */}
@@ -127,7 +155,7 @@ function ProductDetail() {
           <h2 className="flex justify-center text-lg font-medium text-red-400">PHẢN HỒI</h2>
           <h3 className="flex justify-center text-4xl font-bold text-black my-4">Khách Hàng Nói Gì?</h3>
           <div className="md:columns-2 lg:columns-3 gap-6 p-4 sm:p-1 mt-2">
-            {reviews.reviewDetail.map((review, index) => (
+            {reviewList.map((review, index) => (
               <div
                 key={index}
                 className="animate-in zoom-in ring-1 rounded-lg flex flex-col space-y-2 p-4 break-inside-avoid mb-6 bg-white hover:ring-2 ring-gray-300 hover:ring-red-400 transform duration-200 hover:shadow-sky-200 hover:shadow-md z-0 relative"
