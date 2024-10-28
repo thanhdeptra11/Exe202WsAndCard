@@ -32,6 +32,7 @@ import AdminUser from "./pages/WebsiteVersion/admin/AdminUser";
 import AdminLayout from "./pages/WebsiteVersion/admin/AdminLayout";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import DrinkMenu from "./components/DrinkMenu";
 
 function App() {
   const [isMobile, setIsMobile] = useState(false);
@@ -127,6 +128,7 @@ function App() {
               <Route path="/qr" element={<QRPage />} />
               <Route path="/success-payment" element={<SuccessPayment />} />
               {/* Các route yêu cầu đăng nhập */}
+              <Route path="/drinks" element={<PrivateRoute element={DrinkMenu} />} />
               <Route path="/menu" element={<PrivateRoute element={Menu} />} />
               <Route path="/favorites" element={<PrivateRoute element={Favorites} />} />
               {/* Các route xác thực */}
