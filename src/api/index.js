@@ -11,9 +11,13 @@ const AUTH_LOGOUT = `${domain}/auth/logout`;
 //Shop
 const SHOP_GETALL = `${domain}/shop`;
 
+//user
+const USER_GETALL = `${domain}/auth/getAllUsers`;
+
 export default {
   AUTH_LOGIN,
   AUTH_REGISTER,
   AUTH_LOGOUT,
   SHOP_GETALL,
+  USER_GETALL,
 };
