@@ -239,13 +239,13 @@ function InfoSection() {
           Nhận Món Ăn
         </Button>
       </div>
-      <div className="w-full h-full mt-6">
+      <div className="w-full h-full mt-6 flex justify-center">
         {loading ? (
           <p>Loading shops...</p>
         ) : randomFood && filteredShops.length > 0 ? (
           <AdvancedShopCard foodName={randomFood} shops={filteredShops} onReset={handleReset} />
         ) : (
-          <p>Không có cửa hàng nào phù hợp.</p>
+          <p>Không có cửa hàng nào phù hợp. Vui lòng chỉnh sửa địa chỉ trong mục Tuỳ chỉnh</p>
         )}
       </div>
     </div>
