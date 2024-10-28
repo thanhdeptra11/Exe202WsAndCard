@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, memo } from "react";
 import axios from "axios";
 import address from "../database/address.js";
 import AdvancedShopCard from "../examples/Advanced";
@@ -40,6 +40,11 @@ function InfoSection() {
   const [districts, setDistricts] = useState([]);
   const [randomFood, setRandomFood] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    console.log("randomFood:", randomFood);
+    console.log("filteredShops:", filteredShops);
+  }, [randomFood, filteredShops]);
 
   // Fetch all shops from the API
   const fetchShops = useCallback(async () => {
@@ -252,4 +257,4 @@ function InfoSection() {
   );
 }
 
-export default InfoSection;
+export default memo(InfoSection);

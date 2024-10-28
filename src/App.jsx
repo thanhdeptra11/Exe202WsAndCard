@@ -39,7 +39,7 @@ function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrollButton, setShowScrollButton] = useState(false);
   const [userRole, setUserRole] = useState(null);
-  // const location = useLocation();
+  const location = useLocation();
 
   // Lấy thông tin vai trò người dùng từ localStorage khi component mount
   useEffect(() => {
