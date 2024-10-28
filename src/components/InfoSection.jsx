@@ -241,11 +241,11 @@ function InfoSection() {
       </div>
       <div className="w-full h-full mt-6 ">
         {loading ? (
-          <p>Loading shops...</p>
+          <p className="text-center">Loading shops...</p>
         ) : randomFood && filteredShops.length > 0 ? (
           <AdvancedShopCard foodName={randomFood} shops={filteredShops} onReset={handleReset} />
         ) : (
-          <p>Không có cửa hàng nào phù hợp. Vui lòng chỉnh sửa địa chỉ trong mục Tuỳ chỉnh</p>
+          <p className="text-center">Không có cửa hàng nào phù hợp. Vui lòng chỉnh sửa địa chỉ trong mục Tuỳ chỉnh</p>
         )}
       </div>
     </div>
