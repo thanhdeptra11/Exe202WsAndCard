@@ -323,13 +323,7 @@ function AdvancedShopCard({ foodName, shops = [], onReset }) {
             >
               {/* Property Card */}
               <div className="bg-white rounded-lg overflow-hidden border-2 h-full">
-                <img
-                  className="h-60 w-full object-cover"
-                  src={property.imageUrl[Math.floor(Math.random() * property.imageUrl.length)] || "default_image_url.jpg"}
-                  alt={property.name}
-                  draggable={false}
-                  onMouseDown={(e) => e.stopPropagation()}
-                />
+                <img className="h-60 w-full object-cover" src={property.imageUrl[0] || "default_image_url.jpg"} alt={property.name} draggable={false} onMouseDown={(e) => e.stopPropagation()} />
                 <div className="p-6">
                   <div className="flex items-baseline">
                     <span className="inline-block bg-teal-200 text-teal-800 py-1 px-4 text-xs rounded-full uppercase font-semibold tracking-wide">Online</span>
