@@ -239,7 +239,7 @@ function InfoSection() {
           Nhận Món Ăn
         </Button>
       </div>
-      <div className="w-full h-full mt-6 flex justify-center">
+      <div className="w-full h-full mt-6 ">
         {loading ? (
           <p>Loading shops...</p>
         ) : randomFood && filteredShops.length > 0 ? (
