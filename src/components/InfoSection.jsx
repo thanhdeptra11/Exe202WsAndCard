@@ -158,7 +158,7 @@ function InfoSection() {
   }, [shops]);
 
   return (
-    <div className="flex flex-col max-w-full w-[1560px] items-center">
+    <div className="flex flex-col max-w-full w-full items-center">
       <div className="w-full flex justify-center items-center mt-12 gap-10">
         <Dialog>
           <DialogTrigger asChild>
@@ -245,7 +245,7 @@ function InfoSection() {
         ) : randomFood && filteredShops.length > 0 ? (
           <AdvancedShopCard foodName={randomFood} shops={filteredShops} onReset={handleReset} />
         ) : (
-          <p className="text-center">Không có cửa hàng nào phù hợp. Vui lòng chỉnh sửa địa chỉ trong mục Tuỳ chỉnh</p>
+          <p className="text-center">Không có cửa hàng nào phù hợp. Vui lòng chỉnh sửa địa chỉ trong mục Tuỳ chỉnh hoặc nhấn Nhận món</p>
         )}
       </div>
     </div>
