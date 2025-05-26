@@ -23,7 +23,7 @@ function Home() {
             <HowItWorks />
           </div>
         </div>
-        <Services />
+        {/* <Services /> */}
         <div className="flex justify-center">
           <Testimonials />
         </div>

@@ -31,7 +31,7 @@ const BlogSlider = () => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -41,13 +41,13 @@ const BlogSlider = () => {
   const posts2 = [
     {
       id: 1,
-      title: "Cơm Tấm Sài Gòn",
-      descriptions: "Những hạt gạo không hoàn hảo này đã bị loại bỏ theo truyền thống sau quá trình xay xát nhưng đã được nâng lên thành một nét văn hóa ẩm thực đường phố...",
-      pic: "https://static.vinwonders.com/production/com-tam-sai-gon-thumb.jpg",
+      title: "Bộ Bài mất dạy",
+      descriptions: "Đánh bài đê",
+      pic: "https://down-vn.img.susercontent.com/file/70eaa08af96969fe834f0181f9f832de",
       publishDate: "Sep 10, 2025",
       categoryId: "SaiGon",
       categoryName: "Ẩm thực Sài Gòn",
-      tags: ["Sài Gòn", "Cơm Tấm", "Ẩm thực Sài Gòn"],
+      tags: ["Tiến Lên", "Phỏm", "Tá lả"],
     },
     {
       id: 2,
@@ -104,7 +104,7 @@ const BlogSlider = () => {
   return (
     <div className="p-20">
       <h2 className="flex justify-center text-lg font-medium text-red-400">CÁC BÀI VIẾT NỔI BẬT</h2>
-      <h3 className="flex justify-center text-4xl mt-4 font-bold text-black max-md:max-w-full">Hãy để chúng tôi giúp bạn chọn món.</h3>
+      <h3 className="flex justify-center text-4xl mt-4 font-bold text-black max-md:max-w-full">Hãy để chúng tôi giúp bạn hiểu mình hơn.</h3>
       <div className="w-[1400px]">
         <div className="p-5">
           <Slider {...settings}>

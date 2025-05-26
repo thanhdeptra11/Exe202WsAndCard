@@ -9,7 +9,7 @@ function Hero() {
         {/* Left Section */}
         <div className="flex flex-col w-[60%] max-md:w-full">
           <div className="flex z-10 flex-col items-start mt-6 w-full">
-            <SearchBar />
+           
             {/*Title*/}
 
             <div className="self-stretch mt-16 text-5xl font-bold max-md:text-3xl">
@@ -22,7 +22,7 @@ function Hero() {
               /> */}
 
               {/* <p className="text-black">Bạn không biết</p> */}
-              <p className="text-red-400 mt-3">Hôm Nay Ăn Gì?</p>
+              <p className="text-red-400 mt-3">Hôm nay bạn thế nào?</p>
             </div>
 
             {/* Description */}
@@ -34,9 +34,9 @@ function Hero() {
             </p> */}
 
             <p className="flex flex-col mt-8 w-[500px] text-base font-medium text-black max-md:w-full">
-              Không biết hôm nay ăn gì? Hãy để FoodTrip giúp bạn!
+              Nếu hôm nay là một ngày buồn? Hãy để HealMe giúp bạn!
               <br />
-              Với tính năng thông minh, chúng tôi gợi ý món ăn phù hợp cho bạn. Chỉ vài thao tác, bạn sẽ khám phá địa điểm ăn uống lý tưởng cùng FoodTrip.
+              Hãy mở lòng mình và tham gia cùng HealMe, nơi bạn có thể tìm thấy những người bạn mới. Chúng tôi sẽ giúp bạn kết nối với những người đang gặp phải vấn đề giống bạn, để bạn không còn cảm thấy cô đơn trong cuộc sống.
             </p>
             {/* Order Button Section */}
             <div className="mt-16 w-full max-md:mt-8">

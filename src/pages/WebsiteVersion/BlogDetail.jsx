@@ -8,7 +8,7 @@ function BlogDetail() {
     <section className="max-w-[1030px] mx-auto px-4 sm:px-8 xl:px-10 text-left py-10">
       <div className="blog-header">
         <h1 className="font-bold text-2xl sm:text-4xl lg:text-4xl text-dark mb-5">{post.title}</h1>
-        <p className="text-gray-700 font-thin text-sm">20/10/2002</p>
+        <p className="text-gray-700 font-thin text-sm">20/5/2025</p>
         <div className="clear-both border-b border-solid border-[#ddd] h-[2px] mb-[5px] pt-[2px]">&nbsp;</div>
       </div>
       <div className="blog-content">

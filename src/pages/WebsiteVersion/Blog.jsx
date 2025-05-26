@@ -1,60 +1,25 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 const posts = [
   {
     id: 1,
-    title: "Cơm Tấm Sài Gòn",
-    descriptions: "Những hạt gạo không hoàn hảo này đã bị loại bỏ theo truyền thống sau quá trình xay xát nhưng đã được nâng lên thành một nét văn hóa ẩm thực đường phố...",
-    pic: "https://static.vinwonders.com/production/com-tam-sai-gon-thumb.jpg",
+    title: "Sản Phẩm Của Chúng Mình",
+    descriptions: "đây là nội dung của nhóm exe201 Healing.",
+    pic: "https://down-vn.img.susercontent.com/file/70eaa08af96969fe834f0181f9f832de",
     publishDate: "Sep 10, 2025",
     categoryId: "SaiGon",
-    categoryName: "Ẩm thực Sài Gòn",
-  },
-  {
-    id: 2,
-    title: "Thức ăn đường phố Việt Nam",
-    descriptions: "Những hạt gạo không hoàn hảo này đã bị loại bỏ theo truyền thống sau quá trình xay xát nhưng đã được nâng lên thành một nét văn hóa ẩm thực đường phố...",
-    pic: "https://danviet.mediacdn.vn/296231569849192448/2022/2/6/am-thuc-sai-gon-164415516861455273850.jpg",
-    publishDate: "Sep 10, 2025",
-    categoryId: "Explore",
-    categoryName: "Khám phá",
+    categoryName: "Bộ Bài",
   },
   {
     id: 3,
-    title: "Bánh mì thịt nướng Sài Gòn",
-    descriptions: "Những hạt gạo không hoàn hảo này đã bị loại bỏ theo truyền thống sau quá trình xay xát nhưng đã được nâng lên thành một nét văn hóa ẩm thực đường phố...",
-    pic: "https://cdn.tgdd.vn/2021/05/CookRecipe/Avatar/banh-mi-thit-bo-nuong-thumbnail-1.jpg",
+    title: "Workshop Healing",
+    descriptions: "đây là nội dung của nhóm exe201 Healing.",
+    pic: "https://inedip.com/images/workshops.png",
     publishDate: "Sep 10, 2025",
     categoryId: "SaiGon",
-    categoryName: "Ẩm thực Sài Gòn",
+    categoryName: "Workshop",
   },
-  {
-    id: 4,
-    title: "Phở Bò",
-    descriptions: "Những hạt gạo không hoàn hảo này đã bị loại bỏ theo truyền thống sau quá trình xay xát nhưng đã được nâng lên thành một nét văn hóa ẩm thực đường phố...",
-    pic: "https://mia.vn/media/uploads/blog-du-lich/top-19-quan-pho-ha-noi-ngon-nuc-tieng-an-la-ghien-phan-1--1639124992.jpg",
-    publishDate: "Sep 10, 2025",
-    categoryId: "HaNoi",
-    categoryName: "Ẩm thực Hà Nội",
-  },
-  {
-    id: 5,
-    title: "Bún chả",
-    descriptions: "Những hạt gạo không hoàn hảo này đã bị loại bỏ theo truyền thống sau quá trình xay xát nhưng đã được nâng lên thành một nét văn hóa ẩm thực đường phố...",
-    pic: "https://cdn.buffetposeidon.com/app/media/uploaded-files/090724-bun-cha-ha-noi-buffet-poseidon-1.jpeg",
-    publishDate: "Sep 10, 2025",
-    categoryId: "HaNoi",
-    categoryName: "Ẩm thực Hà Nội",
-  },
-  {
-    id: 6,
-    title: "Phố ẩm thực người Hoa",
-    descriptions: "Những hạt gạo không hoàn hảo này đã bị loại bỏ theo truyền thống sau quá trình xay xát nhưng đã được nâng lên thành một nét văn hóa ẩm thực đường phố...",
-    pic: "https://media.cooky.vn/images/blog-2016/chinatown-sai-gon-thien-duong-am-thuc-nguoi-hoa-giua-long-thanh-pho%2015.jpg",
-    publishDate: "Sep 10, 2025",
-    categoryId: "Explore",
-    categoryName: "Khám phá",
-  },
+  
 ];
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -76,16 +41,16 @@ const Blog = () => {
             <div className="max-w-[1170px] my-1 w-full flex flex-col lg:flex-row lg:items-center gap-7.5 lg:gap-11 bg-white shadow-1 rounded-xl p-4 lg:p-2.5 ring-1 ring-gray-300">
               <div className="lg:max-w-[536px] w-full">
                 <Link to={`/blog/1`}>
-                  <img className="w-full rounded-xl" src="https://static.vinwonders.com/production/com-tam-sai-gon-thumb.jpg" alt="hero" />
+                  <img className="w-full rounded-xl" src="https://down-vn.img.susercontent.com/file/70eaa08af96969fe834f0181f9f832de" alt="hero" />
                 </Link>
               </div>
               <div className="lg:max-w-[540px] w-full">
-                <span className="inline-flex text-red-400 bg-red-100 font-medium text-sm py-1 px-3 rounded-full mb-4">Ẩm thực Sài Gòn</span>
+                <span className="inline-flex text-red-400 bg-red-100 font-medium text-sm py-1 px-3 rounded-full mb-4">Sản Phẩm chính</span>
                 <h1 className="flex font-bold text-custom-4 xl:text-heading-4 text-dark mb-4">
-                  <Link to={`/blog/1`}>Cơm Tấm Sài Gòn</Link>
+                  <Link to={`/blog/1`}>Bộ Bài Healing</Link>
                 </h1>
                 <p className="max-w-[524px] text-gray-500 ">
-                  Những hạt gạo không hoàn hảo này đã bị loại bỏ theo truyền thống sau quá trình xay xát nhưng đã được nâng lên thành một nét văn hóa ẩm thực đường phố...
+                  Đây là sản phẩm tâm huyết của chúng mình, bộ bài có thể giúp mọi người cảm thấy healing
                 </p>
                 <div className="flex items-center mt-5">
                   {/* <a href="author.html" className="flex items-center gap-3">
@@ -95,26 +60,7 @@ const Blog = () => {
                   
                 </a> */}
 
-                  <p className="text-sm">Sep 10, 2025</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:max-w-[570px] my-1 w-full flex flex-col sm:flex-row sm:items-center gap-6 bg-white shadow-1 rounded-xl p-2.5 ring-1 ring-gray-300">
-              <div className="lg:max-w-[238px] lg:h-[150px] w-full">
-                <Link to={`/blog/2`}>
-                  <img className="w-full h-full rounded-xl " src="https://danviet.mediacdn.vn/296231569849192448/2022/2/6/am-thuc-sai-gon-164415516861455273850.jpg" alt="hero" />
-                </Link>
-              </div>
-              <div className="lg:max-w-[272px] w-full">
-                <span className="inline-flex text-red-400 bg-red-100 font-medium text-sm py-1 px-3 rounded-full mb-4">Khám phá</span>
-                <h2 className="font-semibold text-custom-lg text-dark mb-3">
-                  <Link to={`/blog/2`}>Thức ăn đường phố Việt Nam</Link>
-                </h2>
-                <div className="flex items-center">
-                  {/* <p className="text-sm">
-                  <Link to="author.html">By Adrio Devid</Link>
-                </p> */}
+                
 
                   <p className="text-sm">Sep 10, 2025</p>
                 </div>
@@ -124,13 +70,13 @@ const Blog = () => {
             <div className="lg:max-w-[570px] my-1 w-full flex flex-col sm:flex-row sm:items-center gap-6 bg-white shadow-1 rounded-xl p-2.5 ring-1 ring-gray-300">
               <div className="lg:max-w-[238px] lg:h-[150px] w-full">
                 <Link to={`/blog/3`}>
-                  <img className="w-full h-full rounded-xl " src="https://cdn.tgdd.vn/2021/05/CookRecipe/Avatar/banh-mi-thit-bo-nuong-thumbnail-1.jpg" alt="hero" />
+                  <img className="w-full h-full rounded-xl " src="https://inedip.com/images/workshops.png" alt="hero" />
                 </Link>
               </div>
               <div className="lg:max-w-[272px] w-full">
-                <span className="inline-flex text-red-400 bg-red-100 font-medium text-sm py-1 px-3 rounded-full mb-4">Ẩm thực Sài Gòn</span>
+                <span className="inline-flex text-red-400 bg-red-100 font-medium text-sm py-1 px-3 rounded-full mb-4">Workshop đang triển khai</span>
                 <h2 className="font-semibold text-custom-lg text-dark mb-3">
-                  <Link to={`/blog/3`}>Bánh mì thịt nướng Sài Gòn</Link>
+                  <Link to={`/blog/3`}>Workshop</Link>
                 </h2>
                 <div className="flex items-center">
                   {/* <p className="text-sm">
@@ -147,8 +93,8 @@ const Blog = () => {
       <section className="pt-20 lg:pt-25 pb-15">
         <div className="max-w-[1170px] mx-auto px-4 sm:px-8 xl:px-0">
           <div className="mb-[3.125rem] text-center">
-            <h2 className="text-dark mb-3.5 text-2xl font-bold sm:text-4xl xl:text-heading-3">Danh sách bài viết</h2>
-            <p>Chọn thể loại để xem các bài viết liên quan</p>
+            <h2 className="text-dark mb-3.5 text-2xl font-bold sm:text-4xl xl:text-heading-3">Danh sách những workshops của chúng mình</h2>
+            <p>Chọn work shop để xem chi tiết</p>
           </div>
           <div x-data="{ selectedCategory: 'All', activeClass: '', inactiveClass: '',}">
             <div className="flex flex-wrap justify-center gap-4 items-center mb-[3.75rem]">
@@ -158,32 +104,18 @@ const Blog = () => {
                   selectedCategory === "All" ? activeClass : inactiveClass
                 } `}
               >
-                Tất cả (6)
+                Tất cả (2)
               </button>
-              <button
-                onClick={() => handleFilter("Explore")}
-                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:ring-0 hover:border-dark hover:text-white ease-in duration-200 ${
-                  selectedCategory === "Explore" ? activeClass : inactiveClass
-                } `}
-              >
-                Khám phá (2)
-              </button>
+             
               <button
                 onClick={() => handleFilter("SaiGon")}
                 className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:ring-0 hover:border-dark hover:text-white ease-in duration-200 ${
                   selectedCategory === "SaiGon" ? activeClass : inactiveClass
                 } `}
               >
-                Ẩm thực Sài Gòn (2)
+                workshop đã triển khai (2)
               </button>
-              <button
-                onClick={() => handleFilter("HaNoi")}
-                className={`rounded-full border py-[0.625rem] px-[1.125rem] font-medium hover:bg-red-400 hover:ring-0 hover:border-dark hover:text-white ease-in duration-200 ${
-                  selectedCategory === "HaNoi" ? activeClass : inactiveClass
-                } `}
-              >
-                Ẩm thực Hà Nội (2)
-              </button>
+              
             </div>
 
             <div>

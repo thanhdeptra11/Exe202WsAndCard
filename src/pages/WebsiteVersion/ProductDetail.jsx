@@ -1,7 +1,7 @@
 import RatingForm from "@/components/RatingForm";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
-import { SiShopee, SiGrab } from "react-icons/si";
+import { SiGrab, SiShopee } from "react-icons/si";
 import { useLocation } from "react-router-dom";
 
 function ProductDetail() {

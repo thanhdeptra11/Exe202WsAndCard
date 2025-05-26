@@ -22,8 +22,8 @@ function getTimeAndDate(dateTimeString) {
 }
 
 function Header({ isScrolled }) {
-  const navItems = ["TRANG CHỦ", "ĂN GÌ", "UỐNG GÌ", "YÊU THÍCH", "BLOG"];
-  const navItemLinks = ["home", "menu", "drinks", "favorites", "blog"];
+  const navItems = ["TRANG CHỦ", "BLOG"];
+  const navItemLinks = ["home", "blog"];
   const dispatch = useDispatch();
 
   // Access the Redux state

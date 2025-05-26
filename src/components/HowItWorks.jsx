@@ -7,25 +7,25 @@ function HowItWorks() {
   const steps = [
     {
       title: "GỢI Ý",
-      description: "Không biết nên ăn gì cho bữa sáng, trưa, chiều hay tối? Chọn giá và khoảng cách, hệ thống sẽ gợi ý món ngon. Không thích? Quẹt tiếp để tìm món khác!",
+      description: "Không biết bắt đầu từ đâu trong hành trình chữa lành? Hãy chọn vấn đề bạn đang gặp phải (stress, mất ngủ, lo âu, tổn thương tâm lý...) — chúng tôi sẽ gợi ý những workshop phù hợp với nhu cầu của bạn.",
       image: step1Image, // Local image for step 1
     },
     {
-      title: "LỰA CHỌN CỬA HÀNG",
-      description: "Tìm được món ăn yêu thích? Nhập tên món, chọn cửa hàng gần nhất và đến ngay để thưởng thức!",
+      title: "LỰA CHỌN CHUYÊN GIA & LỊCH TRÌNH",
+      description: "Tìm được chủ đề phù hợp? Hãy xem các chuyên gia đồng hành, chọn thời gian & hình thức (trực tuyến hoặc trực tiếp) phù hợp để bắt đầu hành trình của bạn.",
       image: step2Image, // Local image for step 2
     },
     {
-      title: "ĐÁNH GIÁ NHÀ HÀNG",
-      description: "Sau khi trải nghiệm xong, hãy để lại đánh giá cho cửa hàng để giúp những người khác dễ dàng tìm được món ngon & cửa hàng tốt như bạn!",
+      title: "LAN TỎA",
+      description: "Sau khi tham gia workshop, bạn có thể chia sẻ cảm nhận và đánh giá. Ý kiến của bạn sẽ là nguồn động lực và thông tin quý giá cho những người đang tìm kiếm sự chữa lành.",
       image: step3Image, // Local image for step 3
     },
   ];
 
   return (
     <div className="mt-10">
-      <h2 className="flex justify-center text-lg font-medium text-red-400">HƯỚNG DẪN THAO TÁC</h2>
-      <h3 className="flex justify-center text-4xl mt-4 font-bold text-black max-md:max-w-full">Hãy để chúng tôi giúp bạn chọn món.</h3>
+      <h2 className="flex justify-center text-lg font-medium text-red-400">MỤC TIÊU CỦA CHÚNG TÔI</h2>
+      <h3 className="flex justify-center text-4xl mt-4 font-bold text-black max-md:max-w-full">Hãy để chúng tôi giúp bạn hiểu mình hơn</h3>
 
       <ol className="grid gap-8 md:grid-cols-3 p-6 mt-10">
         {steps.map((step, index) => (

@@ -5,7 +5,7 @@ function OrderButton() {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
-    navigate("/menu");
+    navigate("/blog");
   };
 
   return (
@@ -21,7 +21,7 @@ function OrderButton() {
           height="40"
           className="inline-block align-middle mr-2 pb-2"
         /> */}
-        Tìm Món Ngay
+        Tìm Hiểu Ngay
       </button>
     </div>
   );
