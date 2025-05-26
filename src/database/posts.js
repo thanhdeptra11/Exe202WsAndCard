@@ -33,6 +33,33 @@ const posts = [
     images: ["https://down-vn.img.susercontent.com/file/70eaa08af96969fe834f0181f9f832de"],
   },
   
+   {
+    id: 2,
+    title: "Workshop offline",
+    descriptions: "Workshop tại trường cho bạn nào muốn tham gia.",
+    pic: "https://inedip.com/images/workshops.png",
+    publishDate: "Sep 10, 2025",
+    categoryId: "Offline",
+    categoryName: "Workshop",
+    headings: ["", "Workshop", "", "", "Exe201", ""],
+    images: [
+      "",
+      "https://inedip.com/images/workshops.png",
+      "",
+      "",
+      "https://inedip.com/images/workshops.png",
+      "",
+    ],
+    paragraphs: [
+      "đây là bài giới thiệu cho workshop.",
+      "- Địa chỉ: Tòa alpha fpt",
+      "Với dự án tâm huyết của chúng mình, chúng mình mong các bạn có thể tham gia",
+      "",
+      "hihi hâha hô hô",
+      "là người thấu hiểu cảm xúc của các bạn, mình sẽ đưa ra những phương pháp và lời khuyên hữu dụng nhát.",
+    ],
+  },
+
   {
     id: 3,
     title: "Workshop offline",
@@ -60,6 +87,33 @@ const posts = [
     ],
   },
  
+ {
+    id: 4,
+    title: "Workshop offline",
+    descriptions: "Workshop tại trường cho bạn nào muốn tham gia.",
+    pic: "https://inedip.com/images/workshops.png",
+    publishDate: "Sep 10, 2025",
+    categoryId: "Offline",
+    categoryName: "Workshop",
+    headings: ["", "Workshop", "", "", "Exe201", ""],
+    images: [
+      "",
+      "https://inedip.com/images/workshops.png",
+      "",
+      "",
+      "https://inedip.com/images/workshops.png",
+      "",
+    ],
+    paragraphs: [
+      "đây là bài giới thiệu cho workshop.",
+      "- Địa chỉ: Tòa alpha fpt",
+      "Với dự án tâm huyết của chúng mình, chúng mình mong các bạn có thể tham gia",
+      "",
+      "hihi hâha hô hô",
+      "là người thấu hiểu cảm xúc của các bạn, mình sẽ đưa ra những phương pháp và lời khuyên hữu dụng nhát.",
+    ],
+  },
+
 ];
 
 export default posts;

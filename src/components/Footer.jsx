@@ -12,8 +12,8 @@ function Footer() {
               <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">vn</span>
             </a>
             <div className="mt-6 lg:max-w-sm">
-              <p className="text-sm text-gray-800">Được sinh ra từ sự hoàn hảo và cảm hứng, chúng tôi mang đến trải nghiệm ẩm thực độc đáo và hấp dẫn.</p>
-              <p className="mt-4 text-sm text-gray-800">Mỗi món ăn đều kể một câu chuyện, từ quy trình chuẩn bị đến cách phục vụ, đều được thực hiện với tâm huyết và đam mê.</p>
+              <p className="text-sm text-gray-800">Được sinh ra từ sự hoàn hảo và cảm hứng, chúng tôi mang đến sự chữa lành cho bạn.</p>
+              <p className="mt-4 text-sm text-gray-800">Mỗi một hoạt động là một câu chuyện, từ những điều nhỏ nhất chúng tôi đều được thực hiện với tâm huyết và đam mê.</p>
             </div>
           </div>
           <div className="space-y-2 text-sm">
@@ -26,7 +26,7 @@ function Footer() {
                 title="Số điện thoại của chúng tôi"
                 className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
               >
-                0949.602.xxx
+                0988.284.xxx
               </a>
             </div>
             <div className="flex">
@@ -37,7 +37,7 @@ function Footer() {
                 title="Email của chúng tôi"
                 className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
               >
-                foodtrip.exe201@gmail.com
+                Healme.exe201@gmail.com
               </a>
             </div>
             <div className="flex justify-between">
@@ -76,11 +76,11 @@ function Footer() {
                 </svg>
               </a>
             </div>
-            <p className="mt-4 text-sm text-gray-500">Đam mê ẩm thực được truyền tải qua từng món ăn, từng chi tiết nhỏ nhất.</p>
+            <p className="mt-4 text-sm text-gray-500">chữa lành cho bạn từ những điều nhỏ nhất.</p>
           </div>
         </div>
         <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
-          <p className="text-sm text-gray-600">© Bản quyền 2022 thuộc về FoodTripVn Inc. Đã đăng ký bản quyền.</p>
+          <p className="text-sm text-gray-600">© Bản quyền 2025 thuộc về nhóm HealMe EXE201 Inc. Đã đăng ký bản quyền.</p>
           <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
             <li>
               <a href="/" className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400">
