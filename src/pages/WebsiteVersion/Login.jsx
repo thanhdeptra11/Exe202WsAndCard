@@ -5,7 +5,7 @@ import axios from "axios";
 import api from "../../api";
 import loginBanner from "../../assets/foodBanner.png";
 import loginBanner2 from "../../assets/auth4.png";
-import logo from "../../assets/LOGO (1).svg";
+import logo from "../../assets/LOGO (1).png";
 import toast from "react-hot-toast";
 //import redux hook - dispatch to send action - useSelector to get state
 import { useDispatch } from "react-redux";

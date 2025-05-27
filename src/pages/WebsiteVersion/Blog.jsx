@@ -113,7 +113,7 @@ const Blog = () => {
                   selectedCategory === "SaiGon" ? activeClass : inactiveClass
                 } `}
               >
-                workshop đã triển khai (2)
+                workshop đang triển khai (2)
               </button>
               
             </div>
